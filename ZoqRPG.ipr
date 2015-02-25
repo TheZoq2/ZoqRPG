@@ -334,11 +334,11 @@
   <component name="libraryTable">
     <library name="spigot-1.8">
       <CLASSES>
-        <root url="jar:///mnt/1TB-files/minecraft/spigot/build/8jan/spigot-1.8.jar!/" />
+        <root url="jar://$PROJECT_DIR$/spigot-1.8.jar!/" />
       </CLASSES>
       <JAVADOC />
       <SOURCES>
-        <root url="jar:///mnt/1TB-files/minecraft/spigot/build/8jan/spigot-1.8.jar!/" />
+        <root url="jar://$PROJECT_DIR$/spigot-1.8.jar!/" />
       </SOURCES>
     </library>
   </component>

@@ -6,6 +6,7 @@ import org.bukkit.event.player.PlayerEvent;
 public abstract class BaseBoon implements Boon
 {
     protected Player affectedPlayer;
+    protected boolean done = false;
 
     public BaseBoon(Player target)
     {
@@ -18,6 +19,12 @@ public abstract class BaseBoon implements Boon
         return affectedPlayer;
     }
 
+    @Override
+    public boolean isDone()
+    {
+        return done;
+    }
+
     //Returns true if the event is triggered by the player affected by this event
     @Override
     public boolean boonAffectsPlayerEvent(PlayerEvent event)
@@ -27,5 +34,11 @@ public abstract class BaseBoon implements Boon
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onPlayerInterractEvent()
+    {
+
     }
 }

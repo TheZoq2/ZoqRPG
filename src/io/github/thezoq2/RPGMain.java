@@ -1,8 +1,11 @@
 package io.github.thezoq2;
 
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityEvent;
+import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -49,7 +52,7 @@ public class RPGMain extends JavaPlugin implements Listener
 
         }
 
-        //Removing the active spells
+        //Removing the active spr ells
         for(Spell doneSpell : doneSpells)
         {
             activeSpells.remove(doneSpell);

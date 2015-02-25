@@ -12,7 +12,7 @@ public interface Boon
     void update();
     void onEnd();
 
-    boolean isActive();
+    boolean isDone();
 
     public Player getAffectedPlayer();
 
