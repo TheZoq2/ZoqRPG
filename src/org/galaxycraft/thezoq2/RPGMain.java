@@ -1,11 +1,9 @@
-package io.github.thezoq2;
+package org.galaxycraft.thezoq2;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityEvent;
-import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -59,14 +57,56 @@ public class RPGMain extends JavaPlugin implements Listener
         }
     }
 
+    public void updateBoons()
+    {
+        List<Boon> doneBoons = new ArrayList<Boon>();
+
+        for(Boon boon : activeBoons)
+        {
+            boon.update();
+
+            //Checkign if the boon is done playing
+            if(boon.isDone())
+            {
+                doneBoons.add(boon);
+            }
+        }
+
+        //Removing the boons that are done
+        for(Boon boon : doneBoons)
+        {
+            removeBoon(boon);
+        }
+    }
+
     @EventHandler
     public void onPlayerInteractEvent(PlayerInteractEvent event)
     {
         Player plr = event.getPlayer();
-
         plr.sendMessage("Event");
+        //Run all the interract events on boons for the player
+        for(Boon boon : activeBoons)
+        {
+            if (boon.getAffectedEntity() == plr)
+            {
+                if (boon.onPlayerInterractEvent() == false)
+                {
+                    event.setCancelled(true);
+                    return;
+                }
+            }
+        }
 
-        addSpell(spellFactory.createEffect(SpellFactory.EffectType.WIRLWIND, 1, plr.getLocation()));
+
+        //addSpell(spellFactory.createEffect(SpellFactory.EffectType.WIRLWIND, 1, plr.getLocation()));
+
+        //Boon newBoon = BoonFactory.addBoonToEntity(BoonType.BLEEDING, plr, getBoonsOnEntity(plr), 0.5f);
+        Boon newBoon = BoonFactory.addBoonToEntity(BoonType.BLINK, plr, getBoonsOnEntity(plr), 0.5f);
+
+        if(newBoon != null)
+        {
+            addBoonToList(newBoon);
+        }
     }
 
     public void addSpell(Spell spell)
@@ -76,8 +116,31 @@ public class RPGMain extends JavaPlugin implements Listener
         System.out.println("adding a spell");
     }
 
-    public void addBoon(Boon boon)
+    public void addBoonToList(Boon boon)
     {
         activeBoons.add(boon);
+    }
+
+    //Removes a boon from the boon list
+    public void removeBoon(Boon boon)
+    {
+        //Run the onEnd function
+        boon.onEnd();
+
+        activeBoons.remove(boon);
+    }
+
+    public List<Boon> getBoonsOnEntity(Entity entity)
+    {
+        List<Boon> entityBoons = new ArrayList<Boon>();
+
+        for(Boon boon : activeBoons)
+        {
+            if(boon.getAffectedEntity() == entity)
+            {
+                entityBoons.add(boon);
+            }
+        }
+        return entityBoons;
     }
 }

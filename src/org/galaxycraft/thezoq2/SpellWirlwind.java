@@ -1,8 +1,7 @@
-package io.github.thezoq2;
+package org.galaxycraft.thezoq2;
 
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;

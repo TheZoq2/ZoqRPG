@@ -1,5 +1,5 @@
 name: ZoqRPG
-main: io.github.thezoq2.RPGMain
+main: RPGMain
 version: 0
 
 commands:

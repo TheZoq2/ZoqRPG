@@ -1,4 +1,4 @@
-package io.github.thezoq2;
+package org.galaxycraft.thezoq2;
 
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -18,5 +18,6 @@ public class RPGUpdateTask extends BukkitRunnable
     public void run()
     {
         mainPlugin.updateSpells();
+        mainPlugin.updateBoons();
     }
 }

@@ -1,6 +1,5 @@
-package io.github.thezoq2;
+package org.galaxycraft.thezoq2;
 
-import net.minecraft.server.v1_8_R1.Position;
 import org.bukkit.Location;
 
 /**

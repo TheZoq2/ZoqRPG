@@ -1,4 +1,4 @@
-package io.github.thezoq2;
+package org.galaxycraft.thezoq2;
 
 import org.bukkit.Location;
 import org.bukkit.World;
