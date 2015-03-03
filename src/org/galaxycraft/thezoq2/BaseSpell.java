@@ -1,35 +1,33 @@
 package org.galaxycraft.thezoq2;
 
-import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.entity.Entity;
 
 /**
- * Created by frans on 08/02/15.
+ * Created by frans on 03/03/15.
  */
 public abstract class BaseSpell implements Spell
 {
-    protected Location pos;
-    protected boolean done;
+    protected World world;
+    protected Entity caster;
 
-    public BaseSpell(Location pos)
+    BaseSpell(World world, Entity caster)
     {
-        this.pos = pos;
+        this.world = world;
+        this.caster = caster;
     }
 
-    @Override
-    public Location getPosition()
-    {
-        return pos;
-    }
-
-    @Override
-    public void setPosition(Location pos)
-    {
-        this.pos = pos;
-    }
+    protected boolean done = false;
 
     @Override
     public boolean isDone()
     {
         return done;
+    }
+
+    @Override
+    public Entity getCaster()
+    {
+        return caster;
     }
 }

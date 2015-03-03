@@ -24,4 +24,6 @@ public interface Boon
 
      */
     public boolean onPlayerInterractEvent();
+
+    public Boon clone();
 }

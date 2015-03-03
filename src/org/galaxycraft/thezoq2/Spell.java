@@ -1,17 +1,17 @@
 package org.galaxycraft.thezoq2;
 
-import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Entity;
 
 /**
- * Created by frans on 08/02/15.
+ * Created by frans on 03/03/15.
  */
 public interface Spell
 {
-    void update();
-    boolean isDone();
+    public void onCreate();
+    public void update(float timePassed);
 
-    void setPosition(Location pos);
-    Location getPosition();
+    public boolean isDone();
 
+    public Entity getCaster();
 }

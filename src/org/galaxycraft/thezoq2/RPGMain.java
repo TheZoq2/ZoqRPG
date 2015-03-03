@@ -13,7 +13,7 @@ import java.util.List;
 
 public class RPGMain extends JavaPlugin implements Listener
 {
-    List<Spell> activeSpells;
+    List<ModularSpell> activeSpells;
     List<Boon> activeBoons;
 
     SpellFactory spellFactory;
@@ -26,7 +26,7 @@ public class RPGMain extends JavaPlugin implements Listener
         scheduler.scheduleSyncRepeatingTask(this, new RPGUpdateTask(this), 0L, 1L);
 
         //Initialising lists
-        activeSpells = new ArrayList<Spell>();
+        activeSpells = new ArrayList<ModularSpell>();
         activeBoons = new ArrayList<Boon>();
 
         getServer().getPluginManager().registerEvents(this, this);
@@ -36,9 +36,9 @@ public class RPGMain extends JavaPlugin implements Listener
 
     public void updateSpells()
     {
-        List<Spell> doneSpells = new ArrayList<Spell>();
+        List<ModularSpell> doneSpells = new ArrayList<ModularSpell>();
         //Looping through all the currently active spells
-        for(Spell spell : activeSpells)
+        for(ModularSpell spell : activeSpells)
         {
             spell.update();
 
@@ -51,7 +51,7 @@ public class RPGMain extends JavaPlugin implements Listener
         }
 
         //Removing the active spr ells
-        for(Spell doneSpell : doneSpells)
+        for(ModularSpell doneSpell : doneSpells)
         {
             activeSpells.remove(doneSpell);
         }
@@ -109,7 +109,7 @@ public class RPGMain extends JavaPlugin implements Listener
         }
     }
 
-    public void addSpell(Spell spell)
+    public void addSpell(ModularSpell spell)
     {
         activeSpells.add(spell);
 

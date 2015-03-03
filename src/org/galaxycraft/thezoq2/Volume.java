@@ -14,6 +14,8 @@ public interface Volume
     public void setCenter(Vector center);
     public Vector getCenter();
 
+    public void update(float timePassed);
+
     public boolean posIsInVolume(Location pos);
 
     public List<Entity> getEntitiesInVolume(List<Entity> allEntities);

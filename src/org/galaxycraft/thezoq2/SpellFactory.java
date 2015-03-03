@@ -12,7 +12,7 @@ public class SpellFactory
         WIRLWIND
     }
 
-    public Spell createEffect(EffectType effect, float strength, Location pos)
+    public ModularSpell createEffect(EffectType effect, float strength, Location pos)
     {
         switch(effect)
         {
