@@ -13,10 +13,10 @@ import java.util.List;
 
 public class RPGMain extends JavaPlugin implements Listener
 {
-    List<ModularSpell> activeSpells;
-    List<Boon> activeBoons;
+    private SpellManager spellManager;
+    private BoonManager boonManager;
 
-    SpellFactory spellFactory;
+    private SpellFactory spellFactory;
     @Override
     public void onEnable()
     {
@@ -25,58 +25,23 @@ public class RPGMain extends JavaPlugin implements Listener
         BukkitScheduler scheduler = this.getServer().getScheduler();
         scheduler.scheduleSyncRepeatingTask(this, new RPGUpdateTask(this), 0L, 1L);
 
-        //Initialising lists
-        activeSpells = new ArrayList<ModularSpell>();
-        activeBoons = new ArrayList<Boon>();
+        //Initialising managers
+        spellManager = new SpellManager();
+        boonManager = new BoonManager();
 
         getServer().getPluginManager().registerEvents(this, this);
 
         spellFactory = new SpellFactory();
     }
 
-    public void updateSpells()
+    public void updateSpells(long timePassed)
     {
-        List<ModularSpell> doneSpells = new ArrayList<ModularSpell>();
-        //Looping through all the currently active spells
-        for(ModularSpell spell : activeSpells)
-        {
-            spell.update();
-
-            //Checking if the spell is done playing
-            if(spell.isDone())
-            {
-                doneSpells.add(spell);
-            }
-
-        }
-
-        //Removing the active spr ells
-        for(ModularSpell doneSpell : doneSpells)
-        {
-            activeSpells.remove(doneSpell);
-        }
+        spellManager.updateAll(timePassed);
     }
 
-    public void updateBoons()
+    public void updateBoons(long timePassed)
     {
-        List<Boon> doneBoons = new ArrayList<Boon>();
-
-        for(Boon boon : activeBoons)
-        {
-            boon.update();
-
-            //Checkign if the boon is done playing
-            if(boon.isDone())
-            {
-                doneBoons.add(boon);
-            }
-        }
-
-        //Removing the boons that are done
-        for(Boon boon : doneBoons)
-        {
-            removeBoon(boon);
-        }
+        boonManager.updateAll(timePassed);
     }
 
     @EventHandler
@@ -85,7 +50,7 @@ public class RPGMain extends JavaPlugin implements Listener
         Player plr = event.getPlayer();
         plr.sendMessage("Event");
         //Run all the interract events on boons for the player
-        for(Boon boon : activeBoons)
+        for(Boon boon : boonManager.getBoonList())
         {
             if (boon.getAffectedEntity() == plr)
             {
@@ -101,40 +66,39 @@ public class RPGMain extends JavaPlugin implements Listener
         //addSpell(spellFactory.createEffect(SpellFactory.EffectType.WIRLWIND, 1, plr.getLocation()));
 
         //Boon newBoon = BoonFactory.addBoonToEntity(BoonType.BLEEDING, plr, getBoonsOnEntity(plr), 0.5f);
-        Boon newBoon = BoonFactory.addBoonToEntity(BoonType.BLINK, plr, getBoonsOnEntity(plr), 0.5f);
+        /*Boon newBoon = BoonFactory.addBoonToEntity(BoonType.BLINK, plr, getBoonsOnEntity(plr), 0.5f);
 
         if(newBoon != null)
         {
             addBoonToList(newBoon);
-        }
+        }*/
+
+        Mover mover = new LinearMover(0.3f, plr.getLocation().getDirection());
+        SphereVolume volume = new SphereVolume(plr.getLocation().getDirection(), 1);
+        Boon boon = new BurningBoon();
+
+        Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
+
+        spellManager.addSpell(spell);
     }
 
     public void addSpell(ModularSpell spell)
     {
-        activeSpells.add(spell);
+        spellManager.addSpell(spell);
 
         System.out.println("adding a spell");
     }
 
     public void addBoonToList(Boon boon)
     {
-        activeBoons.add(boon);
-    }
-
-    //Removes a boon from the boon list
-    public void removeBoon(Boon boon)
-    {
-        //Run the onEnd function
-        boon.onEnd();
-
-        activeBoons.remove(boon);
+        boonManager.addBoon(boon);
     }
 
     public List<Boon> getBoonsOnEntity(Entity entity)
     {
         List<Boon> entityBoons = new ArrayList<Boon>();
 
-        for(Boon boon : activeBoons)
+        for(Boon boon : boonManager.getBoonList())
         {
             if(boon.getAffectedEntity() == entity)
             {

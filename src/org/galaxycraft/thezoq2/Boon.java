@@ -2,16 +2,19 @@ package org.galaxycraft.thezoq2;
 
 import org.bukkit.entity.Entity;
 
-public interface Boon
+public interface Boon extends Updatable
 {
-    void onApply(Entity entity, float strength);
-    void update();
-    void onEnd();
+    public void onApply(Entity affectedEntity, float strength);
+    @Override
+    public void update(long timePassed);
+    @Override
+    public void onEnd();
 
     //If the player already has the same boon, this is called
-    void onReapply(float strength);
+    public void onReapply(float strength);
 
-    boolean isDone();
+    @Override
+    public boolean isDone();
 
     public Entity getAffectedEntity();
 
@@ -25,5 +28,5 @@ public interface Boon
      */
     public boolean onPlayerInterractEvent();
 
-    public Boon clone();
+    public Boon cloneBoon();
 }

@@ -1,6 +1,6 @@
 package org.galaxycraft.thezoq2;
 
-import org.bukkit.World;
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
@@ -12,29 +12,32 @@ import java.util.List;
 public class ModularSpell extends BaseSpell
 {
     private Mover mover;
-
     private Volume volume;
+    private Visualiser visualiser;
+    private Boon appliedBoon;
 
-    private Boon appliedEffect;
-
-    public ModularSpell(World world, Entity caster, Mover mover, Volume volume, Boon appliedEffect)
+    public ModularSpell(Location startPos, Entity caster, Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
     {
-        super(world, caster);
+        super(startPos, caster);
 
         this.mover = mover;
         this.volume = volume;
-        this.appliedEffect = appliedEffect;
+        this.appliedBoon = appliedBoon;
+
+        this.visualiser = visualiser;
     }
 
     @Override
-    public void onCreate()
+    public void onCreate(BoonManager boonManager)
     {
 
     }
 
     @Override
-    public void update(float timePassed)
+    public void update(long timePassed)
     {
+        //super.update(timePassed, boonManager);
+
         //Update the position of the spell
         mover.update(timePassed);
         volume.update(timePassed);
@@ -42,8 +45,28 @@ public class ModularSpell extends BaseSpell
         volume.setCenter(mover.getPosition());
 
         //Getting a list of all the entities that will be affected by this spell
-        List<Entity> affectedEntities = volume.getEntitiesInVolume(world.getEntities());
+        List<Entity> affectedEntities = volume.getEntitiesInVolume(startPos.getWorld().getEntities());
 
+
+        //Apply that effect to all the entities
+        for(Entity e : affectedEntities)
+        {
+            //TODO Apply effects
+        }
+
+        //Visualising the spell
+        for(Vector pos : volume.getBlocksInVolume())
+        {
+            Location currentPos = startPos.add(volume.getCenter());
+
+            visualiser.showLocation(currentPos);
+        }
+
+    }
+
+    @Override
+    public void onEnd()
+    {
 
     }
 }

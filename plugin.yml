@@ -1,5 +1,5 @@
 name: ZoqRPG
-main: RPGMain
+main: org.galaxycraft.thezoq2.RPGMain
 version: 0
 
 commands:

@@ -1,5 +1,6 @@
 package org.galaxycraft.thezoq2;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
 public abstract class BaseBoon implements Boon
@@ -7,10 +8,6 @@ public abstract class BaseBoon implements Boon
     protected Entity affectedEntity;
     protected boolean done = false;
     protected float strength;
-
-    public BaseBoon()
-    {
-    }
 
     @Override
     public void onApply(Entity affectedEntity, float strength)
@@ -35,7 +32,6 @@ public abstract class BaseBoon implements Boon
     @Override
     public boolean onPlayerInterractEvent()
     {
-
         return true;
     }
 }

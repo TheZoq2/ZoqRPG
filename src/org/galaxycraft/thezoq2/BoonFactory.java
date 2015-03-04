@@ -7,8 +7,12 @@ import java.util.List;
 /**
  * Created by frans on 01/03/15.
  */
-public class BoonFactory
+public final class BoonFactory
 {
+    private BoonFactory()
+    {
+
+    }
 
     /**
         Tries to add a boon to the entity specified. If the entity already has that boon, it will
@@ -23,7 +27,7 @@ public class BoonFactory
      */
     public static Boon addBoonToEntity(BoonType boonType, Entity targetEntity, List<Boon> boonsOnEntity, float strength)
     {
-        Boon newBoon = getBoonFromType(boonType);
+        Boon newBoon = getBoonFromType(boonType, targetEntity);
 
         boolean boonShouldBeAdded = true;
         for(Boon boon : boonsOnEntity)
@@ -50,7 +54,7 @@ public class BoonFactory
         }
     }
 
-    public static Boon getBoonFromType(BoonType type)
+    public static Boon getBoonFromType(BoonType type, Entity targetEntity)
     {
         switch (type)
         {

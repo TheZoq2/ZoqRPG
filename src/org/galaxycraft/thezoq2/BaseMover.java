@@ -11,6 +11,12 @@ public abstract class BaseMover implements Mover
 
     protected float speed;
 
+    public BaseMover(float speed)
+    {
+        position = new Vector();
+        this.speed = speed;
+    }
+
     @Override
     public void setSpeed(float speed)
     {

@@ -34,6 +34,10 @@ public class BlinkBoon extends BaseBoon
     private ItemStack itemInHand; //if the player does not have this item in their hand, the boon sould be removed
     private int teleportDistance;
 
+    public BlinkBoon()
+    {
+    }
+
     @Override
     public void onApply(Entity affectedEntity, float strength)
     {
@@ -57,7 +61,7 @@ public class BlinkBoon extends BaseBoon
     }
 
     @Override
-    public void update()
+    public void update(long timePassed)
     {
         if(affectedEntity instanceof Player)
         {
@@ -166,6 +170,14 @@ public class BlinkBoon extends BaseBoon
         }
 
         return true;
+    }
+
+    //TODO: Implement
+    @Override
+    public Boon cloneBoon()
+    {
+
+        return null;
     }
 
 }

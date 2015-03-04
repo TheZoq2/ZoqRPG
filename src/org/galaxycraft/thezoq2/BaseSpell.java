@@ -1,5 +1,6 @@
 package org.galaxycraft.thezoq2;
 
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 
@@ -8,12 +9,12 @@ import org.bukkit.entity.Entity;
  */
 public abstract class BaseSpell implements Spell
 {
-    protected World world;
+    protected Location startPos;
     protected Entity caster;
 
-    BaseSpell(World world, Entity caster)
+    BaseSpell(Location startPos, Entity caster)
     {
-        this.world = world;
+        this.startPos = startPos;
         this.caster = caster;
     }
 

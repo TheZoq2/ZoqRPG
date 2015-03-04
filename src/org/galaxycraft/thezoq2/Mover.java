@@ -1,6 +1,5 @@
 package org.galaxycraft.thezoq2;
 
-import org.bukkit.Location;
 import org.bukkit.util.Vector;
 
 /**
@@ -12,7 +11,7 @@ public interface Mover
     public float getSpeed();
 
     //public Location getNewLocation(long timePassed);
-    public void update(float timePassed);
+    public void update(long timePassed);
 
     public Vector getPosition(); //Returns the position relative to the starting position (0,0,0)
 }

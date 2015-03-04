@@ -19,6 +19,6 @@ public interface Volume
     public boolean posIsInVolume(Location pos);
 
     public List<Entity> getEntitiesInVolume(List<Entity> allEntities);
-    public List<Location> getBlocksInVolume();
-    public List<Location> getRandomPositionsInVolume(float density);
+    public List<Vector> getBlocksInVolume();
+    public List<Vector> getRandomPositionsInVolume(float density);
 }

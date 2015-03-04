@@ -22,6 +22,12 @@ public class SphereVolume extends BaseVolume
     }
 
     @Override
+    public void update(float timePassed)
+    {
+
+    }
+
+    @Override
     public boolean posIsInVolume(Location pos)
     {
         if(pos.distanceSquared(pos) < Math.pow(radius, 2))
@@ -51,14 +57,32 @@ public class SphereVolume extends BaseVolume
 
     @Override
     //TODO: Implement
-    public List<Location> getBlocksInVolume()
+    public List<Vector> getBlocksInVolume()
     {
-        return new ArrayList<>();
+        List<Vector> result = new ArrayList<>();
+
+        //Going through all the blocks that could be in the sphereA
+        for(float x = -radius; x <= radius; x++)
+        {
+            for(float y = -radius; y <= radius; y++)
+            {
+                for(float z = -radius; z <= radius; z++)
+                {
+                    int xPos = (int) x;
+                    int yPos = (int) y;
+                    int zPos = (int) z;
+
+                    result.add(new Vector(xPos, yPos, zPos));
+                }
+            }
+        }
+
+        return result;
     }
 
     @Override
     //TODO: Implement
-    public List<Location> getRandomPositionsInVolume(float density)
+    public List<Vector> getRandomPositionsInVolume(float density)
     {
         return new ArrayList<>();
     }

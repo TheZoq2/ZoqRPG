@@ -27,11 +27,6 @@ public class BleedingBoon extends BaseBoon
 
     private TimerComponent boonTimer;
 
-
-    public BleedingBoon()
-    {
-    }
-
     @Override
     public void onApply(Entity entity, float strength)
     {
@@ -54,7 +49,7 @@ public class BleedingBoon extends BaseBoon
     }
 
     @Override
-    public void update()
+    public void update(long timePassed)
     {
         if(boonTimer.isOver())
         {
@@ -82,5 +77,12 @@ public class BleedingBoon extends BaseBoon
     {
         //((Player) affectedEntity).sendMessage("Reapplied");
         System.out.println("Reapplying effect");
+    }
+
+    //TODO: Implement
+    @Override
+    public BleedingBoon cloneBoon()
+    {
+        return new BleedingBoon();
     }
 }

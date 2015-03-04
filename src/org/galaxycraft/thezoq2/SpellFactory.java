@@ -7,19 +7,4 @@ import org.bukkit.Location;
  */
 public class SpellFactory
 {
-    public static enum EffectType
-    {
-        WIRLWIND
-    }
-
-    public ModularSpell createEffect(EffectType effect, float strength, Location pos)
-    {
-        switch(effect)
-        {
-            case WIRLWIND:
-                return new SpellWirlwind(strength, pos);
-        }
-
-        return null;
-    }
 }
