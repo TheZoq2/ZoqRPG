@@ -1,4 +1,4 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -7,6 +7,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
+import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
+import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
+import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
+import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
+import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
+import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
+import org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume;
 
 import java.util.ArrayList;
 import java.util.List;

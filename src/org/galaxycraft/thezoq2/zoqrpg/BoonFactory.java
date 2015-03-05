@@ -1,6 +1,9 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg;
 
 import org.bukkit.entity.Entity;
+import org.galaxycraft.thezoq2.zoqrpg.boons.BleedingBoon;
+import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
+import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 
 import java.util.List;
 

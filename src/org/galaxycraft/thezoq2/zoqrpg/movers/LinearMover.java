@@ -1,6 +1,7 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg.movers;
 
 import org.bukkit.util.Vector;
+import org.galaxycraft.thezoq2.zoqrpg.utils.SpeedUtils;
 
 /**
  * Created by frans on 3/4/15.

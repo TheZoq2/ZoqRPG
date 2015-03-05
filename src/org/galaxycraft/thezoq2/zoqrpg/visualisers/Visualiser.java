@@ -1,4 +1,4 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg.visualisers;
 
 import org.bukkit.Location;
 

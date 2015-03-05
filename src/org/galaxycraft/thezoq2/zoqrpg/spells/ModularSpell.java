@@ -1,8 +1,13 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg.spells;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
+import org.galaxycraft.thezoq2.zoqrpg.BoonManager;
+import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
+import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
+import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
+import org.galaxycraft.thezoq2.zoqrpg.volumes.Volume;
 
 import java.util.List;
 

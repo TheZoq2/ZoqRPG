@@ -1,9 +1,10 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg.boons;
 
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.galaxycraft.thezoq2.zoqrpg.TimerComponent;
 
 /**
  * Created by frans on 2/25/15.

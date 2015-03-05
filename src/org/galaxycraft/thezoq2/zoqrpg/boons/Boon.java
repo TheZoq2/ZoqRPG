@@ -1,6 +1,7 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg.boons;
 
 import org.bukkit.entity.Entity;
+import org.galaxycraft.thezoq2.zoqrpg.Updatable;
 
 public interface Boon extends Updatable
 {

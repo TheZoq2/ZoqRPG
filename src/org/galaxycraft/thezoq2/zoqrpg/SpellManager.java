@@ -1,4 +1,6 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg;
+
+import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 
 import java.util.ArrayList;
 import java.util.List;

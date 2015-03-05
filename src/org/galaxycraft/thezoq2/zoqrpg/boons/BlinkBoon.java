@@ -1,4 +1,4 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg.boons;
 
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Location;

@@ -1,4 +1,4 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  */
 public abstract class UpdatableManager
 {
-    protected List<Updatable> activeUpdatables;
+    protected List<Updatable> activeUpdatables; //TODO: update to use wildcards
 
     UpdatableManager()
     {

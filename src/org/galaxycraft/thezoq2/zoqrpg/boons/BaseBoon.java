@@ -1,13 +1,15 @@
-package org.galaxycraft.thezoq2;
+package org.galaxycraft.thezoq2.zoqrpg.boons;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
 public abstract class BaseBoon implements Boon
 {
     protected Entity affectedEntity;
     protected boolean done = false;
     protected float strength;
+
+    protected Visualiser visualiser = null;
 
     @Override
     public void onApply(Entity affectedEntity, float strength)
@@ -33,5 +35,17 @@ public abstract class BaseBoon implements Boon
     public boolean onPlayerInterractEvent()
     {
         return true;
+    }
+
+    protected void visualise()
+    {
+        if(visualiser != null)
+        {
+            visualiser.showLocation(affectedEntity.getLocation());
+        }
+        else
+        {
+            //TODO: Implement custom exception
+        }
     }
 }
