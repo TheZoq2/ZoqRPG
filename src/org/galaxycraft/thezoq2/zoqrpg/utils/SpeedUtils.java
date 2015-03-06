@@ -16,12 +16,15 @@ public final class SpeedUtils
 
     public static float getCurrentSpeed(float baseSpeed, long timePassed)
     {
-        return baseSpeed * (timePassed / 1000.0f);
+        float speed = baseSpeed * (timePassed / 1000.0f);
+        return speed;
     }
     public static Vector getCurrentMovementVector(Vector direction, float baseSpeed, long timePassed)
     {
-        direction.multiply(getCurrentSpeed(baseSpeed, timePassed));
+        Vector vec = direction.clone();
+
+        vec.multiply(getCurrentSpeed(baseSpeed, timePassed));
         //return direction.multiply(getCurrentSpeed(baseSpeed, timePassed));
-        return direction;
+        return vec;
     }
 }

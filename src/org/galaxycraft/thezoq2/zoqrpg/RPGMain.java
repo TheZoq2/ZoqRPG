@@ -7,6 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
@@ -81,11 +82,14 @@ public class RPGMain extends JavaPlugin implements Listener
             addBoonToList(newBoon);
         }*/
 
-        Mover mover = new LinearMover(0.3f, plr.getLocation().getDirection());
-        SphereVolume volume = new SphereVolume(plr.getLocation().getDirection(), 1);
+        Vector direction = plr.getLocation().getDirection();
+
+        Mover mover = new LinearMover(0.3f, direction);
+        SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 1);
         Boon boon = new BurningBoon();
 
         Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
+        spell.onCreate(boonManager);
 
         spellManager.addSpell(spell);
     }

@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.boons;
 
 import org.bukkit.entity.Entity;
+import org.galaxycraft.thezoq2.zoqrpg.utils.GeneralUtils;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
@@ -15,24 +16,31 @@ public class BurningBoon extends BaseBoon
             MIN_BURN_TIME = 500;
 
     long burnTime;
+    int burnTicks;
 
     @Override
     public void onApply(Entity affectedEntity, float strength)
     {
+        super.onApply(affectedEntity, strength);
         super.visualiser = new FireVisualiser();
 
         //Calculating the time between burns
         burnTime =  MAX_BURN_TIME - (long)(MIN_BURN_TIME * strength);
-        //burnTicks = MAX_BURN_TIME
+        burnTicks = (int) GeneralUtils.getTicksFromMilliseconds(burnTime);
 
-
-        //affectedEntity.setFireTicks();
+        affectedEntity.setFireTicks(burnTicks);
     }
 
     @Override
     public void update(long timePassed)
     {
         super.visualise();
+
+        //Checking if the entity is still burning
+        if(affectedEntity.getFireTicks() == 0)
+        {
+            done = true;
+        }
     }
 
     @Override

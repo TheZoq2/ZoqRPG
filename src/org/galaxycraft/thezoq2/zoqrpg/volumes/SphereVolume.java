@@ -30,7 +30,8 @@ public class SphereVolume extends BaseVolume
     @Override
     public boolean posIsInVolume(Location pos)
     {
-        if(pos.distanceSquared(pos) < Math.pow(radius, 2))
+        float distance = (float) super.center.distance(pos.toVector());
+        if(distance < radius)
         {
             return true;
         }

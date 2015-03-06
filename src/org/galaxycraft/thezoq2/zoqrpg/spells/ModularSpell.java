@@ -21,6 +21,7 @@ public class ModularSpell extends BaseSpell
     private Visualiser visualiser;
     private Boon appliedBoon;
 
+
     public ModularSpell(Location startPos, Entity caster, Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
     {
         super(startPos, caster);
@@ -35,7 +36,7 @@ public class ModularSpell extends BaseSpell
     @Override
     public void onCreate(BoonManager boonManager)
     {
-
+        super.onCreate(boonManager);
     }
 
     @Override
@@ -47,22 +48,31 @@ public class ModularSpell extends BaseSpell
         mover.update(timePassed);
         volume.update(timePassed);
 
-        volume.setCenter(mover.getPosition());
+        //Recalculating the center position
+        Vector newCenter = super.startPos.toVector();
+        newCenter.add(mover.getPosition());
+        volume.setCenter(newCenter);
 
         //Getting a list of all the entities that will be affected by this spell
         List<Entity> affectedEntities = volume.getEntitiesInVolume(startPos.getWorld().getEntities());
 
 
         //Apply that effect to all the entities
-        for(Entity e : affectedEntities)
+        for(Entity entity : affectedEntities)
         {
-            //TODO Apply effects
+            //TODO Apply boons
+            Boon newBoon = appliedBoon.cloneBoon();
+
+            newBoon.onApply(entity, appliedBoon.getStrength());
+
+            super.boonManager.addBoon(newBoon);
         }
 
         //Visualising the spell
         for(Vector pos : volume.getBlocksInVolume())
         {
-            Location currentPos = startPos.add(volume.getCenter());
+            //Location currentPos = volume.getCenter().toLocation(startPos.getWorld());
+            Location currentPos = newCenter.toLocation(startPos.getWorld());
 
             visualiser.showLocation(currentPos);
         }

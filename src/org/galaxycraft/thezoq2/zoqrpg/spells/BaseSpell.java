@@ -2,6 +2,7 @@ package org.galaxycraft.thezoq2.zoqrpg.spells;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.galaxycraft.thezoq2.zoqrpg.BoonManager;
 
 /**
  * Created by frans on 03/03/15.
@@ -11,13 +12,25 @@ public abstract class BaseSpell implements Spell
     protected Location startPos;
     protected Entity caster;
 
+    protected boolean done = false;
+
+    //Ideally this would be passed every update tick but in order to allow spells to inherit
+    //updatable and allow updatable managers to handle spells, it is kept track of by the spell itself
+    protected BoonManager boonManager;
+
+
     BaseSpell(Location startPos, Entity caster)
     {
         this.startPos = startPos;
         this.caster = caster;
     }
 
-    protected boolean done = false;
+    @Override
+    public void onCreate(BoonManager boonManager)
+    {
+        this.boonManager = boonManager;
+    }
+
 
     @Override
     public boolean isDone()

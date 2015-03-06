@@ -30,4 +30,6 @@ public interface Boon extends Updatable
     public boolean onPlayerInterractEvent();
 
     public Boon cloneBoon();
+
+    public float getStrength();
 }

@@ -20,6 +20,11 @@ public abstract class BaseBoon implements Boon
     }
 
     @Override
+    public float getStrength()
+    {
+        return this.strength;
+    }
+    @Override
     public Entity getAffectedEntity()
     {
         return affectedEntity;
@@ -48,4 +53,5 @@ public abstract class BaseBoon implements Boon
             //TODO: Implement custom exception
         }
     }
+
 }

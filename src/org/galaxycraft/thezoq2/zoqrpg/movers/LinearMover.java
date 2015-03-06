@@ -21,6 +21,10 @@ public class LinearMover extends BaseMover
     @Override
     public void update(long timePassed)
     {
-        position.add(SpeedUtils.getCurrentMovementVector(this.direction, super.speed, timePassed));
+        Vector addVector = SpeedUtils.getCurrentMovementVector(this.direction, super.speed, timePassed);
+        //Vector addVector = this.direction;
+        super.position.add(addVector);
+
+        int a = 0;
     }
 }
