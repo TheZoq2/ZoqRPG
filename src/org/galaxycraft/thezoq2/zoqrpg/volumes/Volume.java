@@ -16,7 +16,7 @@ public interface Volume
 
     public void update(float timePassed);
 
-    public boolean posIsInVolume(Location pos);
+    public boolean posIsInVolume(Vector pos);
 
     public List<Entity> getEntitiesInVolume(List<Entity> allEntities);
     public List<Vector> getBlocksInVolume();

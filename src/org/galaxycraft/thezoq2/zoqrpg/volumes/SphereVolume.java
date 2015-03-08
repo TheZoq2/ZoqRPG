@@ -18,7 +18,7 @@ public class SphereVolume extends BaseVolume
     {
         super(center, size);
 
-        radius = size;
+        this.radius = size;
     }
 
     @Override
@@ -28,10 +28,10 @@ public class SphereVolume extends BaseVolume
     }
 
     @Override
-    public boolean posIsInVolume(Location pos)
+    public boolean posIsInVolume(Vector pos)
     {
-        float distance = (float) super.center.distance(pos.toVector());
-        if(distance < radius)
+        float distance = (float) super.center.distance(pos);
+        if(distance < this.radius)
         {
             return true;
         }
@@ -47,7 +47,7 @@ public class SphereVolume extends BaseVolume
         //Looping through all the entities
         for(Entity entity : allEntities)
         {
-            if(posIsInVolume(entity.getLocation()))
+            if(posIsInVolume(entity.getLocation().toVector()))
             {
                 result.add(entity);
             }
@@ -57,7 +57,6 @@ public class SphereVolume extends BaseVolume
     }
 
     @Override
-    //TODO: Implement
     public List<Vector> getBlocksInVolume()
     {
         List<Vector> result = new ArrayList<>();
@@ -73,7 +72,10 @@ public class SphereVolume extends BaseVolume
                     int yPos = (int) y;
                     int zPos = (int) z;
 
-                    result.add(new Vector(xPos, yPos, zPos));
+                    if(posIsInVolume(new Vector(xPos, yPos, zPos)))
+                    {
+                        result.add(new Vector(xPos, yPos, zPos));
+                    }
                 }
             }
         }

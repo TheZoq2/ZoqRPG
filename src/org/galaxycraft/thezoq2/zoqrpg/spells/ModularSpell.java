@@ -60,7 +60,6 @@ public class ModularSpell extends BaseSpell
         //Apply that effect to all the entities
         for(Entity entity : affectedEntities)
         {
-            //TODO Apply boons
             Boon newBoon = appliedBoon.cloneBoon();
 
             newBoon.onApply(entity, appliedBoon.getStrength());

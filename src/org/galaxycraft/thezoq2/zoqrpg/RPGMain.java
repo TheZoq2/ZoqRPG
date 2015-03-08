@@ -84,8 +84,8 @@ public class RPGMain extends JavaPlugin implements Listener
 
         Vector direction = plr.getLocation().getDirection();
 
-        Mover mover = new LinearMover(0.3f, direction);
-        SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 1);
+        Mover mover = new LinearMover(10f, direction);
+        SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 5);
         Boon boon = new BurningBoon();
 
         Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
