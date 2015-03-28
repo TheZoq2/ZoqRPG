@@ -5,7 +5,7 @@ import org.galaxycraft.thezoq2.zoqrpg.Updatable;
 
 public interface Boon extends Updatable
 {
-    public void onApply(Entity affectedEntity, float strength);
+    public boolean onApply(Entity affectedEntity, float strength);
     @Override
     public void update(long timePassed);
     @Override

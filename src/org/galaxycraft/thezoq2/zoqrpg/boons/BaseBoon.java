@@ -12,11 +12,13 @@ public abstract class BaseBoon implements Boon
     protected Visualiser visualiser = null;
 
     @Override
-    public void onApply(Entity affectedEntity, float strength)
+    public boolean onApply(Entity affectedEntity, float strength)
     {
         this.strength = strength;
 
         this.affectedEntity = affectedEntity;
+
+        return true;
     }
 
     @Override

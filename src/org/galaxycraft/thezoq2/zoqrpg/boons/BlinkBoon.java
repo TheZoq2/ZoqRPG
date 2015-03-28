@@ -39,9 +39,12 @@ public class BlinkBoon extends BaseBoon
     }
 
     @Override
-    public void onApply(Entity affectedEntity, float strength)
+    public boolean onApply(Entity affectedEntity, float strength)
     {
-        super.onApply(affectedEntity, strength);
+        if(!super.onApply(affectedEntity, strength))
+        {
+            return false;
+        }
 
         teleportDistance = (int)(BASE_DISTANCE + strength * STRENGTH_DISTANCE);
 
@@ -58,6 +61,7 @@ public class BlinkBoon extends BaseBoon
             done = true;
         }
 
+        return false;
     }
 
     @Override
@@ -172,12 +176,10 @@ public class BlinkBoon extends BaseBoon
         return true;
     }
 
-    //TODO: Implement
     @Override
     public Boon cloneBoon()
     {
-
-        return null;
+        return new BlinkBoon();
     }
 
 }

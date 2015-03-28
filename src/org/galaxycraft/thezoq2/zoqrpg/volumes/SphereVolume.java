@@ -1,6 +1,5 @@
 package org.galaxycraft.thezoq2.zoqrpg.volumes;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 
@@ -53,6 +52,7 @@ public class SphereVolume extends BaseVolume
             }
         }
 
+
         return result;
     }
 
@@ -68,13 +68,13 @@ public class SphereVolume extends BaseVolume
             {
                 for(float z = -radius; z <= radius; z++)
                 {
-                    int xPos = (int) x;
-                    int yPos = (int) y;
-                    int zPos = (int) z;
+                    Vector testPos = new Vector((int) x, (int) y, (int) z);
 
-                    if(posIsInVolume(new Vector(xPos, yPos, zPos)))
+                    testPos.add(center);
+
+                    if(posIsInVolume(testPos))
                     {
-                        result.add(new Vector(xPos, yPos, zPos));
+                        result.add(testPos);
                     }
                 }
             }

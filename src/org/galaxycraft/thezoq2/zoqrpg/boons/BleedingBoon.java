@@ -29,9 +29,12 @@ public class BleedingBoon extends BaseBoon
     private TimerComponent boonTimer;
 
     @Override
-    public void onApply(Entity entity, float strength)
+    public boolean onApply(Entity entity, float strength)
     {
-        super.onApply(entity, strength);
+        if(!super.onApply(entity, strength))
+        {
+            return false;
+        }
 
         //Calculating the time the boon will be applied
         long effectTime = Math.round(MIN_TIME + (MAX_TIME - MIN_TIME) * strength);
@@ -47,6 +50,7 @@ public class BleedingBoon extends BaseBoon
         }
 
         System.out.println("Applyhing ");
+        return true;
     }
 
     @Override

@@ -1,5 +1,8 @@
 package org.galaxycraft.thezoq2.zoqrpg;
 
+import com.mysql.jdbc.Buffer;
+import fileio.DataFileReader;
+import fileio.FileManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -8,15 +11,19 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
+import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
+import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSelfSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
 import org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume;
 
+import java.io.*;
+import java.net.FileNameMap;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +48,21 @@ public class RPGMain extends JavaPlugin implements Listener
         getServer().getPluginManager().registerEvents(this, this);
 
         spellFactory = new SpellFactory();
+
+        FileManager.createPluginFoler();
+
+        try
+        {
+            FileReader fr = FileManager.getFileReader("spells");
+
+            DataFileReader dr = new DataFileReader(fr);
+        } catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     public void updateSpells(long timePassed)
@@ -71,28 +93,22 @@ public class RPGMain extends JavaPlugin implements Listener
             }
         }
 
-
-        //addSpell(spellFactory.createEffect(SpellFactory.EffectType.WIRLWIND, 1, plr.getLocation()));
-
-        //Boon newBoon = BoonFactory.addBoonToEntity(BoonType.BLEEDING, plr, getBoonsOnEntity(plr), 0.5f);
-        /*Boon newBoon = BoonFactory.addBoonToEntity(BoonType.BLINK, plr, getBoonsOnEntity(plr), 0.5f);
-
-        if(newBoon != null)
-        {
-            addBoonToList(newBoon);
-        }*/
-
         Vector direction = plr.getLocation().getDirection();
 
         Mover mover = new LinearMover(10f, direction);
-        SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 5);
+        SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 1);
         Boon boon = new BurningBoon();
 
         Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
         spell.onCreate(boonManager);
 
         spellManager.addSpell(spell);
-    }
+
+        //Spell spell = new ModularSelfSpell(plr, new BlinkBoon());
+        //spell.onCreate(boonManager);
+
+        //spellManager.addSpell(spell);
+   }
 
     public void addSpell(ModularSpell spell)
     {

@@ -1,34 +1,45 @@
 package org.galaxycraft.thezoq2.zoqrpg.boons;
 
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.galaxycraft.thezoq2.zoqrpg.utils.GeneralUtils;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
 /**
- * Created by frans on 3/4/15.
+ *
  */
 public class BurningBoon extends BaseBoon
 {
+    //TODO; make sure items don't burn
     //Constants that determine the way the boon behaves
     private static final long
-            MAX_BURN_TIME = 2000,
-            MIN_BURN_TIME = 500;
+            MAX_BURN_TIME = 5000,
+            MIN_BURN_TIME = 1500;
 
     long burnTime;
     int burnTicks;
 
     @Override
-    public void onApply(Entity affectedEntity, float strength)
+    public boolean onApply(Entity affectedEntity, float strength)
     {
-        super.onApply(affectedEntity, strength);
-        super.visualiser = new FireVisualiser();
+        if(!super.onApply(affectedEntity, strength))
+        {
+            return false;
+        }
 
-        //Calculating the time between burns
-        burnTime =  MAX_BURN_TIME - (long)(MIN_BURN_TIME * strength);
-        burnTicks = (int) GeneralUtils.getTicksFromMilliseconds(burnTime);
+        if(affectedEntity instanceof LivingEntity)
+        {
+            super.visualiser = new FireVisualiser();
 
-        affectedEntity.setFireTicks(burnTicks);
+            //Calculating the time between burns
+            burnTime = MAX_BURN_TIME - (long) (MIN_BURN_TIME * strength);
+            burnTicks = (int) GeneralUtils.getTicksFromMilliseconds(burnTime);
+
+            affectedEntity.setFireTicks(burnTicks);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -37,7 +48,7 @@ public class BurningBoon extends BaseBoon
         super.visualise();
 
         //Checking if the entity is still burning
-        if(affectedEntity.getFireTicks() == 0)
+        if(affectedEntity.getFireTicks() == -1)
         {
             done = true;
         }
@@ -59,5 +70,4 @@ public class BurningBoon extends BaseBoon
     {
         return new BurningBoon();
     }
-
 }

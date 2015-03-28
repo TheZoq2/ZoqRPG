@@ -7,9 +7,11 @@ public class GeneralUtils
 {
     /**
      * Returns the amount of game ticks a second is
+     * There are 20 ticks per second
      */
     public static long getTicksFromMilliseconds(long milliseconds)
     {
-        return Math.round((milliseconds / 1000.0f) / 20.0f);
+        float seconds = milliseconds / 1000.0f;
+        return Math.round(seconds * 20.0f);
     }
 }

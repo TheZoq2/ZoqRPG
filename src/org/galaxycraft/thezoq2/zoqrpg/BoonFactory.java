@@ -47,9 +47,13 @@ public final class BoonFactory
         //If the boon should be added to the entity
         if(boonShouldBeAdded)
         {
-            newBoon.onApply(targetEntity, strength);
+            //If the boon was applied propperly
+            if(newBoon.onApply(targetEntity, strength))
+            {
+                return newBoon;
+            }
 
-            return newBoon;
+            return null;
         }
         else
         {

@@ -12,7 +12,7 @@ import org.galaxycraft.thezoq2.zoqrpg.volumes.Volume;
 import java.util.List;
 
 /**
- * Created by frans on 03/03/15.
+ *
  */
 public class ModularSpell extends BaseSpell
 {
@@ -34,12 +34,6 @@ public class ModularSpell extends BaseSpell
     }
 
     @Override
-    public void onCreate(BoonManager boonManager)
-    {
-        super.onCreate(boonManager);
-    }
-
-    @Override
     public void update(long timePassed)
     {
         //super.update(timePassed, boonManager);
@@ -56,22 +50,29 @@ public class ModularSpell extends BaseSpell
         //Getting a list of all the entities that will be affected by this spell
         List<Entity> affectedEntities = volume.getEntitiesInVolume(startPos.getWorld().getEntities());
 
-
         //Apply that effect to all the entities
         for(Entity entity : affectedEntities)
         {
+            //TODO check if caster is entity in a better way
+            if(entity == super.caster)
+            {
+                continue;
+            }
+
             Boon newBoon = appliedBoon.cloneBoon();
 
             newBoon.onApply(entity, appliedBoon.getStrength());
 
             super.boonManager.addBoon(newBoon);
+
+            System.out.println("Added boon");
         }
 
         //Visualising the spell
         for(Vector pos : volume.getBlocksInVolume())
         {
             //Location currentPos = volume.getCenter().toLocation(startPos.getWorld());
-            Location currentPos = newCenter.toLocation(startPos.getWorld());
+            Location currentPos = pos.toLocation(startPos.getWorld());
 
             visualiser.showLocation(currentPos);
         }
