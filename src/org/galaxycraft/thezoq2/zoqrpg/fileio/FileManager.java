@@ -1,4 +1,4 @@
-package fileio;
+package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
 import java.io.*;
 

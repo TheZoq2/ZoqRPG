@@ -1,4 +1,6 @@
-package fileio;
+package org.galaxycraft.thezoq2.zoqrpg.fileio;
+
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -28,6 +30,7 @@ public class DataFileReader
     private List<String> lines;
     private String finalString;
     private StringBuilder finalStringBuilder;
+    private String filename;
 
     //List of what char in the final string corresponds to a line ending
     private List<Integer> lineStarts;
@@ -98,6 +101,10 @@ public class DataFileReader
                 if(cSpecial == '=')
                 {
 
+                }
+                else
+                {
+                    throw new InvalidDatafileException("Expected variable declaration, got " + cSpecial, )
                 }
             }
 
