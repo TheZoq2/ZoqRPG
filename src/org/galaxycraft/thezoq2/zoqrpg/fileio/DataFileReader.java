@@ -88,7 +88,7 @@ public class DataFileReader
 
     private List<DataVariable> parseDataChunk(int start, int end) throws InvalidDatafileException, UnexpectedEndOfDataChunk
     {
-        List<DataVariable> dataValues = new ArrayList<>();
+        List<DataVariable> dataVariables = new ArrayList<>();
 
         int currentChar = 0;
         boolean doneParsing = false;
@@ -136,16 +136,34 @@ public class DataFileReader
                     }
                     case LOOKING_FOR_VALUE:
                     {
-                        System.out.println("LOoking for value for: " + cVariableName);
+                        //If a semicolon is found before {, this is a single variable declaration
+                        if(specialChar == ';')
+                        {
+                            //getting the value
+                            String varValue = finalString.substring(currentChar, nextSpecial);
+
+                            //Creating a DataVariable and adding it to the list
+                            DataValue dVal = new StringValue(varValue);
+                            DataVariable dVar = new DataVariable(cVariableName, dVal);
+
+                            dataVariables.add(dVar);
+
+                            //Reset the parseStatus
+                            parseStatus = ParseStatus.LOOKING_FOR_VARIABLE;
+                        }
+                        else if(specialChar == '{')
+                        {
+                            //Finding the corresponding }
+                        }
                         break;
                     }
                 }
             }
 
-            currentChar = nextSpecial - start;
+            currentChar = nextSpecial - start + 1;
         }
 
-        return dataValues;
+        return dataVariables;
     }
 
     private String stripWhitespace(String line)
@@ -199,5 +217,32 @@ public class DataFileReader
         }
 
         return 0;
+    }
+
+    private int findMatchingBracket(int start, char openBracket, char closeBracket)
+    {
+        int depth = 1;
+
+        for(int i = start; i < finalString.length(); i++)
+        {
+            int cChar = finalString.charAt(i);
+            //Another bracket opened, increase depth
+            if(cChar == openBracket)
+            {
+                depth++;
+            }
+            else if(cChar == closeBracket)
+            {
+                depth--;
+            }
+
+            //The corresponding bracket has been found
+            if(depth == 0)
+            {
+                return i;
+            }
+        }
+
+        //The matching bracket wasn't found, report error
     }
 }
