@@ -1,6 +1,8 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedEndOfDataChunk;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedSpecialChar;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -13,7 +15,7 @@ import java.util.List;
  */
 public class DataFileReader
 {
-    private enum DataStatus
+    private enum ParseStatus
     {
         LOOKING_FOR_VARIABLE,
         LOOKING_FOR_VALUE,
@@ -51,8 +53,11 @@ public class DataFileReader
         //TODO: THROW INSTEAD OF CATCH
         try
         {
-            interpretData();
+            parseDataChunk(0, finalString.length());
         } catch (InvalidDatafileException e)
+        {
+            e.printStackTrace();
+        } catch (UnexpectedEndOfDataChunk e)
         {
             e.printStackTrace();
         }
@@ -81,74 +86,66 @@ public class DataFileReader
         finalString = finalStringBuilder.toString();
     }
 
-    private void interpretData() throws InvalidDatafileException
+    private List<DataVariable> parseDataChunk(int start, int end) throws InvalidDatafileException, UnexpectedEndOfDataChunk
     {
-        DataStatus parseStatus;
-        parseStatus = DataStatus.LOOKING_FOR_VARIABLE;
-        int currentIndex = 0;
-        boolean parsingDone = false;
-        int depth = 0;
+        List<DataVariable> dataValues = new ArrayList<>();
 
-        while (!parsingDone)
+        int currentChar = 0;
+        boolean doneParsing = false;
+
+        ParseStatus parseStatus = ParseStatus.LOOKING_FOR_VARIABLE;
+        String cVariableName = "";
+
+        while(!doneParsing)
         {
-            //Finding the next special char
-            int nextSChar = findNextSpecialChar(currentIndex);
+            int nextSpecial = findNextSpecialChar(start + currentChar);
 
-            //No more specialCharacters found
-            //This means that the end of the file is reached
-            if (nextSChar == -1)
+            //If this is the last special char in the chunk
+            if(nextSpecial == -1 || nextSpecial >= end)
             {
-                //Check if the file is valid
-                if (depth != 0)
+                //If no special characters are left in the chunk, the parsing has failed. Throw an error
+                if(parseStatus != ParseStatus.LOOKING_FOR_VARIABLE)
                 {
-                    throw new InvalidDatafileException("Unexpected end of file, all brackets are not closed", filename, lineStarts.get(lineStarts.size() - 1));
+                    throw new UnexpectedEndOfDataChunk(filename, getLineFromFinal(currentChar + start));
                 }
-                if (parseStatus != DataStatus.LOOKING_FOR_VARIABLE)
+
+                doneParsing = true;
+            }
+            else
+            {
+                //There is a special char, parse it
+                char specialChar = finalString.charAt(nextSpecial);
+
+                switch(parseStatus)
                 {
-                    throw new InvalidDatafileException("Unexpected end of file", filename, lineStarts.get(lineStarts.size() - 1));
+                    case LOOKING_FOR_VARIABLE:
+                    {
+                        //An equals sign marks the end of a variable name, anything else means something is
+                        //wrong
+                        if(specialChar == '=')
+                        {
+                            //Getting the variable name
+                            cVariableName = finalString.substring(currentChar + start, nextSpecial);
+                            parseStatus = ParseStatus.LOOKING_FOR_VALUE;
+                        }
+                        else
+                        {
+                            throw new UnexpectedSpecialChar(specialChar, '=', filename, getLineFromFinal(nextSpecial));
+                        }
+                        break;
+                    }
+                    case LOOKING_FOR_VALUE:
+                    {
+                        System.out.println("LOoking for value for: " + cVariableName);
+                        break;
+                    }
                 }
-                break;
             }
 
-            char cSpecial = finalString.charAt(nextSChar);
-            int currentLine = getLineFromFinal(nextSChar);
-
-            switch (parseStatus)
-            {
-                case LOOKING_FOR_VARIABLE:
-                {
-                    if (cSpecial == '=')
-                    {
-                        //Getting the variable name
-                        String varName = finalString.substring(currentIndex, nextSChar);
-
-                        parseStatus = DataStatus.LOOKING_FOR_VALUE;
-                    }
-                    else
-                    {
-                        throw new InvalidDatafileException("Expected variable declaration, got: " + cSpecial, filename, currentLine);
-                    }
-                    break;
-                }
-                case LOOKING_FOR_VALUE:
-                {
-                    if (cSpecial == '{')
-                    {
-                        parseStatus = DataStatus.LOOKING_FOR_VARIABLE;
-                    }
-                    else if (cSpecial == ';')
-                    {
-                        parseStatus = DataStatus.LOOKING_FOR_VARIABLE;
-                    }
-                    else
-                    {
-                        throw new InvalidDatafileException("Expected variable value, got: " + cSpecial, filename, currentLine);
-                    }
-                    break;
-                }
-            }
-            currentIndex = nextSChar + 1;
+            currentChar = nextSpecial - start;
         }
+
+        return dataValues;
     }
 
     private String stripWhitespace(String line)
