@@ -1,8 +1,5 @@
 package org.galaxycraft.thezoq2.zoqrpg;
 
-import com.mysql.jdbc.Buffer;
-import fileio.DataFileReader;
-import fileio.FileManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,12 +8,12 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
-import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.FileManager;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
-import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSelfSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;

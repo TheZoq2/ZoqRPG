@@ -13,14 +13,6 @@ import java.util.List;
  */
 public class DataFileReader
 {
-    private static final char[] SPECIAL_CHARS =
-            {
-                    '=',
-                    ';',
-                    '{',
-                    '}',
-            };
-
     private enum DataStatus
     {
         LOOKING_FOR_VARIABLE,
@@ -29,7 +21,6 @@ public class DataFileReader
 
     private List<String> lines;
     private String finalString;
-    private StringBuilder finalStringBuilder;
     private String filename;
 
     //List of what char in the final string corresponds to a line ending
@@ -56,12 +47,21 @@ public class DataFileReader
         }while(line != null);
 
         createDataString();
+
+        //TODO: THROW INSTEAD OF CATCH
+        try
+        {
+            interpretData();
+        } catch (InvalidDatafileException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private void createDataString()
     {
 
-        StringBuilder dataBuilder;
+        StringBuilder finalStringBuilder = new StringBuilder();
 
         for(String line : lines)
         {
@@ -81,7 +81,7 @@ public class DataFileReader
         finalString = finalStringBuilder.toString();
     }
 
-    private void interpretData()
+    private void interpretData() throws InvalidDatafileException
     {
         DataStatus parseStatus;
         parseStatus = DataStatus.LOOKING_FOR_VARIABLE;
@@ -89,30 +89,65 @@ public class DataFileReader
         boolean parsingDone = false;
         int depth = 0;
 
-        while(!parsingDone)
+        while (!parsingDone)
         {
             //Finding the next special char
             int nextSChar = findNextSpecialChar(currentIndex);
+
+            //No more specialCharacters found
+            //This means that the end of the file is reached
+            if (nextSChar == -1)
+            {
+                //Check if the file is valid
+                if (depth != 0)
+                {
+                    throw new InvalidDatafileException("Unexpected end of file, all brackets are not closed", filename, lineStarts.get(lineStarts.size() - 1));
+                }
+                if (parseStatus != DataStatus.LOOKING_FOR_VARIABLE)
+                {
+                    throw new InvalidDatafileException("Unexpected end of file", filename, lineStarts.get(lineStarts.size() - 1));
+                }
+                break;
+            }
+
             char cSpecial = finalString.charAt(nextSChar);
+            int currentLine = getLineFromFinal(nextSChar);
 
-            if(parseStatus == DataStatus.LOOKING_FOR_VARIABLE)
+            switch (parseStatus)
             {
-                //If there is an equals sign
-                if(cSpecial == '=')
+                case LOOKING_FOR_VARIABLE:
                 {
+                    if (cSpecial == '=')
+                    {
+                        //Getting the variable name
+                        String varName = finalString.substring(currentIndex, nextSChar);
 
+                        parseStatus = DataStatus.LOOKING_FOR_VALUE;
+                    }
+                    else
+                    {
+                        throw new InvalidDatafileException("Expected variable declaration, got: " + cSpecial, filename, currentLine);
+                    }
+                    break;
                 }
-                else
+                case LOOKING_FOR_VALUE:
                 {
-                    throw new InvalidDatafileException("Expected variable declaration, got " + cSpecial, )
+                    if (cSpecial == '{')
+                    {
+                        parseStatus = DataStatus.LOOKING_FOR_VARIABLE;
+                    }
+                    else if (cSpecial == ';')
+                    {
+                        parseStatus = DataStatus.LOOKING_FOR_VARIABLE;
+                    }
+                    else
+                    {
+                        throw new InvalidDatafileException("Expected variable value, got: " + cSpecial, filename, currentLine);
+                    }
+                    break;
                 }
             }
-
-            //When there are no special chars left
-            if(nextSChar == -1)
-            {
-                //TODO: Make sure this is the end of the file
-            }
+            currentIndex = nextSChar + 1;
         }
     }
 
@@ -140,23 +175,32 @@ public class DataFileReader
     //Find the index of the next special char in the finalString
     private int findNextSpecialChar(int start)
     {
-        int firstChar =finalString.length() + 1;
-
-        for(char specialChar : SPECIAL_CHARS)
+        int firstChar = -1;
+        //Go through each char one by one
+        for(int i = start; i < finalString.length(); i++)
         {
-            int index = finalString.indexOf(start);
+            String singleChar = finalString.substring(i,i+1);
 
-            //Checking if this is the first special char we found yet
-            if(index < firstChar)
+            if(singleChar.matches("^.*[^a-zA-Z0-9 ].*$"))
             {
-                firstChar = index;
+                firstChar = i;
+                break;
             }
         }
-        if(firstChar == finalString.length())
+        return firstChar;
+    }
+
+    //TODO:Handle errors
+    private int getLineFromFinal(int charPos)
+    {
+        for(int i = 0; i < lineStarts.size(); i++)
         {
-            firstChar = -1;
+            if(charPos < lineStarts.get(i))
+            {
+                return i;
+            }
         }
 
-        return firstChar;
+        return 0;
     }
 }
