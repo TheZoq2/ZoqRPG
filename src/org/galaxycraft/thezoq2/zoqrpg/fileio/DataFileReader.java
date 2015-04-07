@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.MissmatchedBracketException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedEndOfDataChunk;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedSpecialChar;
 
@@ -244,5 +245,6 @@ public class DataFileReader
         }
 
         //The matching bracket wasn't found, report error
+        throw new MissmatchedBracketException()
     }
 }

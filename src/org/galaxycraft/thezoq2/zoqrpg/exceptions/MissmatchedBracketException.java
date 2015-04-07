@@ -8,10 +8,10 @@ public class MissmatchedBracketException extends InvalidDatafileException
     //TODO: Propper error message
     public MissmatchedBracketException(String file, int line)
     {
-        super("Error at line: " + line + " in file: " + file);
+        super("Missmatched bracket", file, line);
     }
     public MissmatchedBracketException(String errorMessage, Throwable throwable, String file, int line)
     {
-        super("Error at line: " + line + " in file: " + file, throwable);
+        super("Missmatched bracket", throwable, file, line);
     }
 }
