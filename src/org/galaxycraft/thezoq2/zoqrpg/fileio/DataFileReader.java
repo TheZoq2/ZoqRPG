@@ -14,6 +14,24 @@ import java.util.List;
 /**
  * Created by frans on 3/24/15.
  */
+
+//TODO: Check for duplicate names
+
+//TODO: Fix space handling
+    /*The current system interprets
+        a=b
+        c=d;
+
+        as a=bc=d; which might result in weird behvaiour
+     */
+//TODO: Fix end of file detection,
+    /*
+        a=b;
+        b=c;
+        hello world
+
+        will be parsed fine even though it should end due to hello world not being a propper statement
+     */
 public class DataFileReader
 {
     private enum ParseStatus
@@ -29,8 +47,12 @@ public class DataFileReader
     //List of what char in the final string corresponds to a line ending
     private List<Integer> lineStarts;
 
-    public DataFileReader(FileReader fileReader) throws IOException
+    private List<DataVariable> variables;
+
+    public DataFileReader(FileReader fileReader) throws IOException, InvalidDatafileException
     {
+        variables = new ArrayList<>();
+
         lineStarts = new ArrayList<>();
 
         lines = new ArrayList<>();
@@ -51,17 +73,7 @@ public class DataFileReader
 
         createDataString();
 
-        //TODO: THROW INSTEAD OF CATCH
-        try
-        {
-            parseDataChunk(0, finalString.length());
-        } catch (InvalidDatafileException e)
-        {
-            e.printStackTrace();
-        } catch (UnexpectedEndOfDataChunk e)
-        {
-            e.printStackTrace();
-        }
+        variables = parseDataChunk(0, finalString.length());
     }
 
     private void createDataString()
@@ -87,11 +99,11 @@ public class DataFileReader
         finalString = finalStringBuilder.toString();
     }
 
-    private List<DataVariable> parseDataChunk(int start, int end) throws InvalidDatafileException, UnexpectedEndOfDataChunk
+    private List<DataVariable> parseDataChunk(int start, int end) throws InvalidDatafileException
     {
         List<DataVariable> dataVariables = new ArrayList<>();
 
-        int currentChar = 0;
+        int currentChar = start;
         boolean doneParsing = false;
 
         ParseStatus parseStatus = ParseStatus.LOOKING_FOR_VARIABLE;
@@ -99,10 +111,10 @@ public class DataFileReader
 
         while(!doneParsing)
         {
-            int nextSpecial = findNextSpecialChar(start + currentChar);
+            int nextSpecial = findNextSpecialChar(currentChar);
 
             //If this is the last special char in the chunk
-            if(nextSpecial == -1 || nextSpecial >= end)
+            if(nextSpecial == -1 || nextSpecial > end)
             {
                 //If no special characters are left in the chunk, the parsing has failed. Throw an error
                 if(parseStatus != ParseStatus.LOOKING_FOR_VARIABLE)
@@ -126,7 +138,7 @@ public class DataFileReader
                         if(specialChar == '=')
                         {
                             //Getting the variable name
-                            cVariableName = finalString.substring(currentChar + start, nextSpecial);
+                            cVariableName = finalString.substring(currentChar, nextSpecial);
                             parseStatus = ParseStatus.LOOKING_FOR_VALUE;
                         }
                         else
@@ -155,17 +167,29 @@ public class DataFileReader
                         else if(specialChar == '{')
                         {
                             //Finding the corresponding }
+                            int matching = findMatchingBracket(currentChar + 1, '{', '}');
+
+                            //Call this function again to parse a deeper part of the datacunk.
+                            List<DataVariable> innerList = parseDataChunk(currentChar + 1, matching - 1);
+
+                            //Creating the data variable and adding it to the list
+                            DataValue dVal = new StructValue(innerList);
+                            dataVariables.add(new DataVariable(cVariableName, dVal));
+
+                            parseStatus = ParseStatus.LOOKING_FOR_VARIABLE;
+                            nextSpecial = matching;
                         }
                         break;
                     }
                 }
             }
 
-            currentChar = nextSpecial - start + 1;
+            currentChar = nextSpecial + 1;
         }
 
         return dataVariables;
     }
+
 
     private String stripWhitespace(String line)
     {
@@ -220,7 +244,7 @@ public class DataFileReader
         return 0;
     }
 
-    private int findMatchingBracket(int start, char openBracket, char closeBracket)
+    private int findMatchingBracket(int start, char openBracket, char closeBracket) throws MissmatchedBracketException
     {
         int depth = 1;
 
@@ -245,6 +269,6 @@ public class DataFileReader
         }
 
         //The matching bracket wasn't found, report error
-        throw new MissmatchedBracketException()
+        throw new MissmatchedBracketException(filename, getLineFromFinal(start - 1), openBracket);
     }
 }

@@ -1,24 +1,35 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
-import com.avaje.ebean.validation.NotNull;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.DuplicateVariableNameException;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by frans on 3/31/15.
  */
+
+//TODO: Possibly change to use map for faster variable lookup
 public class StructValue implements DataValue
 {
-    List<DataValue> value;
+    Map<String, DataValue> values;
 
-    public StructValue(List<DataValue> value)
+    public StructValue()
     {
-        this.value = value;
+        this.values = new HashMap<>();
     }
 
-    @Override
-    public List<DataValue> getValue()
+    public void addVariable(String name, DataValue val)
     {
-        return this.value;
+        if(this.values.containsKey(name))
+        {
+            throw new DuplicateVariableNameException()
+        }
+        this.values.put(name, val);
+    }
+
+    public void getVariableByName(String name)
+    {
+
     }
 }

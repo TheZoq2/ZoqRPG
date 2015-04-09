@@ -5,5 +5,4 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
  */
 public interface DataValue
 {
-    Object getValue();
 }

@@ -5,13 +5,13 @@ package org.galaxycraft.thezoq2.zoqrpg.exceptions;
  */
 public class MissmatchedBracketException extends InvalidDatafileException
 {
-    //TODO: Propper error message
-    public MissmatchedBracketException(String file, int line)
+    //The line passed is the line of the bracket that is missmatched
+    public MissmatchedBracketException(String file, int line, char matchingBracket)
     {
-        super("Missmatched bracket", file, line);
+        super("Missing bracket to close " + matchingBracket, file, line);
     }
-    public MissmatchedBracketException(String errorMessage, Throwable throwable, String file, int line)
+    public MissmatchedBracketException(Throwable throwable, String file, int line, char matchingBracket)
     {
-        super("Missmatched bracket", throwable, file, line);
+        super("Missing bracket to close " + matchingBracket, throwable, file, line);
     }
 }

@@ -10,6 +10,7 @@ import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.FileManager;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
@@ -20,9 +21,9 @@ import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
 import org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume;
 
 import java.io.*;
-import java.net.FileNameMap;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 public class RPGMain extends JavaPlugin implements Listener
 {
@@ -48,17 +49,30 @@ public class RPGMain extends JavaPlugin implements Listener
 
         FileManager.createPluginFoler();
 
+        boolean configsLoaded = false;
         try
         {
             FileReader fr = FileManager.getFileReader("spells");
 
             DataFileReader dr = new DataFileReader(fr);
-        } catch (FileNotFoundException e)
-        {
-            e.printStackTrace();
+
+            configsLoaded = true;
         } catch (IOException e)
         {
+            getLogger().log(Level.SEVERE, "Failed to load spell datafile");
             e.printStackTrace();
+        } catch (InvalidDatafileException e)
+        {
+            getLogger().log(Level.SEVERE, "Failed to parse spell datafile.");
+            getLogger().log(Level.INFO, e.getMessage());
+
+            e.printStackTrace();
+        }
+
+        //If the datafiles failed to load propperly, unload the plugin
+        if(!configsLoaded)
+        {
+            getServer().getPluginManager().disablePlugin(this);
         }
     }
 
