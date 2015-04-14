@@ -1,10 +1,16 @@
 package org.galaxycraft.thezoq2.zoqrpg.utils;
 
+
+import java.util.logging.Logger;
+
 /**
  * Created by frans on 05/03/15.
  */
-public class GeneralUtils
+public final class GeneralUtils
 {
+    private GeneralUtils()
+    {}
+
     /**
      * Returns the amount of game ticks a second is
      * There are 20 ticks per second

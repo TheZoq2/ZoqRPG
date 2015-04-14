@@ -5,19 +5,20 @@ import org.galaxycraft.thezoq2.zoqrpg.Updatable;
 
 public interface Boon extends Updatable
 {
-    public boolean onApply(Entity affectedEntity, float strength);
+    boolean onApply(Entity affectedEntity, float strength);
     @Override
-    public void update(long timePassed);
+    void update(long timePassed);
     @Override
-    public void onEnd();
+    void onEnd();
 
     //If the player already has the same boon, this is called
-    public void onReapply(float strength);
+
+    void onReapply(float strength);
 
     @Override
-    public boolean isDone();
+    boolean isDone();
 
-    public Entity getAffectedEntity();
+    Entity getAffectedEntity();
 
     /*
 
@@ -27,9 +28,9 @@ public interface Boon extends Updatable
     The function itself shouldn't cancel the event
 
      */
-    public boolean onPlayerInterractEvent();
+    boolean onPlayerInterractEvent();
 
-    public Boon cloneBoon();
+    Boon cloneBoon();
 
-    public float getStrength();
+    float getStrength();
 }

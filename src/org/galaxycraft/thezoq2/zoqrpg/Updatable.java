@@ -5,9 +5,9 @@ package org.galaxycraft.thezoq2.zoqrpg;
  */
 public interface Updatable
 {
-    public void update(long timePassed);
+    void update(long timePassed);
 
-    public boolean isDone();
+    boolean isDone();
 
-    public void onEnd();
+    void onEnd();
 }

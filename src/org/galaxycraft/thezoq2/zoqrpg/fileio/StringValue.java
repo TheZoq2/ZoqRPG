@@ -12,7 +12,6 @@ public class StringValue implements DataValue
         this.value = value;
     }
 
-    @Override
     public String getValue()
     {
         return this.value;

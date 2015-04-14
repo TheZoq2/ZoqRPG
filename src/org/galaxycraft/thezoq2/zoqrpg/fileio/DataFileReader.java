@@ -1,9 +1,6 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.MissmatchedBracketException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedEndOfDataChunk;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedSpecialChar;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -47,12 +44,10 @@ public class DataFileReader
     //List of what char in the final string corresponds to a line ending
     private List<Integer> lineStarts;
 
-    private List<DataVariable> variables;
+    private StructValue fileStruct;
 
     public DataFileReader(FileReader fileReader) throws IOException, InvalidDatafileException
     {
-        variables = new ArrayList<>();
-
         lineStarts = new ArrayList<>();
 
         lines = new ArrayList<>();
@@ -73,12 +68,11 @@ public class DataFileReader
 
         createDataString();
 
-        variables = parseDataChunk(0, finalString.length());
+        fileStruct = parseDataChunk(0, finalString.length());
     }
 
     private void createDataString()
     {
-
         StringBuilder finalStringBuilder = new StringBuilder();
 
         for(String line : lines)
@@ -99,9 +93,10 @@ public class DataFileReader
         finalString = finalStringBuilder.toString();
     }
 
-    private List<DataVariable> parseDataChunk(int start, int end) throws InvalidDatafileException
+    private StructValue parseDataChunk(int start, int end) throws InvalidDatafileException
     {
-        List<DataVariable> dataVariables = new ArrayList<>();
+        //List<DataVariable> dataVariables = new ArrayList<>();
+        StructValue resultStruct = new StructValue("root", null);
 
         int currentChar = start;
         boolean doneParsing = false;
@@ -149,6 +144,7 @@ public class DataFileReader
                     }
                     case LOOKING_FOR_VALUE:
                     {
+                        DataValue newValue = null;
                         //If a semicolon is found before {, this is a single variable declaration
                         if(specialChar == ';')
                         {
@@ -156,13 +152,7 @@ public class DataFileReader
                             String varValue = finalString.substring(currentChar, nextSpecial);
 
                             //Creating a DataVariable and adding it to the list
-                            DataValue dVal = new StringValue(varValue);
-                            DataVariable dVar = new DataVariable(cVariableName, dVal);
-
-                            dataVariables.add(dVar);
-
-                            //Reset the parseStatus
-                            parseStatus = ParseStatus.LOOKING_FOR_VARIABLE;
+                            newValue = new StringValue(varValue);
                         }
                         else if(specialChar == '{')
                         {
@@ -170,14 +160,26 @@ public class DataFileReader
                             int matching = findMatchingBracket(currentChar + 1, '{', '}');
 
                             //Call this function again to parse a deeper part of the datacunk.
-                            List<DataVariable> innerList = parseDataChunk(currentChar + 1, matching - 1);
+                            newValue = parseDataChunk(currentChar + 1, matching - 1);
 
-                            //Creating the data variable and adding it to the list
-                            DataValue dVal = new StructValue(innerList);
-                            dataVariables.add(new DataVariable(cVariableName, dVal));
+                            //Update the parent and name info of the new struct
+                            //Cast can be performed becase parseDataChunk will always return a new struct
+                            ((StructValue) newValue).setParentStruct(resultStruct);
+                            ((StructValue) newValue).setStructName(cVariableName);
+
+                            nextSpecial = matching;
+                        }
+
+                        //Adding the new variable to the result
+                        try
+                        {
+                            resultStruct.addVariable(cVariableName, newValue);
 
                             parseStatus = ParseStatus.LOOKING_FOR_VARIABLE;
-                            nextSpecial = matching;
+                        } catch (StructContainsVariableException e)
+                        {
+                            //Throw a more detailed error
+                            throw new DuplicateVariableNameException(cVariableName, filename, currentChar);
                         }
                         break;
                     }
@@ -187,7 +189,7 @@ public class DataFileReader
             currentChar = nextSpecial + 1;
         }
 
-        return dataVariables;
+        return resultStruct;
     }
 
 

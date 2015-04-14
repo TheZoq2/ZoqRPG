@@ -17,8 +17,8 @@ public class BurningBoon extends BaseBoon
             MAX_BURN_TIME = 5000,
             MIN_BURN_TIME = 1500;
 
-    long burnTime;
-    int burnTicks;
+    private long burnTime;
+    private int burnTicks;
 
     @Override
     public boolean onApply(Entity affectedEntity, float strength)

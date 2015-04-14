@@ -11,9 +11,9 @@ public interface Spell extends Updatable
 {
     //Ideally boonManager would be passed every update tick but in order to allow spells to inherit
     //updatable and allow updatable managers to handle spells, it is kept track of by the spell itself
-    public void onCreate(BoonManager boonManager);
+    void onCreate(BoonManager boonManager);
 
-    public boolean isDone();
+    boolean isDone();
 
-    public Entity getCaster();
+    Entity getCaster();
 }

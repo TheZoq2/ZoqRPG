@@ -11,14 +11,14 @@ import java.util.List;
  */
 public interface Volume
 {
-    public void setCenter(Vector center);
-    public Vector getCenter();
+    void setCenter(Vector center);
+    Vector getCenter();
 
-    public void update(float timePassed);
+    void update(float timePassed);
 
-    public boolean posIsInVolume(Vector pos);
+    boolean posIsInVolume(Vector pos);
 
-    public List<Entity> getEntitiesInVolume(List<Entity> allEntities);
-    public List<Vector> getBlocksInVolume();
-    public List<Vector> getRandomPositionsInVolume(float density);
+    List<Entity> getEntitiesInVolume(List<Entity> allEntities);
+    List<Vector> getBlocksInVolume();
+    List<Vector> getRandomPositionsInVolume(float density);
 }

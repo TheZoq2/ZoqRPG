@@ -5,8 +5,13 @@ import java.io.*;
 /**
  * Created by frans on 3/24/15.
  */
-public class FileManager
+public final class FileManager
 {
+    private FileManager()
+    {
+
+    }
+
     private static final String pluginFolder = "plugins/ZoqRPG/";
 
 

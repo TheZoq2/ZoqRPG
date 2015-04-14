@@ -7,11 +7,11 @@ import org.bukkit.util.Vector;
  */
 public interface Mover
 {
-    public void setSpeed(float speed);
-    public float getSpeed();
+    void setSpeed(float speed);
+    float getSpeed();
 
     //public Location getNewLocation(long timePassed);
-    public void update(long timePassed);
+    void update(long timePassed);
 
-    public Vector getPosition(); //Returns the position relative to the starting position (0,0,0)
+    Vector getPosition(); //Returns the position relative to the starting position (0,0,0)
 }

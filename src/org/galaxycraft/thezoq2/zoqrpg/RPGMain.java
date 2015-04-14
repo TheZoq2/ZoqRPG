@@ -8,13 +8,16 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
+import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException;
+import org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactory;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.FileManager;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
+import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSelfSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
@@ -45,7 +48,7 @@ public class RPGMain extends JavaPlugin implements Listener
 
         getServer().getPluginManager().registerEvents(this, this);
 
-        spellFactory = new SpellFactory();
+        //spellFactory = new SpellFactory();
 
         FileManager.createPluginFoler();
 
@@ -106,19 +109,19 @@ public class RPGMain extends JavaPlugin implements Listener
 
         Vector direction = plr.getLocation().getDirection();
 
-        Mover mover = new LinearMover(10f, direction);
+        /*Mover mover = new LinearMover(10f, direction);
         SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 1);
         Boon boon = new BurningBoon();
 
         Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
         spell.onCreate(boonManager);
 
+        spellManager.addSpell(spell);*/
+
+        Spell spell = new ModularSelfSpell(plr, new BlinkBoon());
+        spell.onCreate(boonManager);
+
         spellManager.addSpell(spell);
-
-        //Spell spell = new ModularSelfSpell(plr, new BlinkBoon());
-        //spell.onCreate(boonManager);
-
-        //spellManager.addSpell(spell);
    }
 
     public void addSpell(ModularSpell spell)

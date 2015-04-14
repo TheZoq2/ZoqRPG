@@ -34,9 +34,6 @@ public class BlinkBoon extends BaseBoon
     private ItemStack itemInHand; //if the player does not have this item in their hand, the boon sould be removed
     private int teleportDistance;
 
-    public BlinkBoon()
-    {
-    }
 
     @Override
     public boolean onApply(Entity affectedEntity, float strength)

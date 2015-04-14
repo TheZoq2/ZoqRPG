@@ -54,18 +54,16 @@ public class ModularSpell extends BaseSpell
         for(Entity entity : affectedEntities)
         {
             //TODO check if caster is entity in a better way
-            if(entity == super.caster)
+            if(entity != super.caster)
             {
-                continue;
+                Boon newBoon = appliedBoon.cloneBoon();
+
+                newBoon.onApply(entity, appliedBoon.getStrength());
+
+                super.boonManager.addBoon(newBoon);
+
+                System.out.println("Added boon");
             }
-
-            Boon newBoon = appliedBoon.cloneBoon();
-
-            newBoon.onApply(entity, appliedBoon.getStrength());
-
-            super.boonManager.addBoon(newBoon);
-
-            System.out.println("Added boon");
         }
 
         //Visualising the spell

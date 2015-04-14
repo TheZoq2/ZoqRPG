@@ -923,7 +923,7 @@ public enum ParticleEffect {
         /**
          * The particle effect uses the offsets as color values
          */
-        COLORABLE;
+        COLORABLE
     }
 
     /**
