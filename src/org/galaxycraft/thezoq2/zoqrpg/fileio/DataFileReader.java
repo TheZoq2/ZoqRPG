@@ -152,7 +152,7 @@ public class DataFileReader
                             String varValue = finalString.substring(currentChar, nextSpecial);
 
                             //Creating a DataVariable and adding it to the list
-                            newValue = new StringValue(varValue);
+                            newValue = new StringValue(varValue, cVariableName, resultStruct);
                         }
                         else if(specialChar == '{')
                         {
@@ -164,8 +164,8 @@ public class DataFileReader
 
                             //Update the parent and name info of the new struct
                             //Cast can be performed becase parseDataChunk will always return a new struct
-                            ((StructValue) newValue).setParentStruct(resultStruct);
-                            ((StructValue) newValue).setStructName(cVariableName);
+                            newValue.setParentStruct(resultStruct);
+                            newValue.setVariableName(cVariableName);
 
                             nextSpecial = matching;
                         }

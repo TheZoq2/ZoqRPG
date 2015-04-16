@@ -5,6 +5,12 @@ import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.BoonManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
+import org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 import org.galaxycraft.thezoq2.zoqrpg.volumes.Volume;
@@ -26,6 +32,51 @@ public class ModularSpell extends BaseSpell
     {
         super(startPos, caster);
 
+        createSpell(mover, volume, appliedBoon, visualiser);
+    }
+
+    public ModularSpell(Location startPos, Entity caster, SpellFactoryGroup sfg, StructValue spellStruct) throws NoSuchVariableException, WrongDatatypeException
+    {
+        super(startPos, caster);
+
+        //Finding the data from the struct
+        //This will throw no such variable exceptions that can be caught by the factory later and terminate the
+        //creation of the spell
+        DataValue boonVar = spellStruct.getVariableByName("boon");
+        DataValue visualVar = spellStruct.getVariableByName("visualiser");
+        DataValue moverVar = spellStruct.getVariableByName("mover");
+        DataValue volumeVar = spellStruct.getVariableByName("volume");
+
+        //TODO: Possibly remove duplicate code
+        //Get the data from the variables
+        //Throws wrong datatype exceptions which do the same thing as the variable lookup
+        String boonName;
+        String visualName;
+        String moverName;
+        String volumeName;
+        if(boonVar instanceof StringValue)
+            boonName = ((StringValue) boonVar).getValue();
+        else
+            throw new WrongDatatypeException(boonVar, "string");
+        if(visualVar instanceof StringValue)
+            visualName = ((StringValue) visualVar).getValue();
+        else
+            throw new WrongDatatypeException(visualVar, "string");
+        if(moverVar instanceof StringValue)
+            moverName = ((StringValue) moverVar).getValue();
+        else
+            throw new WrongDatatypeException(moverVar, "string");
+        if(volumeVar instanceof StringValue)
+            volumeName = ((StringValue) volumeVar).getValue();
+        else
+            throw new WrongDatatypeException(volumeVar, "string");
+
+        //Creating the parameters
+        sfg.getBoonFactory().createBoonByName(boonName);
+    }
+
+    private void createSpell(Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
+    {
         this.mover = mover;
         this.volume = volume;
         this.appliedBoon = appliedBoon;

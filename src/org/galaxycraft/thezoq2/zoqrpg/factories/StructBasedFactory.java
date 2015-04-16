@@ -24,10 +24,6 @@ public abstract class StructBasedFactory
         this.baseStruct = baseStruct;
     }
 
-    protected DataValue getVariableFromStruct(String name) throws NoSuchVariableException
-    {
-        return baseStruct.getVariableByName(name);
-    }
     protected String getBaseName(StructValue objectStruct) throws NoSuchVariableException, WrongDatatypeException
     {
         DataValue baseVar = objectStruct.getVariableByName(BASE_VAR_NAME);
@@ -38,7 +34,7 @@ public abstract class StructBasedFactory
         }
         else
         {
-            throw new WrongDatatypeException(BASE_VAR_NAME, "string");
+            throw new WrongDatatypeException(baseVar, "string");
         }
     }
 }

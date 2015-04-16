@@ -5,4 +5,9 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
  */
 public interface DataValue
 {
+    void setVariableName(String structName);
+
+    void setParentStruct(StructValue parentStruct);
+
+    String getFullPath();
 }

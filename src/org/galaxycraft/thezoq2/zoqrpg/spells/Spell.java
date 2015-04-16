@@ -3,6 +3,7 @@ package org.galaxycraft.thezoq2.zoqrpg.spells;
 import org.bukkit.entity.Entity;
 import org.galaxycraft.thezoq2.zoqrpg.BoonManager;
 import org.galaxycraft.thezoq2.zoqrpg.Updatable;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
  * Created by frans on 03/03/15.

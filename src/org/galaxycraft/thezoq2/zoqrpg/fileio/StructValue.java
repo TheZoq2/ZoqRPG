@@ -6,18 +6,15 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.StructContainsVariableException
 import java.util.HashMap;
 import java.util.Map;
 
-public class StructValue implements DataValue
+public class StructValue extends BaseDataValue
 {
-    private String structName;
-    private StructValue parentStruct;
 
     private Map<String, DataValue> values;
 
-    public StructValue(String structName, StructValue parentStruct)
+    public StructValue(String varName, StructValue parentStruct)
     {
+        super(varName, parentStruct);
         this.values = new HashMap<>();
-        this.structName = structName;
-        this.parentStruct = parentStruct;
     }
 
     public void addVariable(String name, DataValue val) throws StructContainsVariableException
@@ -42,29 +39,5 @@ public class StructValue implements DataValue
     public boolean variableExists(String name)
     {
         return values.containsKey(name);
-    }
-
-    public String getFullPath()
-    {
-        StringBuilder result = new StringBuilder();
-        if(parentStruct != null)
-        {
-            result.append(parentStruct.getFullPath());
-            result.append(".");
-        }
-
-        result.append(structName);
-
-        return result.toString();
-    }
-
-    public void setStructName(String structName)
-    {
-        this.structName = structName;
-    }
-
-    public void setParentStruct(StructValue parentStruct)
-    {
-        this.parentStruct = parentStruct;
     }
 }
