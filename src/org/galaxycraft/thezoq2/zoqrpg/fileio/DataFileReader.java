@@ -93,6 +93,8 @@ public class DataFileReader
         finalString = finalStringBuilder.toString();
     }
 
+    //Because the warnings are similar in nature and are handled in the same way by the exception hadling where
+    //the method is used, I want to keep the broad exception
     private StructValue parseDataChunk(int start, int end) throws InvalidDatafileException
     {
         //List<DataVariable> dataVariables = new ArrayList<>();

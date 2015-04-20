@@ -1,8 +1,6 @@
 package org.galaxycraft.thezoq2.zoqrpg.utils;
 
 
-import java.util.logging.Logger;
-
 /**
  * Created by frans on 05/03/15.
  */

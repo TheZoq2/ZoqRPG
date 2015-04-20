@@ -1,20 +1,62 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
-import org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
-import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
-import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
+import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
 
-import java.security.InvalidParameterException;
 import java.util.logging.Level;
 
-public class SpellFactory extends StructBasedFactory
+public class SpellFactory<Spell> extends StructBasedFactory
+{
+
+    private SpellFactoryGroup sfg;
+
+    protected SpellFactory(StructValue baseStruct, SpellFactoryGroup sfg)
+    {
+        super(baseStruct);
+        this.sfg = sfg;
+    }
+
+    @Override
+    public Spell finalizeObject(StructValue sv, String baseName)
+    {
+        switch(baseName)
+        {
+            case "modular":
+            {
+                ModularSpell result;
+
+                try
+                {
+                    //Getting the names of all the modules
+                    String visName = sv.getVariableOfTypeByName("visualiser", StringValue.class).getValue();
+                    String volName = sv.getVariableOfTypeByName("volume", StringValue.class).getValue();
+                    String boonName = sv.getVariableOfTypeByName("boon", StringValue.class).getValue();
+                    String moverName = sv.getVariableOfTypeByName("mover", StringValue.class).getValue();
+
+                    //Attempting to create the modules
+                    
+                } catch (NoSuchVariableException e)
+                {
+                    e.printStackTrace();
+                } catch (WrongDatatypeException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            default:
+                Bukkit.getLogger().log(Level.WARNING, "Failed to create spell, base name: " + baseName + " is not" +
+                        "a valid base");
+                return null;
+        }
+    }
+}
+
+/*public class SpellFactory extends StructBasedFactory
 {
     private StructValue spellStruct;
 
@@ -29,11 +71,13 @@ public class SpellFactory extends StructBasedFactory
 
     Spell createSpell(String name, Entity caster, Location startPos)
     {
+
         DataValue spellValue = null;
         try
         {
-            spellValue = super.getVariableFromStruct(name);
-        } catch (NoSuchVariableException e)
+            spellValue = spellStruct.getVariableByName(name);
+        }
+        catch (NoSuchVariableException e)
         {
             //Print an error
             StringBuilder errorMsg = new StringBuilder("No spell exists with that name in struct: ");
@@ -46,12 +90,12 @@ public class SpellFactory extends StructBasedFactory
         //Making sure the DataValue is a struct
         if(spellValue instanceof StructValue)
         {
-            spellStruct = (StructValue) spellValue;
+            StructValue cSpellStruct = (StructValue) spellValue;
 
             String baseName = null;
             try
             {
-                DataValue baseValue = spellStruct.getVariableByName("base");
+                DataValue baseValue = cSpellStruct.getVariableByName("base");
 
                 //TODO: Check if there is a better way of doing this... Current sollution "might" be ugly
                 if(baseValue instanceof StringValue)
@@ -87,17 +131,34 @@ public class SpellFactory extends StructBasedFactory
             new WrongDatatypeException(spellValue, "struct").printStackTrace();
             return null;
         }
-        return null;
     }
 
     //TODO: Possibly move baseName lookup to separate function and get rid of the top
-    private Spell createSpellFromBaseName(String name, StructValue spellStruct, Entity caster, Location startPos)
+    private Spell createSpellFromBaseName(String name, StructValue cSpellStruct, Entity caster, Location startPos)
     {
         switch (name)
         {
             case "modular":
             {
+                String boonName;
+                String moverName;
+                String visualiserName;
+                String volumeName;
 
+                try
+                {
+                    DataValue boonValue =
+                    if(boonValue instanceof StringValue)
+                    {
+
+                    } cSpellStruct.getVariableByName("boon");
+                    DataValue moverValue = cSpellStruct.getVariableByName("mover");
+                    DataValue visualiserValue = cSpellStruct.getVariableByName("visualiser");
+                    DataValue volumeValue = cSpellStruct.getVariableByName("volumeName");
+                } catch (NoSuchVariableException e)
+                {
+                    e.printStackTrace();
+                }
 
                 break;
             }
@@ -111,5 +172,7 @@ public class SpellFactory extends StructBasedFactory
                 Bukkit.getLogger().log(Level.WARNING, "Failed to create spell, base: " + name + " is not a valid base spell");
                 return null;
         }
+        //TODO: Fix
+        return null;
     }
-}
+}*/

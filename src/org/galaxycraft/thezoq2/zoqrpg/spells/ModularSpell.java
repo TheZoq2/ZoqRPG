@@ -3,7 +3,6 @@ package org.galaxycraft.thezoq2.zoqrpg.spells;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
-import org.galaxycraft.thezoq2.zoqrpg.BoonManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;

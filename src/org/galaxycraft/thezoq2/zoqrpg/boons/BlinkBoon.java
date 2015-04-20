@@ -112,6 +112,9 @@ public class BlinkBoon extends BaseBoon
             //Block targetBlock = plr.getTargetBlock((HashSet<Material>) null, TELEPORT_DISTANCE);
             //Uses depricated getLineOfSight because the non depricated getLineOfSight(Set<Material>, int) causes a
             //NoSuchMethodException
+
+            //For some reason, the bukkit api does not contain a working replacement for this function
+            //which is why it is deprecated
             List<Block> plrLineOfSight = plr.getLineOfSight((HashSet<Byte>) null, teleportDistance);
 
             Block targetBlock = null;

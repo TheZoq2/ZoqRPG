@@ -4,7 +4,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.galaxycraft.thezoq2.zoqrpg.utils.GeneralUtils;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
-import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
 /**
  *

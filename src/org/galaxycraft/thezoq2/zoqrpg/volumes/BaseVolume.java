@@ -10,7 +10,7 @@ public abstract class BaseVolume implements Volume
     protected Vector center;
     protected float size;
 
-    public BaseVolume(Vector center, float size)
+    protected BaseVolume(Vector center, float size)
     {
         this.center = center;
         this.size = size;

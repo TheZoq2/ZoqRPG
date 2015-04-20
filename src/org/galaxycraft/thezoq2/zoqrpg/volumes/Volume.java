@@ -1,6 +1,5 @@
 package org.galaxycraft.thezoq2.zoqrpg.volumes;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 

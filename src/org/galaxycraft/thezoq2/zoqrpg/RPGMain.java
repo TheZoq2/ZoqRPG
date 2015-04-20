@@ -40,6 +40,7 @@ public class RPGMain extends JavaPlugin implements Listener
         getLogger().info("Loading ZoqRPG");
 
         BukkitScheduler scheduler = this.getServer().getScheduler();
+        //will look into undepricated version later
         scheduler.scheduleSyncRepeatingTask(this, new RPGUpdateTask(this), 0L, 1L);
 
         //Initialising managers
@@ -99,7 +100,7 @@ public class RPGMain extends JavaPlugin implements Listener
         {
             if (boon.getAffectedEntity() == plr)
             {
-                if (boon.onPlayerInterractEvent() == false)
+                if(!boon.onPlayerInterractEvent())
                 {
                     event.setCancelled(true);
                     return;
@@ -109,19 +110,25 @@ public class RPGMain extends JavaPlugin implements Listener
 
         Vector direction = plr.getLocation().getDirection();
 
-        /*Mover mover = new LinearMover(10f, direction);
-        SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 1);
-        Boon boon = new BurningBoon();
+        boolean useFire = true; //Demo only, change to true if you want to test the fire spell
+        if(useFire)
+        {
+            Mover mover = new LinearMover(10, direction);
+            SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 1);
+            Boon boon = new BurningBoon();
 
-        Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
-        spell.onCreate(boonManager);
+            Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
+            spell.onCreate(boonManager);
 
-        spellManager.addSpell(spell);*/
+            spellManager.addSpell(spell);
+        }
+        else
+        {
+            Spell spell = new ModularSelfSpell(plr, new BlinkBoon());
+            spell.onCreate(boonManager);
 
-        Spell spell = new ModularSelfSpell(plr, new BlinkBoon());
-        spell.onCreate(boonManager);
-
-        spellManager.addSpell(spell);
+            spellManager.addSpell(spell);
+        }
    }
 
     public void addSpell(ModularSpell spell)

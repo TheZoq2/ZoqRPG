@@ -5,6 +5,8 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
  */
 public class StringValue extends BaseDataValue
 {
+    private static String TYPE_NAME = "string";
+
     private String value;
 
     public StringValue(String value, String varName, StructValue parentStruct)

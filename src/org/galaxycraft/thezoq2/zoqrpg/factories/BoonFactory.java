@@ -1,32 +1,32 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
-import org.bukkit.entity.Entity;
-import org.galaxycraft.thezoq2.zoqrpg.boons.BleedingBoon;
-import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
-
-import java.util.List;
+import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
 
 /**
  * Created by frans on 01/03/15.
  */
-public final class BoonFactory
+public final class BoonFactory extends StructBasedFactory<Boon>
 {
-    private StructValue boonStruct;
-
-    public BoonFactory(StructValue boonStruct)
+    protected BoonFactory(StructValue baseStruct)
     {
-        this.boonStruct = boonStruct;
+        super(baseStruct);
     }
 
-    public Boon createBoonByName(String name)
+    @Override
+    public Boon finalizeObject(StructValue sv, String baseName) throws FactoryCreationFailedException
     {
-        if(!boonStruct.variableExists(name))
+        switch(baseName)
         {
-
+            case "linear":
+            {
+                return new LinearMover(1, )
+            }
+            default:
+                //TODO: Make more specific?
+                throw new FactoryCreationFailedException("Base name: " + baseName + " is not a valid mover base");
         }
-
-        return null;
     }
 }

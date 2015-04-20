@@ -12,12 +12,12 @@ public final class FileManager
 
     }
 
-    private static final String pluginFolder = "plugins/ZoqRPG/";
+    private static final String PLUGIN_FOLDER = "plugins/ZoqRPG/";
 
 
     private static String getFullFilename(String filename)
     {
-        StringBuilder finalFile = new StringBuilder(pluginFolder);
+        StringBuilder finalFile = new StringBuilder(PLUGIN_FOLDER);
         finalFile.append(filename);
 
         return finalFile.toString();
@@ -25,7 +25,7 @@ public final class FileManager
 
     public static void createPluginFoler()
     {
-        File folder = new File(pluginFolder);
+        File folder = new File(PLUGIN_FOLDER);
         if(!folder.exists())
         {
             folder.mkdirs();
