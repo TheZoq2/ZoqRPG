@@ -1,13 +1,21 @@
 package org.galaxycraft.thezoq2.zoqrpg.movers;
 
+import org.bukkit.Bukkit;
 import org.bukkit.util.Vector;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.utils.SpeedUtils;
 
-/**
- * Created by frans on 3/4/15.
- */
+import java.util.logging.Level;
+
+
 public class LinearMover extends BaseMover
 {
+    private static float DEFAULT_SPEED;
+
     private Vector direction;
 
     public LinearMover(float speed, Vector direction)
@@ -18,13 +26,34 @@ public class LinearMover extends BaseMover
         this.direction = direction;
     }
 
+    public LinearMover(StructValue sv, Vector startPos, Vector direction)
+    {
+        super(DEFAULT_SPEED);
+
+        //Getting the speed from the struct
+        try
+        {
+            float speed = sv.getVariableOfTypeByName("speed", StringValue.class).getValueAsFloat();
+
+            super.setSpeed(speed);
+        } catch (NoSuchVariableException e)
+        {
+            Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarName() + " is missing, in " +
+                    e.getStructPath() + "falling back to default");
+            e.printStackTrace();
+        } catch (WrongDatatypeException e)
+        {
+            Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarPath() + " is wrong type in linear mover, " +
+                    "falling back to default");
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void update(long timePassed)
     {
         Vector addVector = SpeedUtils.getCurrentMovementVector(this.direction, super.speed, timePassed);
         //Vector addVector = this.direction;
         super.position.add(addVector);
-
-        int a = 0;
     }
 }

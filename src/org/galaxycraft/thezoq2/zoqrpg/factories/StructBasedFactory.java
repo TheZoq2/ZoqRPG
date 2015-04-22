@@ -27,44 +27,40 @@ public abstract class StructBasedFactory<T>
         this.baseStruct = baseStruct;
     }
 
-    protected StructValue getStructByName(String name) throws WrongDatatypeException, NoSuchVariableException
+    protected StructValue getStructByName(String name) throws FactoryCreationFailedException
     {
         //TODO: Possibly foce lowercase. More user friendlynesssss
         //Get the struct with the specified name
-        return baseStruct.getVariableOfTypeByName(name, StructValue.class);
-    }
-
-    protected String getBaseValueFromStruct(StructValue sv) throws WrongDatatypeException, NoSuchVariableException
-    {
-        return sv.getVariableOfTypeByName("base", StringValue.class).getValue();
-    }
-
-    public T createObject(String name) throws FactoryCreationFailedException
-    {
-        //Finding the base name
         try
         {
-            StructValue sv = getStructByName(name);
-
-            String baseName = getBaseValueFromStruct(sv);
-
-            return finalizeObject(sv, baseName);
-        } catch (WrongDatatypeException e)
+            return baseStruct.getVariableOfTypeByName(name, StructValue.class);
+        }
+        catch (WrongDatatypeException e)
         {
-            Bukkit.getLogger().log(Level.WARNING, "Failed to create object " + name + ", variable " + e.getVarPath()
-                    + " was the wrong datatype. Expected: " + e.getExpectedDatatype());
-            e.printStackTrace();
-
-            return null;
-        } catch (NoSuchVariableException e)
+            throw new FactoryCreationFailedException("Variable " + e.getVarPath() + " needs to be a " + e.getExpectedDatatype());
+        }
+        catch (NoSuchVariableException e)
         {
-            Bukkit.getLogger().log(Level.WARNING, "Failed to create object " + name + ", variable: " + e.getVarName()
-                    + " did not exist in: " + e.getStructPath());
-            e.printStackTrace();
-
-            return null;
+            throw new FactoryCreationFailedException("Expected variable " + e.getVarName() + " in " +
+                    e.getStructPath() + " to create " + name);
         }
     }
 
-    public abstract T finalizeObject(StructValue sv, String baseName) throws FactoryCreationFailedException;
+    protected String getBaseValueFromStruct(StructValue sv) throws FactoryCreationFailedException
+    {
+        try
+        {
+            return sv.getVariableOfTypeByName("base", StringValue.class).getValue();
+        }
+        catch (WrongDatatypeException e)
+        {
+            throw new FactoryCreationFailedException("Base value " + e.getVarPath() + " must be a string");
+        }
+        catch (NoSuchVariableException e)
+        {
+            throw new FactoryCreationFailedException("Struct: " + e.getVarName() + " does contain a base value");
+        }
+    }
+
+
 }

@@ -1,11 +1,15 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Entity;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
+import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
+import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
 import java.util.logging.Level;
 
@@ -20,6 +24,44 @@ public class SpellFactory<Spell> extends StructBasedFactory
         this.sfg = sfg;
     }
 
+    public Spell createSpell(String name, Entity caster) throws FactoryCreationFailedException
+    {
+        StructValue sv = super.getStructByName(name);
+        String baseName = super.getBaseValueFromStruct(sv);
+
+        switch(baseName)
+        {
+            case "modular":
+            {
+                try
+                {
+                    //Read the modular parts
+                    String visName = sv.getVariableOfTypeByName("visualiser", StringValue.class).getValue();
+                    String volName = sv.getVariableOfTypeByName("volume", StringValue.class).getValue();
+                    String boonName = sv.getVariableOfTypeByName("boon", StringValue.class).getValue();
+                    String moverName = sv.getVariableOfTypeByName("mover", StringValue.class).getValue();
+
+                    //Creating the modules
+                    Mover mover = sfg.getMoverFactory().create(moverName, caster.getLocation().toVector(),
+                                caster.getLocation().getDirection());
+
+                } catch (NoSuchVariableException e)
+                {
+                    throw new FactoryCreationFailedException("Module: " + e.getVarName() + " did not exist in "
+                            + e.getStructPath());
+                } catch (WrongDatatypeException e)
+                {
+                    throw new FactoryCreationFailedException("Module name " + e.getVarPath() + " needs to be a string");
+                }
+            }
+            default:
+            {
+                throw new FactoryCreationFailedException("Base: " + baseName + " is not a valid spell base");
+            }
+        }
+    }
+
+    /*
     @Override
     public Spell finalizeObject(StructValue sv, String baseName)
     {
@@ -38,7 +80,7 @@ public class SpellFactory<Spell> extends StructBasedFactory
                     String moverName = sv.getVariableOfTypeByName("mover", StringValue.class).getValue();
 
                     //Attempting to create the modules
-                    
+
                 } catch (NoSuchVariableException e)
                 {
                     e.printStackTrace();
@@ -54,6 +96,7 @@ public class SpellFactory<Spell> extends StructBasedFactory
                 return null;
         }
     }
+     */
 }
 
 /*public class SpellFactory extends StructBasedFactory
