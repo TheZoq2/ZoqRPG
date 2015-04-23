@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
+import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
@@ -10,23 +11,25 @@ import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
  */
 public final class BoonFactory extends StructBasedFactory<Boon>
 {
-    protected BoonFactory(StructValue baseStruct)
+    public BoonFactory(StructValue baseStruct)
     {
         super(baseStruct);
     }
 
-    @Override
-    public Boon finalizeObject(StructValue sv, String baseName) throws FactoryCreationFailedException
+    public Boon createBoon(String name) throws FactoryCreationFailedException
     {
+        StructValue sv = super.getStructByName(name);
+        String baseName = super.getBaseValueFromStruct(sv);
+
         switch(baseName)
         {
-            case "linear":
+            case "burning":
             {
-                return new LinearMover(1, )
+                return new BurningBoon(sv);
             }
             default:
                 //TODO: Make more specific?
-                throw new FactoryCreationFailedException("Base name: " + baseName + " is not a valid mover base");
+                throw new FactoryCreationFailedException("Base name: " + baseName + " is not a valid base boon");
         }
     }
 }

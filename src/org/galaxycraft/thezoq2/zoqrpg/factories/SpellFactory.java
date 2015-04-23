@@ -2,23 +2,27 @@ package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
+import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.ModuleCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
+import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
+import org.galaxycraft.thezoq2.zoqrpg.volumes.Volume;
 
 import java.util.logging.Level;
 
-public class SpellFactory<Spell> extends StructBasedFactory
+public class SpellFactory extends StructBasedFactory
 {
 
     private SpellFactoryGroup sfg;
 
-    protected SpellFactory(StructValue baseStruct, SpellFactoryGroup sfg)
+    public SpellFactory(StructValue baseStruct, SpellFactoryGroup sfg)
     {
         super(baseStruct);
         this.sfg = sfg;
@@ -35,6 +39,7 @@ public class SpellFactory<Spell> extends StructBasedFactory
             {
                 try
                 {
+                    /*
                     //Read the modular parts
                     String visName = sv.getVariableOfTypeByName("visualiser", StringValue.class).getValue();
                     String volName = sv.getVariableOfTypeByName("volume", StringValue.class).getValue();
@@ -44,7 +49,12 @@ public class SpellFactory<Spell> extends StructBasedFactory
                     //Creating the modules
                     Mover mover = sfg.getMoverFactory().create(moverName, caster.getLocation().toVector(),
                                 caster.getLocation().getDirection());
+                    Volume volume = sfg.getVolumeFactory().createVolume(volName);
+                    Boon boon = sfg.getBoonFactory().createBoon(boonName);
+                    Visualiser visualiser = sfg.getVisualiserFactory().createVisualiser(visName);
+                    */
 
+                    return new ModularSpell(caster.getLocation(), caster, sfg, sv);
                 } catch (NoSuchVariableException e)
                 {
                     throw new FactoryCreationFailedException("Module: " + e.getVarName() + " did not exist in "
@@ -52,6 +62,9 @@ public class SpellFactory<Spell> extends StructBasedFactory
                 } catch (WrongDatatypeException e)
                 {
                     throw new FactoryCreationFailedException("Module name " + e.getVarPath() + " needs to be a string");
+                } catch (ModuleCreationFailedException e)
+                {
+                    e.printStackTrace();
                 }
             }
             default:

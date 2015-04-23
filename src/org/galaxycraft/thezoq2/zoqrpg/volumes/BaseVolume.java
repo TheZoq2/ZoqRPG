@@ -7,16 +7,21 @@ import org.bukkit.util.Vector;
  */
 public abstract class BaseVolume implements Volume
 {
-    protected Vector center;
+    //protected Vector center;
     protected float size;
 
-    protected BaseVolume(Vector center, float size)
+    protected BaseVolume(float size)
     {
-        this.center = center;
+        //this.center = center;
         this.size = size;
     }
 
-    @Override
+    protected void setSize(float size)
+    {
+        this.size = size;
+    }
+
+    /*@Override
     public void setCenter(Vector center)
     {
         this.center = center;
@@ -25,5 +30,5 @@ public abstract class BaseVolume implements Volume
     public Vector getCenter()
     {
         return this.center;
-    }
+    }*/
 }

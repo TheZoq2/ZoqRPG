@@ -71,6 +71,11 @@ public class DataFileReader
         fileStruct = parseDataChunk(0, finalString.length());
     }
 
+    public StructValue getFileStruct()
+    {
+        return fileStruct;
+    }
+
     private void createDataString()
     {
         StringBuilder finalStringBuilder = new StringBuilder();

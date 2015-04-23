@@ -20,4 +20,9 @@ public class FactoryCreationFailedException extends Exception
         this.reason = reason;
     }
 
+    public String getReason()
+    {
+        return this.reason;
+    }
+
 }

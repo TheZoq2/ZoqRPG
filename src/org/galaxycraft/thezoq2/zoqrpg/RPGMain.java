@@ -8,20 +8,17 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.util.Vector;
-import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
-import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException;
-import org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactory;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
+import org.galaxycraft.thezoq2.zoqrpg.factories.*;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.FileManager;
-import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
-import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
-import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSelfSpell;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
-import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
-import org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -33,7 +30,18 @@ public class RPGMain extends JavaPlugin implements Listener
     private SpellManager spellManager;
     private BoonManager boonManager;
 
+    private StructValue spellStruct;
+    private StructValue volumeStruct;
+    private StructValue visStruct;
+    private StructValue moverStruct;
+    private StructValue boonStruct;
+
     private SpellFactory spellFactory;
+    private MoverFactory moverFactory;
+    private VisualiserFactory visFactory;
+    private VolumeFactory volumeFactory;
+    private BoonFactory boonFactory;
+    private SpellFactoryGroup sfg;
     @Override
     public void onEnable()
     {
@@ -60,6 +68,24 @@ public class RPGMain extends JavaPlugin implements Listener
 
             DataFileReader dr = new DataFileReader(fr);
 
+            StructValue fileStruct = dr.getFileStruct();
+
+            spellStruct = fileStruct.getVariableOfTypeByName("spells", StructValue.class);
+            visStruct = fileStruct.getVariableOfTypeByName("visualisers", StructValue.class);
+            volumeStruct = fileStruct.getVariableOfTypeByName("volumes", StructValue.class);
+            moverStruct = fileStruct.getVariableOfTypeByName("movers", StructValue.class);
+            boonStruct = fileStruct.getVariableOfTypeByName("boons", StructValue.class);
+
+            //Create the factories
+            moverFactory = new MoverFactory(moverStruct);
+            volumeFactory = new VolumeFactory(volumeStruct);
+            boonFactory = new BoonFactory(boonStruct);
+            visFactory = new VisualiserFactory(visStruct);
+
+            sfg = new SpellFactoryGroup(moverFactory, boonFactory, visFactory, volumeFactory);
+
+            spellFactory = new SpellFactory(spellStruct, sfg);
+
             configsLoaded = true;
         } catch (IOException e)
         {
@@ -70,6 +96,17 @@ public class RPGMain extends JavaPlugin implements Listener
             getLogger().log(Level.SEVERE, "Failed to parse spell datafile.");
             getLogger().log(Level.INFO, e.getMessage());
 
+            e.printStackTrace();
+        } catch (WrongDatatypeException e)
+        {
+            getLogger().log(Level.SEVERE, "Failed to load spell file, " + e.getVarPath() + " is the wrong datatype " +
+                    "expected: " + e.getExpectedDatatype());
+
+            e.printStackTrace();
+        } catch (NoSuchVariableException e)
+        {
+            getLogger().log(Level.SEVERE, "Failed to load spell file, struct " + e.getStructPath() + " does not cotain "
+                        + e.getVarName());
             e.printStackTrace();
         }
 
@@ -113,21 +150,30 @@ public class RPGMain extends JavaPlugin implements Listener
         boolean useFire = true; //Demo only, change to true if you want to test the fire spell
         if(useFire)
         {
-            Mover mover = new LinearMover(10, direction);
+            try
+            {
+                Spell spell = spellFactory.createSpell("fireball", plr);
+
+                spellManager.addSpell(spell);
+            } catch (FactoryCreationFailedException e)
+            {
+                e.printStackTrace();
+            }
+            /*Mover mover = new LinearMover(10, direction);
             SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 1);
             Boon boon = new BurningBoon();
 
             Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
             spell.onCreate(boonManager);
 
-            spellManager.addSpell(spell);
+            spellManager.addSpell(spell);*/
         }
         else
         {
-            Spell spell = new ModularSelfSpell(plr, new BlinkBoon());
+            /*Spell spell = new ModularSelfSpell(plr, new BlinkBoon());
             spell.onCreate(boonManager);
 
-            spellManager.addSpell(spell);
+            spellManager.addSpell(spell);*/
         }
    }
 

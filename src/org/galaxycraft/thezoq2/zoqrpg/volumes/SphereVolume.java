@@ -1,7 +1,12 @@
 package org.galaxycraft.thezoq2.zoqrpg.volumes;
 
+import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,13 +16,37 @@ import java.util.List;
  */
 public class SphereVolume extends BaseVolume
 {
-    protected float radius;
+    //Default values
+    private static final float DEFAULT_RADIUS = 1;
 
-    public SphereVolume(Vector center, float size)
+    //Creating variables
+    private float radius = DEFAULT_RADIUS;
+
+    public SphereVolume(float size)
     {
-        super(center, size);
+        super(size);
 
         this.radius = size;
+    }
+
+    public SphereVolume(StructValue sv)
+    {
+        super(DEFAULT_RADIUS);
+
+        try
+        {
+            this.radius = sv.getVariableOfTypeByName("radius", StringValue.class).getValueAsFloat();
+
+            super.setSize(radius);
+        } catch (WrongDatatypeException e)
+        {
+            //TODO: Propper errors
+            e.printStackTrace();
+        } catch (NoSuchVariableException e)
+        {
+            //TODO: Propper errors
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -27,9 +56,9 @@ public class SphereVolume extends BaseVolume
     }
 
     @Override
-    public boolean posIsInVolume(Vector pos)
+    public boolean posIsInVolume(Vector center, Vector pos)
     {
-        float distance = (float) super.center.distance(pos);
+        float distance = (float) center.distance(pos);
         if(distance < this.radius)
         {
             return true;
@@ -39,14 +68,14 @@ public class SphereVolume extends BaseVolume
     }
 
     @Override
-    public List<Entity> getEntitiesInVolume(List<Entity> allEntities)
+    public List<Entity> getEntitiesInVolume(Vector center, List<Entity> allEntities)
     {
         List<Entity> result = new ArrayList<>();
 
         //Looping through all the entities
         for(Entity entity : allEntities)
         {
-            if(posIsInVolume(entity.getLocation().toVector()))
+            if(posIsInVolume(center, entity.getLocation().toVector()))
             {
                 result.add(entity);
             }
@@ -57,7 +86,7 @@ public class SphereVolume extends BaseVolume
     }
 
     @Override
-    public List<Vector> getBlocksInVolume()
+    public List<Vector> getBlocksInVolume(Vector center)
     {
         List<Vector> result = new ArrayList<>();
 
@@ -72,7 +101,7 @@ public class SphereVolume extends BaseVolume
 
                     testPos.add(center);
 
-                    if(posIsInVolume(testPos))
+                    if(posIsInVolume(center, testPos))
                     {
                         result.add(testPos);
                     }
@@ -85,7 +114,7 @@ public class SphereVolume extends BaseVolume
 
     @Override
     //TODO: Implement
-    public List<Vector> getRandomPositionsInVolume(float density)
+    public List<Vector> getRandomPositionsInVolume(Vector center, float density)
     {
         return new ArrayList<>();
     }

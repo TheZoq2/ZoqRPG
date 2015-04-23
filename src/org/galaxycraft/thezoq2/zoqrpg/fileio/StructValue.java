@@ -44,7 +44,7 @@ public class StructValue extends BaseDataValue
         DataValue val = getVariableByName(name);
 
         //Checking if the variable has the right type
-        if(!val.getClass().isInstance(type))
+        if(!val.getClass().equals(type))
         {
             throw new WrongDatatypeException(val, T.TYPE_NAME);
         }

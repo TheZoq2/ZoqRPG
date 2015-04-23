@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.ModuleCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup;
@@ -34,7 +36,7 @@ public class ModularSpell extends BaseSpell
         createSpell(mover, volume, appliedBoon, visualiser);
     }
 
-    public ModularSpell(Location startPos, Entity caster, SpellFactoryGroup sfg, StructValue spellStruct) throws NoSuchVariableException, WrongDatatypeException
+    public ModularSpell(Location startPos, Entity caster, SpellFactoryGroup sfg, StructValue spellStruct) throws ModuleCreationFailedException, WrongDatatypeException, NoSuchVariableException
     {
         super(startPos, caster);
 
@@ -53,25 +55,23 @@ public class ModularSpell extends BaseSpell
         String visualName;
         String moverName;
         String volumeName;
-        if(boonVar instanceof StringValue)
-            boonName = ((StringValue) boonVar).getValue();
-        else
-            throw new WrongDatatypeException(boonVar, "string");
-        if(visualVar instanceof StringValue)
-            visualName = ((StringValue) visualVar).getValue();
-        else
-            throw new WrongDatatypeException(visualVar, "string");
-        if(moverVar instanceof StringValue)
-            moverName = ((StringValue) moverVar).getValue();
-        else
-            throw new WrongDatatypeException(moverVar, "string");
-        if(volumeVar instanceof StringValue)
-            volumeName = ((StringValue) volumeVar).getValue();
-        else
-            throw new WrongDatatypeException(volumeVar, "string");
+
+        boonName = spellStruct.getVariableOfTypeByName("boon", StringValue.class).getValue();
+        visualName = spellStruct.getVariableOfTypeByName("visualiser", StringValue.class).getValue();
+        moverName = spellStruct.getVariableOfTypeByName("mover", StringValue.class).getValue();
+        volumeName = spellStruct.getVariableOfTypeByName("volume", StringValue.class).getValue();
 
         //Creating the parameters
-        sfg.getBoonFactory().createBoonByName(boonName);
+        try
+        {
+            this.appliedBoon = sfg.getBoonFactory().createBoon(boonName);
+            this.mover = sfg.getMoverFactory().create(moverName, caster.getLocation().toVector(), caster.getLocation().getDirection());
+            this.visualiser = sfg.getVisualiserFactory().createVisualiser(visualName);
+            this.volume = sfg.getVolumeFactory().createVolume(volumeName);
+        } catch (FactoryCreationFailedException e)
+        {
+            throw new ModuleCreationFailedException(e);
+        }
     }
 
     private void createSpell(Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
@@ -95,10 +95,11 @@ public class ModularSpell extends BaseSpell
         //Recalculating the center position
         Vector newCenter = super.startPos.toVector();
         newCenter.add(mover.getPosition());
-        volume.setCenter(newCenter);
+        Vector currentPos = startPos.add(mover.getPosition()).toVector();
+        //volume.setCenter(newCenter);
 
         //Getting a list of all the entities that will be affected by this spell
-        List<Entity> affectedEntities = volume.getEntitiesInVolume(startPos.getWorld().getEntities());
+        List<Entity> affectedEntities = volume.getEntitiesInVolume(currentPos, startPos.getWorld().getEntities());
 
         //Apply that effect to all the entities
         for(Entity entity : affectedEntities)
@@ -117,12 +118,12 @@ public class ModularSpell extends BaseSpell
         }
 
         //Visualising the spell
-        for(Vector pos : volume.getBlocksInVolume())
+        for(Vector pos : volume.getBlocksInVolume(currentPos))
         {
             //Location currentPos = volume.getCenter().toLocation(startPos.getWorld());
-            Location currentPos = pos.toLocation(startPos.getWorld());
+            Location cPos = pos.toLocation(startPos.getWorld());
 
-            visualiser.showLocation(currentPos);
+            visualiser.showLocation(cPos);
         }
 
     }

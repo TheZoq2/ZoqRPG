@@ -7,6 +7,7 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
+import org.galaxycraft.thezoq2.zoqrpg.utils.GlobalConfig;
 import org.galaxycraft.thezoq2.zoqrpg.utils.SpeedUtils;
 
 import java.util.logging.Level;
@@ -35,18 +36,24 @@ public class LinearMover extends BaseMover
         {
             float speed = sv.getVariableOfTypeByName("speed", StringValue.class).getValueAsFloat();
 
-            super.setSpeed(speed);
         } catch (NoSuchVariableException e)
         {
-            Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarName() + " is missing, in " +
+            //TODO: Remove duplicate code
+            Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarName() + " is missing, in burning boon" +
                     e.getStructPath() + "falling back to default");
-            e.printStackTrace();
+
+            GlobalConfig.getInstance().printStackTraceForDefault(e);
         } catch (WrongDatatypeException e)
         {
             Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarPath() + " is wrong type in linear mover, " +
                     "falling back to default");
-            e.printStackTrace();
+
+            GlobalConfig.getInstance().printStackTraceForDefault(e);
         }
+
+        super.setSpeed(speed);
+        direction.normalize();
+        this.direction = direction;
     }
 
     @Override

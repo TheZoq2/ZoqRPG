@@ -49,6 +49,7 @@ public class StringValue extends BaseDataValue
         }
     }
     */
+    /*
     public <T extends Object> T getValueAsDatatype(Class<T> type) throws WrongDatatypeException
     {
         if(type.isInstance(Integer.class))
@@ -79,6 +80,18 @@ public class StringValue extends BaseDataValue
             WrongDatatypeException e = new WrongDatatypeException(this, "unknown");
             e.printStackTrace();
             throw e;
+        }
+    }*/
+    //I can't think of a better way to do this right now. It leaves a lot of duplicate code
+    public float getValueAsFloat() throws WrongDatatypeException
+    {
+        try
+        {
+            return Float.parseFloat(this.value);
+        }
+        catch(NumberFormatException e)
+        {
+            throw new WrongDatatypeException(this, "float");
         }
     }
 }
