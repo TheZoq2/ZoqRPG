@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by frans on 3/24/15.
@@ -158,8 +159,16 @@ public class DataFileReader
                             //getting the value
                             String varValue = finalString.substring(currentChar, nextSpecial);
 
-                            //Creating a DataVariable and adding it to the list
-                            newValue = new StringValue(varValue, cVariableName, resultStruct);
+                            //Checking if the string can be interpreted as a number
+                            if(isNumber(varValue))
+                            {
+                                newValue = new NumberValue(varValue, cVariableName, resultStruct);
+                            }
+                            else
+                            {
+                                //Creating a DataVariable and adding it to the list
+                                newValue = new StringValue(varValue, cVariableName, resultStruct);
+                            }
                         }
                         else if(specialChar == '{')
                         {
@@ -230,7 +239,7 @@ public class DataFileReader
         {
             String singleChar = finalString.substring(i,i+1);
 
-            if(singleChar.matches("^.*[^a-zA-Z0-9 ].*$"))
+            if(singleChar.matches("^.*[^a-zA-Z0-9 .].*$"))
             {
                 firstChar = i;
                 break;
@@ -279,5 +288,45 @@ public class DataFileReader
 
         //The matching bracket wasn't found, report error
         throw new MissmatchedBracketException(filename, getLineFromFinal(start - 1), openBracket);
+    }
+
+    //Code stolen from stackoverflow here: http://stackoverflow.com/questions/8564896/fastest-way-to-check-if-a-string-can-be-parsed-to-double-in-java
+    private boolean isNumber(String str)
+    {
+        final String Digits     = "(\\p{Digit}+)";
+        final String HexDigits  = "(\\p{XDigit}+)";
+
+        // an exponent is 'e' or 'E' followed by an optionally
+        // signed decimal integer.
+        final String Exp        = "[eE][+-]?"+Digits;
+        final String fpRegex    =
+                ("[\\x00-\\x20]*"+  // Optional leading "whitespace"
+                        "[+-]?(" + // Optional sign character
+                        "NaN|" +           // "NaN" string
+                        "Infinity|" +      // "Infinity" string
+
+
+                        // Digits ._opt Digits_opt ExponentPart_opt FloatTypeSuffix_opt
+                        "((("+Digits+"(\\.)?("+Digits+"?)("+Exp+")?)|"+
+
+                        // . Digits ExponentPart_opt FloatTypeSuffix_opt
+                        "(\\.("+Digits+")("+Exp+")?)|"+
+
+                        // Hexadecimal strings
+                        "((" +
+                        // 0[xX] HexDigits ._opt BinaryExponent FloatTypeSuffix_opt
+                        "(0[xX]" + HexDigits + "(\\.)?)|" +
+
+                        // 0[xX] HexDigits_opt . HexDigits BinaryExponent FloatTypeSuffix_opt
+                        "(0[xX]" + HexDigits + "?(\\.)" + HexDigits + ")" +
+
+                        ")[pP][+-]?" + Digits + "))" +
+                        "[fFdD]?))" +
+                        "[\\x00-\\x20]*");// Optional trailing "whitespace"
+
+        if (Pattern.matches(fpRegex, str))
+            return true;
+
+        return false;
     }
 }

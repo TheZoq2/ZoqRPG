@@ -1,16 +1,9 @@
 package org.galaxycraft.thezoq2.zoqrpg.movers;
 
-import org.bukkit.Bukkit;
 import org.bukkit.util.Vector;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
-import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
-import org.galaxycraft.thezoq2.zoqrpg.utils.GlobalConfig;
 import org.galaxycraft.thezoq2.zoqrpg.utils.SpeedUtils;
-
-import java.util.logging.Level;
 
 
 public class LinearMover extends BaseMover
@@ -31,27 +24,8 @@ public class LinearMover extends BaseMover
     {
         super(DEFAULT_SPEED);
 
-        //Getting the speed from the struct
-        try
-        {
-            float speed = sv.getVariableOfTypeByName("speed", StringValue.class).getValueAsFloat();
+        super.setSpeed((float)super.readValueWithFallback(sv, "speed", new NumberValue(DEFAULT_SPEED), NumberValue.class).getValue());
 
-        } catch (NoSuchVariableException e)
-        {
-            //TODO: Remove duplicate code
-            Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarName() + " is missing, in burning boon" +
-                    e.getStructPath() + "falling back to default");
-
-            GlobalConfig.getInstance().printStackTraceForDefault(e);
-        } catch (WrongDatatypeException e)
-        {
-            Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarPath() + " is wrong type in linear mover, " +
-                    "falling back to default");
-
-            GlobalConfig.getInstance().printStackTraceForDefault(e);
-        }
-
-        super.setSpeed(speed);
         direction.normalize();
         this.direction = direction;
     }

@@ -1,15 +1,10 @@
 package org.galaxycraft.thezoq2.zoqrpg.boons;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException; import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.utils.GeneralUtils;
-import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
-
-import java.util.logging.Level;
 
 /**
  *
@@ -23,8 +18,8 @@ public class BurningBoon extends BaseBoon
             DEFAULT_MIN_BURN_TIME = 1500;
 
     //Long because timer functions use long
-    private long maxBurnTime;
-    private long minBurnTime;
+    private long maxBurnTime = DEFAULT_MAX_BURN_TIME;
+    private long minBurnTime = DEFAULT_MIN_BURN_TIME;
 
     private long burnTime;
     private int burnTicks;
@@ -37,26 +32,9 @@ public class BurningBoon extends BaseBoon
 
     public BurningBoon(StructValue sv)
     {
-        //Set defaults
-        minBurnTime = DEFAULT_MIN_BURN_TIME;
-        maxBurnTime = DEFAULT_MAX_BURN_TIME;
-
         //Attempt to read specific values from the struct
-        try
-        {
-            minBurnTime = (long) sv.getVariableOfTypeByName("minBurnTime", StringValue.class).getValueAsFloat();
-            maxBurnTime = (long) sv.getVariableOfTypeByName("maxBurnTime", StringValue.class).getValueAsFloat();
-        } catch (WrongDatatypeException e)
-        {
-            Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarPath() + " is wrong type in burningBoon, " +
-                    "falling back to default");
-            e.printStackTrace();
-        } catch (NoSuchVariableException e)
-        {
-            Bukkit.getLogger().log(Level.WARNING, "Variable  " + e.getVarName() + " is missing, in " +
-                    e.getStructPath() + "falling back to default");
-            e.printStackTrace();
-        }
+        minBurnTime = (long) super.readValueWithFallback(sv, "minBurnTime", new NumberValue(DEFAULT_MIN_BURN_TIME), NumberValue.class).getValue();
+        maxBurnTime = (long) super.readValueWithFallback(sv, "maxBurnTime", new NumberValue(DEFAULT_MAX_BURN_TIME), NumberValue.class).getValue();
     }
 
     @Override

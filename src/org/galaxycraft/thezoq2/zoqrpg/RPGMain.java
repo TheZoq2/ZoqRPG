@@ -154,26 +154,16 @@ public class RPGMain extends JavaPlugin implements Listener
             {
                 Spell spell = spellFactory.createSpell("fireball", plr);
 
+                spell.onCreate(boonManager);
+
                 spellManager.addSpell(spell);
             } catch (FactoryCreationFailedException e)
             {
                 e.printStackTrace();
             }
-            /*Mover mover = new LinearMover(10, direction);
-            SphereVolume volume = new SphereVolume(plr.getLocation().toVector(), 1);
-            Boon boon = new BurningBoon();
-
-            Spell spell = new ModularSpell(plr.getLocation().add(0,1,0), plr, mover,volume, boon, new FireVisualiser());
-            spell.onCreate(boonManager);
-
-            spellManager.addSpell(spell);*/
         }
         else
         {
-            /*Spell spell = new ModularSelfSpell(plr, new BlinkBoon());
-            spell.onCreate(boonManager);
-
-            spellManager.addSpell(spell);*/
         }
    }
 

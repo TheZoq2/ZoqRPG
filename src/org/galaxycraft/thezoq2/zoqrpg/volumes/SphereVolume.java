@@ -1,11 +1,8 @@
 package org.galaxycraft.thezoq2.zoqrpg.volumes;
 
-import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.util.Vector;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
-import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 import java.util.ArrayList;
@@ -33,20 +30,9 @@ public class SphereVolume extends BaseVolume
     {
         super(DEFAULT_RADIUS);
 
-        try
-        {
-            this.radius = sv.getVariableOfTypeByName("radius", StringValue.class).getValueAsFloat();
+        this.radius = (float) super.readValueWithFallback(sv, "radius", new NumberValue(DEFAULT_RADIUS), NumberValue.class).getValue();
 
-            super.setSize(radius);
-        } catch (WrongDatatypeException e)
-        {
-            //TODO: Propper errors
-            e.printStackTrace();
-        } catch (NoSuchVariableException e)
-        {
-            //TODO: Propper errors
-            e.printStackTrace();
-        }
+        super.setSize(radius);
     }
 
     @Override

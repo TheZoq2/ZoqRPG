@@ -1,11 +1,12 @@
 package org.galaxycraft.thezoq2.zoqrpg.volumes;
 
 import org.bukkit.util.Vector;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 
 /**
  * Created by frans on 02/03/15.
  */
-public abstract class BaseVolume implements Volume
+public abstract class BaseVolume extends StructBasedObject implements Volume
 {
     //protected Vector center;
     protected float size;

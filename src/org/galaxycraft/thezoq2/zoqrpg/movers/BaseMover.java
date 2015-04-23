@@ -1,11 +1,12 @@
 package org.galaxycraft.thezoq2.zoqrpg.movers;
 
 import org.bukkit.util.Vector;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 
 /**
  * Created by frans on 03/03/15.
  */
-public abstract class BaseMover implements Mover
+public abstract class BaseMover extends StructBasedObject implements Mover
 {
     protected Vector position;
 

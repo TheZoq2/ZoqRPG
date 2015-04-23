@@ -1,9 +1,10 @@
 package org.galaxycraft.thezoq2.zoqrpg.boons;
 
 import org.bukkit.entity.Entity;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
-public abstract class BaseBoon implements Boon
+public abstract class BaseBoon extends StructBasedObject implements Boon
 {
     protected Entity affectedEntity;
     protected boolean done = false;

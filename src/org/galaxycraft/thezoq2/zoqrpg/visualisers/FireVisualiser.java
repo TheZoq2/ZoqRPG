@@ -2,15 +2,14 @@ package org.galaxycraft.thezoq2.zoqrpg.visualisers;
 
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Location;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
-import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
  *
  */
-public class FireVisualiser implements Visualiser
+public class FireVisualiser extends StructBasedObject implements Visualiser
 {
     //Default values
     private final static float OFFSET_X = 0.3f;
@@ -30,6 +29,13 @@ public class FireVisualiser implements Visualiser
     public FireVisualiser(StructValue sv)
     {
         //Reading values from the struct
+        this.offsetX = (float)super.readValueWithFallback(sv, "offsetX", new NumberValue(OFFSET_X), NumberValue.class).getValue();
+        this.offsetY = (float)super.readValueWithFallback(sv, "offsetY", new NumberValue(OFFSET_Y), NumberValue.class).getValue();
+        this.offsetZ = (float)super.readValueWithFallback(sv, "offsetZ", new NumberValue(OFFSET_Z), NumberValue.class).getValue();
+        this.speed = (float)super.readValueWithFallback(sv, "speed", new NumberValue(OFFSET_Z), NumberValue.class).getValue();
+        this.speed = (long)super.readValueWithFallback(sv, "particleAmount", new NumberValue(PARTICLE_AMOUNT), NumberValue.class).getValue();
+        this.speed = (long)super.readValueWithFallback(sv, "range", new NumberValue(PARTICLE_RANGE), NumberValue.class).getValue();
+        /*
         try
         {
             this.offsetX = sv.getVariableOfTypeByName("offsetX", StringValue.class).getValueAsFloat();
@@ -47,6 +53,7 @@ public class FireVisualiser implements Visualiser
             //TODO: Report error propperly
             e.printStackTrace();
         }
+        */
     }
 
     @Override
