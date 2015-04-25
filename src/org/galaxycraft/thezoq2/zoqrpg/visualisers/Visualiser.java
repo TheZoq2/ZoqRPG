@@ -7,5 +7,7 @@ import org.bukkit.Location;
  */
 public interface Visualiser
 {
+    void update();
+
     void showLocation(Location loc);
 }

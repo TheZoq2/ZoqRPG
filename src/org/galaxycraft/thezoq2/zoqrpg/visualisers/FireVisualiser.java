@@ -3,13 +3,12 @@ package org.galaxycraft.thezoq2.zoqrpg.visualisers;
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Location;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
-import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
  *
  */
-public class FireVisualiser extends StructBasedObject implements Visualiser
+public class FireVisualiser extends ParticleVisualiser implements Visualiser
 {
     //Default values
     private final static float OFFSET_X = 0.3f;
@@ -33,27 +32,8 @@ public class FireVisualiser extends StructBasedObject implements Visualiser
         this.offsetY = (float)super.readValueWithFallback(sv, "offsetY", new NumberValue(OFFSET_Y), NumberValue.class).getValue();
         this.offsetZ = (float)super.readValueWithFallback(sv, "offsetZ", new NumberValue(OFFSET_Z), NumberValue.class).getValue();
         this.speed = (float)super.readValueWithFallback(sv, "speed", new NumberValue(OFFSET_Z), NumberValue.class).getValue();
-        this.speed = (long)super.readValueWithFallback(sv, "particleAmount", new NumberValue(PARTICLE_AMOUNT), NumberValue.class).getValue();
-        this.speed = (long)super.readValueWithFallback(sv, "range", new NumberValue(PARTICLE_RANGE), NumberValue.class).getValue();
-        /*
-        try
-        {
-            this.offsetX = sv.getVariableOfTypeByName("offsetX", StringValue.class).getValueAsFloat();
-            this.offsetY = sv.getVariableOfTypeByName("offsetY", StringValue.class).getValueAsFloat();
-            this.offsetZ = sv.getVariableOfTypeByName("offsetZ", StringValue.class).getValueAsFloat();
-            this.speed = sv.getVariableOfTypeByName("speed", StringValue.class).getValueAsFloat();
-            this.particleAmount = (int) sv.getVariableOfTypeByName("particleAmount", StringValue.class).getValueAsFloat();
-            this.particleRange = (int) sv.getVariableOfTypeByName("range", StringValue.class).getValueAsFloat();
-        } catch (WrongDatatypeException e)
-        {
-            //TODO: Report error propperly
-            e.printStackTrace();
-        } catch (NoSuchVariableException e)
-        {
-            //TODO: Report error propperly
-            e.printStackTrace();
-        }
-        */
+        this.particleAmount = (int)super.readValueWithFallback(sv, "particleAmount", new NumberValue(PARTICLE_AMOUNT), NumberValue.class).getValue();
+        this.particleRange = (int)super.readValueWithFallback(sv, "range", new NumberValue(PARTICLE_RANGE), NumberValue.class).getValue();
     }
 
     @Override

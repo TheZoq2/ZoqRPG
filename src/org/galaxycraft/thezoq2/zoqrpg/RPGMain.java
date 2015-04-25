@@ -42,13 +42,14 @@ public class RPGMain extends JavaPlugin implements Listener
     private VolumeFactory volumeFactory;
     private BoonFactory boonFactory;
     private SpellFactoryGroup sfg;
+    //TODO: Move config loading to separate method
     @Override
     public void onEnable()
     {
         getLogger().info("Loading ZoqRPG");
 
         BukkitScheduler scheduler = this.getServer().getScheduler();
-        //will look into undepricated version later
+        //will look into undepricated version later //TODO
         scheduler.scheduleSyncRepeatingTask(this, new RPGUpdateTask(this), 0L, 1L);
 
         //Initialising managers
@@ -167,7 +168,7 @@ public class RPGMain extends JavaPlugin implements Listener
         }
    }
 
-    public void addSpell(ModularSpell spell)
+    public void addSpell(Spell spell)
     {
         spellManager.addSpell(spell);
 

@@ -31,22 +31,18 @@ public final class FileManager
             folder.mkdirs();
         }
     }
-    public static FileWriter getFileWriter(String filename) throws IOException
-    {
-        File file = new File(getFullFilename(filename));
-        if(!file.exists())
-        {
-            file.createNewFile();
-        }
-
-        FileWriter writer = new FileWriter(file);
-
-        return writer;
-    }
     public static FileReader getFileReader(String filename) throws FileNotFoundException
     {
         FileReader reader = new FileReader(getFullFilename(filename));
 
         return reader;
+    }
+
+    public static FileReader getSpellConfig()
+    {
+        InputStream is = FileManager.class.getResourceAsStream(getFullFilename("spells"));
+
+        //return new FileReader(is);
+        is.read
     }
 }

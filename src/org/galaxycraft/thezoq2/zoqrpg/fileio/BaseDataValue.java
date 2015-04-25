@@ -16,9 +16,9 @@ public abstract class BaseDataValue implements DataValue
     }
 
     @Override
-    public void setVariableName(String varName)
+    public void setVariableName(String structName)
     {
-        this.varName = varName;
+        this.varName = structName;
     }
 
     @Override

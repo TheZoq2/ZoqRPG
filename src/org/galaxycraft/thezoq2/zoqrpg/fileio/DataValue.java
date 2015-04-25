@@ -5,7 +5,7 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
  */
 public interface DataValue
 {
-    static String TYPE_NAME = "generic";
+    String TYPE_NAME = "generic";
 
     void setVariableName(String structName);
 

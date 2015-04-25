@@ -5,12 +5,12 @@ package org.galaxycraft.thezoq2.zoqrpg.exceptions;
  */
 public class MissingVariableException extends Exception
 {
-    public MissingVariableException(String variableName, String StructName)
+    public MissingVariableException(String variableName, String structName)
     {
-         super("Struct: " + StructName + " is missing variable: " + variableName);
+         super("Struct: " + structName + " is missing variable: " + variableName);
     }
-    public MissingVariableException(String variableName, String StructName, Throwable t)
+    public MissingVariableException(String variableName, String structName, Throwable t)
     {
-        super("Struct: " + StructName + " is missing variable: " + variableName, t);
+        super("Struct: " + structName + " is missing variable: " + variableName, t);
     }
 }

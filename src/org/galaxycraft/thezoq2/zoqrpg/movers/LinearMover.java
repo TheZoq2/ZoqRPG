@@ -8,7 +8,7 @@ import org.galaxycraft.thezoq2.zoqrpg.utils.SpeedUtils;
 
 public class LinearMover extends BaseMover
 {
-    private static float DEFAULT_SPEED;
+    private final static float DEFAULT_SPEED = 1;
 
     private Vector direction;
 

@@ -8,6 +8,9 @@ import org.galaxycraft.thezoq2.zoqrpg.volumes.Volume;
 /**
  * Created by frans on 14/04/15.
  */
+@SuppressWarnings("UnnecessaryCodeBlock")
+//This warning comes from switch case statements where I have added {}.
+//I prefer to keep code blocks in the code because they make it easier to tell where a new case begins and ends.
 public class VolumeFactory extends StructBasedFactory<Volume>
 {
 

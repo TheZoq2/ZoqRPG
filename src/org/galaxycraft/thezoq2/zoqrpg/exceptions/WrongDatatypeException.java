@@ -8,8 +8,8 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue;
 //TODO: Report struct path instead of just varname
 public class WrongDatatypeException extends Exception
 {
-    private DataValue variable;
-    private String expectedDatatype;
+    private final DataValue variable;
+    private final String expectedDatatype;
 
     public WrongDatatypeException(DataValue variable, String expectedDatatype)
     {

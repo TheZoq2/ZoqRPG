@@ -29,9 +29,9 @@ public class BleedingBoon extends BaseBoon
     private TimerComponent boonTimer;
 
     @Override
-    public boolean onApply(Entity entity, float strength)
+    public boolean onApply(Entity affectedEntity, float strength)
     {
-        if(!super.onApply(entity, strength))
+        if(!super.onApply(affectedEntity, strength))
         {
             return false;
         }
@@ -43,10 +43,10 @@ public class BleedingBoon extends BaseBoon
         boonTimer = new TimerComponent(effectTime);
 
         //If the affected entity is a player, they should get slowed down
-        if(affectedEntity instanceof Player)
+        if(this.affectedEntity instanceof Player)
         {
-            oldWalkSpeed = ((Player) affectedEntity).getWalkSpeed();
-            ((Player) affectedEntity).setWalkSpeed(WALK_SPEED_MOD);
+            oldWalkSpeed = ((Player) this.affectedEntity).getWalkSpeed();
+            ((Player) this.affectedEntity).setWalkSpeed(WALK_SPEED_MOD);
         }
 
         System.out.println("Applyhing ");

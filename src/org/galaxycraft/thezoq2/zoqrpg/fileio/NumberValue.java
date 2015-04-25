@@ -6,7 +6,7 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
 public class NumberValue extends BaseDataValue
 {
     //Saving with maximum prescition just to be sure
-    double valueD;
+    private double valueD;
 
     public NumberValue(String value, String varName, StructValue parentStruct)
     {

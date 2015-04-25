@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class StructValue extends BaseDataValue
 {
-    static String TYPE_NAME = "struct";
+    private static final String TYPE_NAME = "struct";
 
     private Map<String, DataValue> values;
 
@@ -49,6 +49,8 @@ public class StructValue extends BaseDataValue
             throw new WrongDatatypeException(val, T.TYPE_NAME);
         }
 
+        //This warning is wrong, the statement above does check if the cast will work
+        //noinspection unchecked
         return (T)val;
     }
 

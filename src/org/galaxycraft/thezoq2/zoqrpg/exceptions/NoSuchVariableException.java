@@ -7,8 +7,8 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
  */
 public class NoSuchVariableException extends Exception
 {
-    private StructValue parentStruct;
-    private String varName;
+    private final StructValue parentStruct;
+    private final String varName;
     public NoSuchVariableException(String varName, StructValue parentStruct)
     {
         super("Variable " + varName + " does not exist in struct: " + parentStruct.getFullPath());

@@ -3,7 +3,7 @@ package org.galaxycraft.thezoq2.zoqrpg.utils;
 /**
  * Created by frans on 23/04/15.
  */
-public class GlobalConfig
+public final class GlobalConfig
 {
     private static GlobalConfig instance;
 

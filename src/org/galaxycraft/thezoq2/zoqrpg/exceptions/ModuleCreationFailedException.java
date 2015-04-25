@@ -5,7 +5,7 @@ package org.galaxycraft.thezoq2.zoqrpg.exceptions;
  */
 public class ModuleCreationFailedException extends Exception
 {
-    private FactoryCreationFailedException factoryFailException;
+    private final FactoryCreationFailedException factoryFailException;
 
     public  ModuleCreationFailedException(FactoryCreationFailedException factoryFailException)
     {

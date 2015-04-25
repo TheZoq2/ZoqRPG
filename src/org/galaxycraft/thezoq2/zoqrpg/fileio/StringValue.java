@@ -1,19 +1,21 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
-import org.bukkit.Bukkit;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
-
-import java.util.logging.Level;
 
 /**
  * Created by frans on 3/31/15.
  */
 public class StringValue extends BaseDataValue
 {
-    private static String TYPE_NAME = "string";
+    private final static String TYPE_NAME = "string";
 
     private String value;
 
+    //TODO: Possibly make package protected
+    public StringValue(String value)
+    {
+        super(value, null);
+    }
     public StringValue(String value, String varName, StructValue parentStruct)
     {
         super(varName, parentStruct);
@@ -91,6 +93,9 @@ public class StringValue extends BaseDataValue
         }
         catch(NumberFormatException e)
         {
+            //The number format exception is a lot broader than the WrongDatatypeException and I already
+            //know what went wrong
+            //noinspection ThrowInsideCatchBlockWhichIgnoresCaughtException
             throw new WrongDatatypeException(this, "float");
         }
     }

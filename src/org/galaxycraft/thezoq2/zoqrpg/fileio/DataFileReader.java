@@ -30,6 +30,9 @@ import java.util.regex.Pattern;
 
         will be parsed fine even though it should end due to hello world not being a propper statement
      */
+@SuppressWarnings("UnnecessaryCodeBlock")
+//This warning comes from switch case statements.
+//I prefer to keep code blocks in the code because they make it easier to tell where a new case begins and ends.
 public class DataFileReader
 {
     private enum ParseStatus
@@ -101,7 +104,7 @@ public class DataFileReader
 
     //Because the warnings are similar in nature and are handled in the same way by the exception hadling where
     //the method is used, I want to keep the broad exception
-    private StructValue parseDataChunk(int start, int end) throws InvalidDatafileException
+    private StructValue parseDataChunk(int start, int end) throws UnexpectedSpecialCharException, UnexpectedEndOfDataChunkException, MissmatchedBracketException, DuplicateVariableNameException
     {
         //List<DataVariable> dataVariables = new ArrayList<>();
         StructValue resultStruct = new StructValue("root", null);
@@ -122,7 +125,7 @@ public class DataFileReader
                 //If no special characters are left in the chunk, the parsing has failed. Throw an error
                 if(parseStatus != ParseStatus.LOOKING_FOR_VARIABLE)
                 {
-                    throw new UnexpectedEndOfDataChunk(filename, getLineFromFinal(currentChar + start));
+                    throw new UnexpectedEndOfDataChunkException(filename, getLineFromFinal(currentChar + start));
                 }
 
                 doneParsing = true;
@@ -146,7 +149,7 @@ public class DataFileReader
                         }
                         else
                         {
-                            throw new UnexpectedSpecialChar(specialChar, '=', filename, getLineFromFinal(nextSpecial));
+                            throw new UnexpectedSpecialCharException(specialChar, '=', filename, getLineFromFinal(nextSpecial));
                         }
                         break;
                     }
@@ -194,7 +197,7 @@ public class DataFileReader
                             parseStatus = ParseStatus.LOOKING_FOR_VARIABLE;
                         } catch (StructContainsVariableException e)
                         {
-                            //Throw a more detailed error
+                            //TODO: Throw a more detailed error
                             throw new DuplicateVariableNameException(cVariableName, filename, currentChar);
                         }
                         break;
@@ -291,9 +294,11 @@ public class DataFileReader
     }
 
     //Code stolen from stackoverflow here: http://stackoverflow.com/questions/8564896/fastest-way-to-check-if-a-string-can-be-parsed-to-double-in-java
-    private boolean isNumber(String str)
+
+    @SuppressWarnings("ALL") //Supressing warnings because I didn't write code
+    private boolean isNumber(CharSequence str)
     {
-        final String Digits     = "(\\p{Digit}+)";
+         final String Digits     = "(\\p{Digit}+)";
         final String HexDigits  = "(\\p{XDigit}+)";
 
         // an exponent is 'e' or 'E' followed by an optionally

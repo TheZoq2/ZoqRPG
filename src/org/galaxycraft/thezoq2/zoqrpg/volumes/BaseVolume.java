@@ -1,6 +1,5 @@
 package org.galaxycraft.thezoq2.zoqrpg.volumes;
 
-import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 
 /**

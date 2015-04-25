@@ -91,6 +91,7 @@ public class ModularSpell extends BaseSpell
         //Update the position of the spell
         mover.update(timePassed);
         volume.update(timePassed);
+        visualiser.update();
 
         //Recalculating the center position
         Vector newCenter = super.startPos.toVector();

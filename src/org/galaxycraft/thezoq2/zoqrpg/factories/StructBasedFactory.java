@@ -1,15 +1,10 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
-import com.darkblade12.particleeffect.ReflectionUtils;
-import org.bukkit.Bukkit;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
-import org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
-
-import java.util.logging.Level;
 
 /**
  * Created by frans on 4/10/15.

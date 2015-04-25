@@ -5,7 +5,7 @@ package org.galaxycraft.thezoq2.zoqrpg.exceptions;
  */
 public class FactoryCreationFailedException extends Exception
 {
-    private String reason;
+    private final String reason;
 
     public FactoryCreationFailedException(String reason)
     {
