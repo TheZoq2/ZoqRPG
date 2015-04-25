@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
 import java.io.*;
+import java.net.URL;
 
 /**
  * Created by frans on 3/24/15.
@@ -17,15 +18,16 @@ public final class FileManager
 
     private static String getFullFilename(String filename)
     {
-        StringBuilder finalFile = new StringBuilder(PLUGIN_FOLDER);
-        finalFile.append(filename);
+        String finalFile = FileManager.class.getResource(PLUGIN_FOLDER + filename).getFile();
 
-        return finalFile.toString();
+        return finalFile;
     }
 
     public static void createPluginFoler()
     {
-        File folder = new File(PLUGIN_FOLDER);
+        String folderPath = FileManager.class.getResource(PLUGIN_FOLDER).getFile();
+
+        File folder = new File(folderPath);
         if(!folder.exists())
         {
             folder.mkdirs();
@@ -36,13 +38,5 @@ public final class FileManager
         FileReader reader = new FileReader(getFullFilename(filename));
 
         return reader;
-    }
-
-    public static FileReader getSpellConfig()
-    {
-        InputStream is = FileManager.class.getResourceAsStream(getFullFilename("spells"));
-
-        //return new FileReader(is);
-        is.read
     }
 }
