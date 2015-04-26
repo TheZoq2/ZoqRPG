@@ -6,7 +6,7 @@ import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
 public abstract class BaseBoon extends StructBasedObject implements Boon
 {
-    protected Entity affectedEntity;
+    protected Entity affectedEntity = null;
     protected boolean done = false;
     protected float strength;
 

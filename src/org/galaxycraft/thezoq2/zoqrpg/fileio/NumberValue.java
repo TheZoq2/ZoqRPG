@@ -6,26 +6,26 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
 public class NumberValue extends BaseDataValue
 {
     //Saving with maximum prescition just to be sure
-    private double valueD;
+    private double value;
 
     public NumberValue(String value, String varName, StructValue parentStruct)
     {
         super(varName, parentStruct);
 
         //Parse it as a double
-        this.valueD = Double.parseDouble(value);
+        this.value = Double.parseDouble(value);
     }
-    public NumberValue(double valueD)
+    public NumberValue(double value)
     {
         super("", null);
 
-        this.valueD = valueD;
+        this.value = value;
     }
 
     //Returns the double version of the value. Possibly make general function?
     //TODO -""--?
     public double getValue()
     {
-        return this.valueD;
+        return this.value;
     }
 }

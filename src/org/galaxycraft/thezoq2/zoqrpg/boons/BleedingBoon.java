@@ -26,7 +26,7 @@ public class BleedingBoon extends BaseBoon
     //The walk speed of the player before the boon was applied
     private float oldWalkSpeed;
 
-    private TimerComponent boonTimer;
+    private TimerComponent boonTimer = null;
 
     @Override
     public boolean onApply(Entity affectedEntity, float strength)

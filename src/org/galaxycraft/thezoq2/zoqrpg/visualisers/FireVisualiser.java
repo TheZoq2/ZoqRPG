@@ -8,7 +8,7 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 /**
  *
  */
-public class FireVisualiser extends ParticleVisualiser implements Visualiser
+public class FireVisualiser extends ParticleVisualiser
 {
     //Default values
     private final static float OFFSET_X = 0.3f;

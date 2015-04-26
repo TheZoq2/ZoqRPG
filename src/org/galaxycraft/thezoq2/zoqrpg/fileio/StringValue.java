@@ -9,7 +9,7 @@ public class StringValue extends BaseDataValue
 {
     private final static String TYPE_NAME = "string";
 
-    private String value;
+    private String value = null;
 
     //TODO: Possibly make package protected
     public StringValue(String value)

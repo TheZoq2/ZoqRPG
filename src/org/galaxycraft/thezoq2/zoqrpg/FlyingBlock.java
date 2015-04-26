@@ -19,6 +19,8 @@ public class FlyingBlock
 
     private Location loc;
 
+    //http://www.spigotmc.org/threads/spawn-falling-block-with-data.42467/ For reasoning behind using deprecated method
+    @SuppressWarnings("deprecation")
     public FlyingBlock(Location loc, Material material)
     {
         this.loc = loc;

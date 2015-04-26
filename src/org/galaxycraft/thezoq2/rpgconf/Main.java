@@ -1,6 +1,5 @@
 package org.galaxycraft.thezoq2.rpgconf;
 
-import javax.swing.*;
 import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,7 +39,7 @@ public final class Main
             e.printStackTrace();
         }
 
-        frame = new MainFrame(new ConfigCode());
+        frame = new MainFrame(new ConfigCode(), xmlReader);
 
         frame.setVisible(true);
     }

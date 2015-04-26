@@ -43,36 +43,38 @@ public class DataFileReader
 
     private List<String> lines;
     private String finalString;
-    private String filename;
+    private String filename = null;
 
     //List of what char in the final string corresponds to a line ending
     private List<Integer> lineStarts;
 
     private StructValue fileStruct;
 
-    public DataFileReader(FileReader fileReader) throws IOException, InvalidDatafileException
+    public DataFileReader(FileReader fileReader, String filename) throws IOException, InvalidDatafileException
     {
         lineStarts = new ArrayList<>();
 
         lines = new ArrayList<>();
 
         //Creating a buffered reader for reading the file
-        BufferedReader br = new BufferedReader(fileReader);
-
-        String line;
-        do
+        //Im fairly cirtain that this will not throw an exception since the fileReader has already loaded the file
+        try(BufferedReader br = new BufferedReader(fileReader))
         {
-            line = br.readLine();
-
-            if(line != null)
+            String line;
+            do
             {
-                lines.add(line);
-            }
-        }while(line != null);
+                line = br.readLine();
 
-        createDataString();
+                if(line != null)
+                {
+                    lines.add(line);
+                }
+            }while(line != null);
 
-        fileStruct = parseDataChunk(0, finalString.length());
+            createDataString();
+
+            fileStruct = parseDataChunk(0, finalString.length());
+        }
     }
 
     public StructValue getFileStruct()

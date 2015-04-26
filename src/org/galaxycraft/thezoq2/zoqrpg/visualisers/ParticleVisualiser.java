@@ -7,6 +7,11 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
  */
 public abstract class ParticleVisualiser extends StructBasedObject implements Visualiser
 {
+    /*
+    This is the intended behaviour, particle effects don't need anything cleaned up every tick but they still need an
+    update function to follow the visualiser contract
+     */
+    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void update()
     {

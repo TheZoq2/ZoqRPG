@@ -16,7 +16,7 @@ public abstract class BaseSpell implements Spell
 
     //Ideally this would be passed every update tick but in order to allow spells to inherit
     //updatable and allow updatable managers to handle spells, it is kept track of by the spell itself
-    protected BoonManager boonManager;
+    protected BoonManager boonManager = null;
 
 
     BaseSpell(Location startPos, Entity caster)

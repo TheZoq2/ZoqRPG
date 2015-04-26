@@ -13,7 +13,5 @@ public interface Spell extends Updatable
     //updatable and allow updatable managers to handle spells, it is kept track of by the spell itself
     void onCreate(BoonManager boonManager);
 
-    boolean isDone();
-
     Entity getCaster();
 }

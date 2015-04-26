@@ -31,7 +31,7 @@ public class BlinkBoon extends BaseBoon
     private static final int INDICATOR_SPEED = 3;
     private static final int INDICATOR_AMOUNT = 25;
 
-    private ItemStack itemInHand; //if the player does not have this item in their hand, the boon sould be removed
+    private ItemStack itemInHand = null; //if the player does not have this item in their hand, the boon sould be removed
     private int teleportDistance;
 
 

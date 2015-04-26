@@ -1,19 +1,16 @@
 package org.galaxycraft.thezoq2.rpgconf;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.*; //Bad practice but IDEA doesn't find the propper imports and im lazy
-import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import javax.xml.namespace.QName;
 
 /**
  * Created by frans on 25/04/15.
@@ -39,7 +36,7 @@ public class StructXMLReader
     private Map<StructType, List<StructPrototype>> structLists;
     private final Map<String, List<StructPrototype>> listNameMap;
 
-    public StructXMLReader(InputStream xmlInputStream) throws XMLStreamException
+    public StructXMLReader(InputStream xmlInputStream) throws XMLStreamException, IOException
     {
         structLists = new HashMap<>();
         //Creating the list
@@ -63,15 +60,15 @@ public class StructXMLReader
         return structLists.get(type);
     }
 
-    private void readXMLFile(InputStream xmlInputStream) throws XMLStreamException
+    private void readXMLFile(InputStream xmlInputStream) throws XMLStreamException, IOException
     {
-        BufferedReader br = new BufferedReader(new InputStreamReader(xmlInputStream));
+
 
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 
         int extraDepth = 0;
 
-        try
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(xmlInputStream)))
         {
             XMLEventReader eventReader = xmlInputFactory.createXMLEventReader(xmlInputStream);
             ParsingState pState = ParsingState.IN_ROOT;
@@ -172,6 +169,12 @@ public class StructXMLReader
         } catch (XMLStreamException e)
         {
             Logger.getGlobal().log(Level.SEVERE, "Failed to load configuration XML file");
+            e.printStackTrace();
+
+            throw e;
+        } catch (IOException e)
+        {
+            Logger.getGlobal().log(Level.SEVERE, "Failed to read configuration XML file");
             e.printStackTrace();
 
             throw e;

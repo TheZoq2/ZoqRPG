@@ -4,29 +4,13 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by frans on 26/04/15.
  */
 public class ConfigCode implements DocumentListener
 {
-    //Static stuff
-    private static final Map<StructType, String> structNames; //Map from struct types to names which is used by this class to add code to the right place
-    //and by other classes to create UI for adding things
-    static
-    {
-        structNames = new HashMap<>();
-
-        structNames.put(StructType.BOON, "boons");
-        structNames.put(StructType.MOVER, "movers");
-        structNames.put(StructType.SPELL, "spells");
-        structNames.put(StructType.VOLUME, "volumes");
-        structNames.put(StructType.VISUALISER, "visualisers");
-    }
-
 
     private StringBuilder code;
     private List<CodeUpdateListener> listeners;
@@ -39,7 +23,7 @@ public class ConfigCode implements DocumentListener
         //Adding top level structs to the code
         for(StructType st : StructType.values())
         {
-            addEmptyStruct(structNames.get(st));
+            addEmptyStruct(StructTypeTranslator.getStructConfigName(st));
         }
     }
 
@@ -55,7 +39,13 @@ public class ConfigCode implements DocumentListener
     {
         int addIndex = getStartOfTopStruct(type);
 
-        code.insert(addIndex, struct.toString());
+        StringBuilder addedCode = new StringBuilder("");
+        addedCode.append("name = \n");
+        addedCode.append("{\n");
+        addedCode.append(struct);
+        addedCode.append("\n}\n");
+
+        code.insert(addIndex, addedCode.toString());
 
         notifyListeners();
     }
@@ -81,7 +71,7 @@ public class ConfigCode implements DocumentListener
 
     private int getStartOfTopStruct(StructType st)
     {
-        String structName = structNames.get(st);
+        String structName = StructTypeTranslator.getStructConfigName(st);
         int structStartIndex = code.indexOf(structName);
 
         if(structStartIndex == -1) //The struct doesn't exist for some reason, create it
@@ -91,7 +81,7 @@ public class ConfigCode implements DocumentListener
         }
 
         //Finding the already existing struct
-        int bracketIndex = code.indexOf("{", structStartIndex) + 1; //+1 to skip the \n
+        int bracketIndex = code.indexOf("{", structStartIndex) + 2; //+1 to skip the \n
 
         if(bracketIndex != -1)
         {

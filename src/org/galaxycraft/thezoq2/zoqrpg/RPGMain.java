@@ -17,7 +17,6 @@ import org.galaxycraft.thezoq2.zoqrpg.factories.*;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.FileManager;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
-import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 
 import java.io.*;
@@ -25,6 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
+/*
+This warning is thrown for instances that are set in the try statement for loading config files. If the config
+loading fails, the plugin disables itself so this is not an issue
+ */
+@SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public class RPGMain extends JavaPlugin implements Listener
 {
     private SpellManager spellManager;
@@ -46,6 +50,8 @@ public class RPGMain extends JavaPlugin implements Listener
     @Override
     public void onEnable()
     {
+        super.onEnable();
+
         getLogger().info("Loading ZoqRPG");
 
         BukkitScheduler scheduler = this.getServer().getScheduler();
@@ -65,7 +71,7 @@ public class RPGMain extends JavaPlugin implements Listener
         boolean configsLoaded = false;
         try(FileReader fr = FileManager.getFileReader("spells"))
         {
-            DataFileReader dr = new DataFileReader(fr);
+            DataFileReader dr = new DataFileReader(fr, "ZoqRPG/spells");
 
             StructValue fileStruct = dr.getFileStruct();
 
@@ -180,7 +186,7 @@ public class RPGMain extends JavaPlugin implements Listener
 
     public List<Boon> getBoonsOnEntity(Entity entity)
     {
-        List<Boon> entityBoons = new ArrayList<Boon>();
+        List<Boon> entityBoons = new ArrayList<>();
 
         for(Boon boon : boonManager.getBoonList())
         {

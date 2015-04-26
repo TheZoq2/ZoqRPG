@@ -7,6 +7,11 @@ public final class GlobalConfig
 {
     private static GlobalConfig instance;
 
+    static
+    {
+        instance = new GlobalConfig();
+    }
+
     private boolean printStacktraceForDefault = false;
 
     private GlobalConfig()
@@ -15,11 +20,6 @@ public final class GlobalConfig
 
     public static GlobalConfig getInstance()
     {
-        if(instance == null)
-        {
-            instance = new GlobalConfig();
-        }
-
         return instance;
     }
 

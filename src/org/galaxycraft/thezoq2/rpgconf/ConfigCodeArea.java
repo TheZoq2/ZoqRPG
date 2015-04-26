@@ -7,7 +7,7 @@ import javax.swing.*;
  */
 public class ConfigCodeArea extends JTextArea implements CodeUpdateListener
 {
-    ConfigCode code;
+    private ConfigCode code;
 
     ConfigCodeArea(int width, int height, ConfigCode code)
     {

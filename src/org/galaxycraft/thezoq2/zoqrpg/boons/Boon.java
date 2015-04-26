@@ -6,17 +6,10 @@ import org.galaxycraft.thezoq2.zoqrpg.Updatable;
 public interface Boon extends Updatable
 {
     boolean onApply(Entity affectedEntity, float strength);
-    @Override
-    void update(long timePassed);
-    @Override
-    void onEnd();
 
     //If the player already has the same boon, this is called
 
     void onReapply(float strength);
-
-    @Override
-    boolean isDone();
 
     Entity getAffectedEntity();
 
