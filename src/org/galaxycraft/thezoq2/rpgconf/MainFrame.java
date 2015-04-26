@@ -21,7 +21,7 @@ public class MainFrame
     private JTextField varNameText;
     private JTextField varValueText;
 
-    private JTextArea codeArea;
+    private ConfigCodeArea codeArea;
 
     private AbstractAction addStructAction = new AbstractAction("Add struct")
     {
@@ -48,10 +48,15 @@ public class MainFrame
         }
     };
 
-    public MainFrame()
+    public MainFrame(ConfigCode code)
     {
         this.frame = new JFrame();
-        codeArea = new JTextArea(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT);
+        //codeArea = new JTextArea(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT);
+        codeArea = new ConfigCodeArea(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT, code);
+
+        //Make the code listen for changes in the text
+        codeArea.getDocument().addDocumentListener(code);
+
         frame.setLayout(new BorderLayout());
 
         createMenus();
@@ -75,7 +80,11 @@ public class MainFrame
         frame.add(codeArea, BorderLayout.CENTER);
 
         frame.pack();
-        frame.setVisible(true);
+    }
+
+    public void setVisible(boolean visible)
+    {
+        frame.setVisible(visible);
     }
 
     private void createMenus()

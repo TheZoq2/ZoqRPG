@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<structs>
+    <boons>
+        <instance>
+            <base>burning</base>
+            <additional>speed</additional>
+        </instance>
+    </boons>
+    <movers>
+        <instance>
+            <base>linear</base>
+            <additional>speed</additional>
+        </instance>
+    </movers>
+    <volumes>
+        <instance>
+            <base>sphere</base>
+            <additional>radius</additional>
+        </instance>
+    </volumes>
+    <visualisers>
+        <instance>
+            <base>fire</base>
+            <additional>offsetX</additional>
+            <additional>offsetY</additional>
+            <additional>offsetZ</additional>
+            <additional>speed</additional>
+            <additional>particleAmount</additional>
+            <additional>range</additional>
+        </instance>
+        <instance>
+            <base>block</base>
+            <additional>block</additional>
+        </instance>
+    </visualisers>
+    <spells>
+        <instance>
+            <base>modular</base>
+            <additional>mover</additional>
+            <additional>boon</additional>
+            <additional>volume</additional>
+            <additional>visualiser</additional>
+        </instance>
+    </spells>
+
+</structs>

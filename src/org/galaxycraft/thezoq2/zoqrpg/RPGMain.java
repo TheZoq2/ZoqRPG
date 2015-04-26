@@ -63,10 +63,8 @@ public class RPGMain extends JavaPlugin implements Listener
         FileManager.createPluginFoler();
 
         boolean configsLoaded = false;
-        try
+        try(FileReader fr = FileManager.getFileReader("spells"))
         {
-            FileReader fr = FileManager.getFileReader("spells");
-
             DataFileReader dr = new DataFileReader(fr);
 
             StructValue fileStruct = dr.getFileStruct();
