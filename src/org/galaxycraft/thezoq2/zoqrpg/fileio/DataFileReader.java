@@ -56,6 +56,8 @@ public class DataFileReader
 
         lines = new ArrayList<>();
 
+        this.filename = filename;
+
         //Creating a buffered reader for reading the file
         //Im fairly cirtain that this will not throw an exception since the fileReader has already loaded the file
         try(BufferedReader br = new BufferedReader(fileReader))

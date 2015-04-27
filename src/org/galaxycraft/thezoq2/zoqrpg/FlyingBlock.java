@@ -12,8 +12,6 @@ import org.bukkit.util.Vector;
  */
 public class FlyingBlock
 {
-    private Material material;
-
     private WitherSkull vehicle; //Witherskulls can be used to make a stationary flying object if they are made invisible
     private FallingBlock block;
 
@@ -24,7 +22,6 @@ public class FlyingBlock
     public FlyingBlock(Location loc, Material material)
     {
         this.loc = loc;
-        this.material = material;
         //http://www.spigotmc.org/threads/spawn-falling-block-with-data.42467/ For reasoning behind using deprecated method
         block = loc.getWorld().spawnFallingBlock(loc, material.getId(), (byte) 0);
 

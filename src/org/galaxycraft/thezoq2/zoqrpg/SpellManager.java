@@ -15,16 +15,4 @@ public class SpellManager extends UpdatableManager
         activeUpdatables.add(spell);
     }
 
-    public List<Spell> getSpellList()
-    {
-        List<Spell> result = new ArrayList<>();
-
-        for(Updatable updatable : activeUpdatables)
-        {
-            result.add((Spell) updatable);
-        }
-
-
-        return result;
-    }
 }

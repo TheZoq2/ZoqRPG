@@ -10,8 +10,4 @@ public class MissmatchedBracketException extends InvalidDatafileException
     {
         super("Missing bracket to close " + matchingBracket, file, line);
     }
-    public MissmatchedBracketException(Throwable throwable, String file, int line, char matchingBracket)
-    {
-        super("Missing bracket to close " + matchingBracket, throwable, file, line);
-    }
 }

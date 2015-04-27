@@ -13,12 +13,6 @@ public class ModuleCreationFailedException extends Exception
 
         this.factoryFailException = factoryFailException;
     }
-    public  ModuleCreationFailedException(FactoryCreationFailedException factoryFailException, Throwable t)
-    {
-        super("Module creation failed, factory failed to create object with reason: " + factoryFailException.getReason(), t);
-
-        this.factoryFailException = factoryFailException;
-    }
 
     public String getFactoryFailReason()
     {

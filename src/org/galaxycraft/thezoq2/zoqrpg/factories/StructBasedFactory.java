@@ -11,6 +11,7 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
  */
 
 
+//TODO: Make factories load their content on reload instead of every time it is used. This will prevent the current console spam
 public abstract class StructBasedFactory<T>
 {
     private static final String BASE_VAR_NAME = "base";

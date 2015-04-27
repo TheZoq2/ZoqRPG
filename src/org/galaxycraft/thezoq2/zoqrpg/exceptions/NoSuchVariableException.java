@@ -16,17 +16,6 @@ public class NoSuchVariableException extends Exception
         this.parentStruct = parentStruct;
         this.varName = varName;
     }
-    public NoSuchVariableException(String varName, StructValue parentStruct, Throwable t)
-    {
-        super("Variable " + varName + " does not exist in struct: " + parentStruct.getFullPath(), t);
-        this.parentStruct = parentStruct;
-        this.varName = varName;
-    }
-
-    public StructValue getParentStruct()
-    {
-        return this.parentStruct;
-    }
     public String getStructPath()
     {
         return this.parentStruct.getFullPath();

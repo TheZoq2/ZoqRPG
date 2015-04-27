@@ -3,6 +3,7 @@ package org.galaxycraft.thezoq2.zoqrpg.spells;
 import org.bukkit.entity.Entity;
 import org.galaxycraft.thezoq2.zoqrpg.BoonManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
  * Created by frans on 3/9/15.
@@ -16,6 +17,11 @@ public class ModularSelfSpell extends BaseSpell
         super(caster.getLocation(), caster);
 
         this.appliedBoon = appliedBoon;
+    }
+
+    public ModularSelfSpell(StructValue sv, Entity caster)
+    {
+        super(caster.getLocation(), caster);
     }
 
     @Override

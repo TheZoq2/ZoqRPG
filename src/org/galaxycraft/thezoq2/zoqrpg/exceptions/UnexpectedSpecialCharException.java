@@ -9,8 +9,4 @@ public class UnexpectedSpecialCharException extends InvalidDatafileException
     {
         super("Unexpected " + invalidChar + ", expected: " + expectedChar, file, line);
     }
-    public UnexpectedSpecialCharException(char invalidChar, char expectedChar, String file, int line, Throwable throwable)
-    {
-        super("Unexpected " + invalidChar + ", expected: " + expectedChar, throwable, file, line);
-    }
 }

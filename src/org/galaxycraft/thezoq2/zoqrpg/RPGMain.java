@@ -34,18 +34,8 @@ public class RPGMain extends JavaPlugin implements Listener
     private SpellManager spellManager;
     private BoonManager boonManager;
 
-    private StructValue spellStruct;
-    private StructValue volumeStruct;
-    private StructValue visStruct;
-    private StructValue moverStruct;
-    private StructValue boonStruct;
-
     private SpellFactory spellFactory;
-    private MoverFactory moverFactory;
-    private VisualiserFactory visFactory;
-    private VolumeFactory volumeFactory;
-    private BoonFactory boonFactory;
-    private SpellFactoryGroup sfg;
+
     //TODO: Move config loading to separate method
     @Override
     public void onEnable()
@@ -75,19 +65,19 @@ public class RPGMain extends JavaPlugin implements Listener
 
             StructValue fileStruct = dr.getFileStruct();
 
-            spellStruct = fileStruct.getVariableOfTypeByName("spells", StructValue.class);
-            visStruct = fileStruct.getVariableOfTypeByName("visualisers", StructValue.class);
-            volumeStruct = fileStruct.getVariableOfTypeByName("volumes", StructValue.class);
-            moverStruct = fileStruct.getVariableOfTypeByName("movers", StructValue.class);
-            boonStruct = fileStruct.getVariableOfTypeByName("boons", StructValue.class);
+            StructValue spellStruct = fileStruct.getVariableOfTypeByName("spells", StructValue.class);
+            StructValue visStruct = fileStruct.getVariableOfTypeByName("visualisers", StructValue.class);
+            StructValue volumeStruct = fileStruct.getVariableOfTypeByName("volumes", StructValue.class);
+            StructValue moverStruct = fileStruct.getVariableOfTypeByName("movers", StructValue.class);
+            StructValue boonStruct = fileStruct.getVariableOfTypeByName("boons", StructValue.class);
 
             //Create the factories
-            moverFactory = new MoverFactory(moverStruct);
-            volumeFactory = new VolumeFactory(volumeStruct);
-            boonFactory = new BoonFactory(boonStruct);
-            visFactory = new VisualiserFactory(visStruct);
+            MoverFactory moverFactory = new MoverFactory(moverStruct);
+            VolumeFactory volumeFactory = new VolumeFactory(volumeStruct);
+            BoonFactory boonFactory = new BoonFactory(boonStruct);
+            VisualiserFactory visFactory = new VisualiserFactory(visStruct);
 
-            sfg = new SpellFactoryGroup(moverFactory, boonFactory, visFactory, volumeFactory);
+            SpellFactoryGroup sfg = new SpellFactoryGroup(moverFactory, boonFactory, visFactory, volumeFactory);
 
             spellFactory = new SpellFactory(spellStruct, sfg);
 
@@ -171,30 +161,4 @@ public class RPGMain extends JavaPlugin implements Listener
         {
         }
    }
-
-    public void addSpell(Spell spell)
-    {
-        spellManager.addSpell(spell);
-
-        System.out.println("adding a spell");
-    }
-
-    public void addBoonToList(Boon boon)
-    {
-        boonManager.addBoon(boon);
-    }
-
-    public List<Boon> getBoonsOnEntity(Entity entity)
-    {
-        List<Boon> entityBoons = new ArrayList<>();
-
-        for(Boon boon : boonManager.getBoonList())
-        {
-            if(boon.getAffectedEntity() == entity)
-            {
-                entityBoons.add(boon);
-            }
-        }
-        return entityBoons;
-    }
 }

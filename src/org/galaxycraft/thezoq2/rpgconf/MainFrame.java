@@ -132,15 +132,6 @@ public class MainFrame
         frame.setJMenuBar(menuBar);
     }
 
-    private void addStruct()
-    {
-        addTextAtCursor(getVarName() + "=\n{\n}");
-    }
-    private void addVariable()
-    {
-        addTextAtCursor(getVarName() + " = " + getVarValue() + ";");
-    }
-
     private void addTextAtCursor(String text)
     {
         this.codeArea.insert(text, codeArea.getCaretPosition());

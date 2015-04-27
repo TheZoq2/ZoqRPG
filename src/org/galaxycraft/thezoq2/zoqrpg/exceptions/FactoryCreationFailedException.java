@@ -13,12 +13,6 @@ public class FactoryCreationFailedException extends Exception
 
         this.reason = reason;
     }
-    public FactoryCreationFailedException(String reason, Throwable t)
-    {
-        super("Factory failed to create object. " + reason, t);
-
-        this.reason = reason;
-    }
 
     public String getReason()
     {

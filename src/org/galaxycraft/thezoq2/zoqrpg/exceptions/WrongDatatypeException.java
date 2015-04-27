@@ -18,13 +18,6 @@ public class WrongDatatypeException extends Exception
         this.expectedDatatype = expectedDatatype;
     }
 
-    public WrongDatatypeException(DataValue variable, String expectedDatatype, Throwable t)
-    {
-        super("Wrong datatype for variable " + variable.getFullPath() + " expected " + expectedDatatype, t);
-        this.variable = variable;
-        this.expectedDatatype = expectedDatatype;
-    }
-
     public String getVarPath()
     {
         return variable.getFullPath();

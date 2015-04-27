@@ -12,14 +12,4 @@ public class StructContainsVariableException extends Exception
         super("Struct contains key already");
         this.varName = varName;
     }
-    public StructContainsVariableException(String varName, Throwable throwable)
-    {
-        super("Struct contains key already", throwable);
-        this.varName = varName;
-    }
-
-    String getVarName()
-    {
-        return varName;
-    }
 }

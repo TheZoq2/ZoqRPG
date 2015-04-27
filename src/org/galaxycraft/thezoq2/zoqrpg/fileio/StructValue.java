@@ -53,9 +53,4 @@ public class StructValue extends BaseDataValue
         //noinspection unchecked
         return (T)val;
     }
-
-    public boolean variableExists(String name)
-    {
-        return values.containsKey(name);
-    }
 }

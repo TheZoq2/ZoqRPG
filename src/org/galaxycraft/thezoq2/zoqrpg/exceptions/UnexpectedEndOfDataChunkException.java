@@ -9,8 +9,4 @@ public class UnexpectedEndOfDataChunkException extends InvalidDatafileException
     {
         super("Unexpected end of datachunk, missing ;? ", file, line);
     }
-    public UnexpectedEndOfDataChunkException(String errorMessage, Throwable throwable, String file, int line)
-    {
-        super("Unexpected end of datachunk, missing ;? ", throwable, file, line);
-    }
 }
