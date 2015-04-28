@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.galaxycraft.thezoq2.zoqrpg.visualisers.BlockVisualiser</OriginalElement>
+  <nodes>
+    <node x="-166.0" y="85.0">org.galaxycraft.thezoq2.zoqrpg.movers.BaseMover</node>
+    <node x="449.0" y="2.0">org.galaxycraft.thezoq2.zoqrpg.boons.Boon</node>
+    <node x="435.0" y="87.0">org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon</node>
+    <node x="-3.0" y="84.0">org.galaxycraft.thezoq2.zoqrpg.visualisers.ParticleVisualiser</node>
+    <node x="294.0" y="146.0">org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon</node>
+    <node x="8.0" y="140.0">org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser</node>
+    <node x="171.0" y="0.0">org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser</node>
+    <node x="-150.0" y="14.0">org.galaxycraft.thezoq2.zoqrpg.movers.Mover</node>
+    <node x="0.0" y="0.0">org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject</node>
+    <node x="-168.0" y="148.0">org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover</node>
+    <node x="575.0" y="148.0">org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon</node>
+    <node x="151.25" y="88.0">org.galaxycraft.thezoq2.zoqrpg.visualisers.BlockVisualiser</node>
+    <node x="426.0" y="148.0">org.galaxycraft.thezoq2.zoqrpg.boons.BleedingBoon</node>
+    <node x="-314.0" y="15.0">org.galaxycraft.thezoq2.zoqrpg.volumes.Volume</node>
+    <node x="-336.0" y="150.0">org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume</node>
+    <node x="-328.0" y="84.0">org.galaxycraft.thezoq2.zoqrpg.volumes.BaseVolume</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.ParticleVisualiser" target="org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon" target="org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.movers.BaseMover" target="org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume" target="org.galaxycraft.thezoq2.zoqrpg.volumes.BaseVolume">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon" target="org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.BlockVisualiser" target="org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser">
+      <point x="31.75" y="-14.5" />
+      <point x="178.5" y="54.0" />
+      <point x="218.0" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.ParticleVisualiser" target="org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.BlockVisualiser" target="org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject">
+      <point x="-31.75" y="-14.5" />
+      <point x="115.0" y="54.0" />
+      <point x="75.5" y="54.0" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser" target="org.galaxycraft.thezoq2.zoqrpg.visualisers.ParticleVisualiser">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon" target="org.galaxycraft.thezoq2.zoqrpg.boons.Boon">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.movers.BaseMover" target="org.galaxycraft.thezoq2.zoqrpg.movers.Mover">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.volumes.BaseVolume" target="org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.volumes.BaseVolume" target="org.galaxycraft.thezoq2.zoqrpg.volumes.Volume">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon" target="org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.BleedingBoon" target="org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover" target="org.galaxycraft.thezoq2.zoqrpg.movers.BaseMover">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="132.5" y="54.0" />
+  <SelectedNodes>
+    <node>org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException</OriginalElement>
+  <nodes>
+    <node x="-174.0" y="389.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException</node>
+    <node x="-333.0" y="305.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException</node>
+    <node x="91.0" y="445.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedEndOfDataChunkException</node>
+    <node x="416.0" y="374.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.DuplicateVariableNameException</node>
+    <node x="480.0" y="311.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedSpecialCharException</node>
+    <node x="-301.0" y="354.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException</node>
+    <node x="-396.0" y="257.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.ModuleCreationFailedException</node>
+    <node x="43.5" y="158.0">java.lang.Exception</node>
+    <node x="42.0" y="79.0">java.lang.Throwable</node>
+    <node x="248.0" y="229.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException</node>
+    <node x="245.0" y="415.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.MissmatchedBracketException</node>
+    <node x="39.0" y="0.0">java.io.Serializable</node>
+    <node x="-398.0" y="207.0">org.galaxycraft.thezoq2.zoqrpg.exceptions.StructContainsVariableException</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.lang.Throwable" target="java.io.Serializable">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedSpecialCharException" target="org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.StructContainsVariableException" target="java.lang.Exception">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException" target="java.lang.Exception">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="java.lang.Exception" target="java.lang.Throwable">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException" target="java.lang.Exception">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.DuplicateVariableNameException" target="org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException" target="java.lang.Exception">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException" target="java.lang.Exception">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.UnexpectedEndOfDataChunkException" target="org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.MissmatchedBracketException" target="org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.exceptions.ModuleCreationFailedException" target="java.lang.Exception">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="29.0" y="173.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
