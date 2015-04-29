@@ -19,8 +19,8 @@ public class VisualiserFactory extends StructBasedFactory<Visualiser>
 
     public Visualiser createVisualiser(String name) throws FactoryCreationFailedException
     {
-        StructValue sv = super.getStructByName(name);
-        String baseName = super.getBaseValueFromStruct(sv);
+        StructValue sv = getStructByName(name);
+        String baseName = getBaseValueFromStruct(sv);
 
         switch(baseName)
         {

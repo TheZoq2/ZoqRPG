@@ -7,6 +7,8 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 import java.util.HashSet;
 import java.util.List;
@@ -18,8 +20,8 @@ public class BlinkBoon extends BaseBoon
 {
     //The max distance the player can teleport with the boon
     //private static final int TELEPORT_DISTANCE = 10;
-    private static final int BASE_DISTANCE = 7;
-    private static final int STRENGTH_DISTANCE = 20;
+    private static final int DEFAULT_BASE_DISTANCE = 7;
+    private static final int DEFAULT_STRENGTH_DISTANCE = 20;
 
     //Effect data
     private static final float PARTICLE_OFFSET = 0;
@@ -31,9 +33,23 @@ public class BlinkBoon extends BaseBoon
     private static final int INDICATOR_SPEED = 3;
     private static final int INDICATOR_AMOUNT = 25;
 
-    private ItemStack itemInHand = null; //if the player does not have this item in their hand, the boon sould be removed
+    private ItemStack itemInHand = null; //if the player does not have this item in their hand, the boon should be removed
+
+    private int baseDistance = DEFAULT_BASE_DISTANCE;
+    private int maxDistance = DEFAULT_STRENGTH_DISTANCE;
     private int teleportDistance;
 
+    public BlinkBoon(StructValue sv)
+    {
+        baseDistance = (int) readValueWithFallback(sv, "baseDistance", new NumberValue(DEFAULT_BASE_DISTANCE), NumberValue.class).getValue();
+        maxDistance = (int) readValueWithFallback(sv, "baseDistance", new NumberValue(DEFAULT_BASE_DISTANCE), NumberValue.class).getValue();
+    }
+
+    private BlinkBoon(int baseDistance, int maxDistance)
+    {
+        this.baseDistance = baseDistance;
+        this.maxDistance = maxDistance;
+    }
 
     @Override
     public boolean onApply(Entity affectedEntity, float strength)
@@ -43,7 +59,7 @@ public class BlinkBoon extends BaseBoon
             return false;
         }
 
-        teleportDistance = (int)(BASE_DISTANCE + strength * STRENGTH_DISTANCE);
+        teleportDistance = (int)(baseDistance + strength * maxDistance - baseDistance);
 
         if(affectedEntity instanceof Player)
         {
@@ -51,7 +67,6 @@ public class BlinkBoon extends BaseBoon
             Player plr = (Player) affectedEntity;
 
             itemInHand = plr.getItemInHand();
-
         }
         else
         {
@@ -180,7 +195,7 @@ public class BlinkBoon extends BaseBoon
     @Override
     public Boon cloneBoon()
     {
-        return new BlinkBoon();
+        return new BlinkBoon(baseDistance, maxDistance);
     }
 
 }

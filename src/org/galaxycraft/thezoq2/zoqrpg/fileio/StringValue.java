@@ -1,7 +1,5 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
-
 /**
  * Created by frans on 3/31/15.
  */

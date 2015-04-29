@@ -28,12 +28,12 @@ public class FireVisualiser extends ParticleVisualiser
     public FireVisualiser(StructValue sv)
     {
         //Reading values from the struct
-        this.offsetX = (float)super.readValueWithFallback(sv, "offsetX", new NumberValue(OFFSET_X), NumberValue.class).getValue();
-        this.offsetY = (float)super.readValueWithFallback(sv, "offsetY", new NumberValue(OFFSET_Y), NumberValue.class).getValue();
-        this.offsetZ = (float)super.readValueWithFallback(sv, "offsetZ", new NumberValue(OFFSET_Z), NumberValue.class).getValue();
-        this.speed = (float)super.readValueWithFallback(sv, "speed", new NumberValue(OFFSET_Z), NumberValue.class).getValue();
-        this.particleAmount = (int)super.readValueWithFallback(sv, "particleAmount", new NumberValue(PARTICLE_AMOUNT), NumberValue.class).getValue();
-        this.particleRange = (int)super.readValueWithFallback(sv, "range", new NumberValue(PARTICLE_RANGE), NumberValue.class).getValue();
+        this.offsetX = (float) readValueWithFallback(sv, "offsetX", new NumberValue(OFFSET_X), NumberValue.class).getValue();
+        this.offsetY = (float) readValueWithFallback(sv, "offsetY", new NumberValue(OFFSET_Y), NumberValue.class).getValue();
+        this.offsetZ = (float) readValueWithFallback(sv, "offsetZ", new NumberValue(OFFSET_Z), NumberValue.class).getValue();
+        this.speed = (float) readValueWithFallback(sv, "speed", new NumberValue(OFFSET_Z), NumberValue.class).getValue();
+        this.particleAmount = (int) readValueWithFallback(sv, "particleAmount", new NumberValue(PARTICLE_AMOUNT), NumberValue.class).getValue();
+        this.particleRange = (int) readValueWithFallback(sv, "range", new NumberValue(PARTICLE_RANGE), NumberValue.class).getValue();
     }
 
     @Override

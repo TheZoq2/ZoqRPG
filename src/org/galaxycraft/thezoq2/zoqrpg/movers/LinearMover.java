@@ -24,7 +24,7 @@ public class LinearMover extends BaseMover
     {
         super(DEFAULT_SPEED);
 
-        super.setSpeed((float)super.readValueWithFallback(sv, "speed", new NumberValue(DEFAULT_SPEED), NumberValue.class).getValue());
+        setSpeed((float) readValueWithFallback(sv, "speed", new NumberValue(DEFAULT_SPEED), NumberValue.class).getValue());
 
         direction.normalize();
         this.direction = direction;
@@ -33,8 +33,8 @@ public class LinearMover extends BaseMover
     @Override
     public void update(long timePassed)
     {
-        Vector addVector = SpeedUtils.getCurrentMovementVector(this.direction, super.speed, timePassed);
+        Vector addVector = SpeedUtils.getCurrentMovementVector(this.direction, speed, timePassed);
         //Vector addVector = this.direction;
-        super.position.add(addVector);
+        position.add(addVector);
     }
 }

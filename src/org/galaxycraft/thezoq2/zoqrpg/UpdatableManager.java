@@ -6,9 +6,9 @@ import java.util.List;
 /**
  * Created by frans on 3/4/15.
  */
-public abstract class UpdatableManager
+public abstract class UpdatableManager<T extends Updatable>
 {
-    protected List<Updatable> activeUpdatables; //TODO: update to use wildcards
+    protected List<T> activeUpdatables;
 
     UpdatableManager()
     {
@@ -38,12 +38,12 @@ public abstract class UpdatableManager
         }
     }
 
-    public void add(Updatable updatable)
+    public void add(T updatable)
     {
         activeUpdatables.add(updatable);
     }
 
-    public List<Updatable> getUpdatableList()
+    public List<T> getUpdatableList()
     {
         return activeUpdatables;
     }

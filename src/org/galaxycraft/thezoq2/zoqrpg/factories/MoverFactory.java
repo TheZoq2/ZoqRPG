@@ -21,8 +21,11 @@ public class MoverFactory extends StructBasedFactory
 
     public Mover create(String name, Vector startPos, Vector direction) throws FactoryCreationFailedException
     {
-        StructValue sv = super.getStructByName(name);
-        String baseName = super.getBaseValueFromStruct(sv);
+        assert(startPos != null);
+        assert(direction != null);
+
+        StructValue sv = getStructByName(name);
+        String baseName = getBaseValueFromStruct(sv);
 
         switch (baseName)
         {

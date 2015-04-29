@@ -1,13 +1,12 @@
 package org.galaxycraft.thezoq2.zoqrpg;
 
-import org.bukkit.entity.Entity;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
-import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.InvalidDatafileException;
@@ -20,8 +19,6 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 
 /*
@@ -31,12 +28,13 @@ loading fails, the plugin disables itself so this is not an issue
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
 public class RPGMain extends JavaPlugin implements Listener
 {
-    private SpellManager spellManager;
-    private BoonManager boonManager;
+    //private SpellManager spellManager;
+    //private BoonManager boonManager;
+    private UpdatableManager<Spell> spellManager;
+    private UpdatableManager<Boon> boonManager;
 
     private SpellFactory spellFactory;
 
-    //TODO: Move config loading to separate method
     @Override
     public void onEnable()
     {
@@ -58,6 +56,68 @@ public class RPGMain extends JavaPlugin implements Listener
 
         FileManager.createPluginFoler();
 
+        loadSpellConfig();
+    }
+
+
+    public void updateSpells(long timePassed)
+    {
+        spellManager.updateAll(timePassed);
+    }
+
+    public void updateBoons(long timePassed)
+    {
+        boonManager.updateAll(timePassed);
+    }
+
+    @EventHandler
+    public void onPlayerInteractEvent(PlayerInteractEvent event)
+    {
+        Player plr = event.getPlayer();
+        plr.sendMessage("Event");
+        //Run all the interract events on boons for the player
+        for(Boon boon : boonManager.getUpdatableList())
+        {
+            if (boon.getAffectedEntity() == plr)
+            {
+                if(!boon.onPlayerInterractEvent())
+                {
+                    event.setCancelled(true);
+                    return;
+                }
+            }
+        }
+
+        final Material FIRE_ITEM = Material.CARROT_ITEM;
+        final Material BLINK_ITEM = Material.ENDER_PEARL;
+
+        Material playerItemMat = plr.getItemInHand().getData().getItemType();
+        try
+        {
+            if(playerItemMat == FIRE_ITEM)
+            {
+                Spell spell = spellFactory.createSpell("fireball", plr);
+
+                spell.onCreate(boonManager);
+
+                spellManager.add(spell);
+            }
+            else if(playerItemMat == BLINK_ITEM)
+            {
+                Spell spell = spellFactory.createSpell("blink", plr);
+
+                spell.onCreate(boonManager);
+
+                spellManager.add(spell);
+            }
+        } catch (FactoryCreationFailedException e)
+        {
+            e.printStackTrace();
+        }
+   }
+
+    private void loadSpellConfig()
+    {
         boolean configsLoaded = false;
         try(FileReader fr = FileManager.getFileReader("spells"))
         {
@@ -101,7 +161,7 @@ public class RPGMain extends JavaPlugin implements Listener
         } catch (NoSuchVariableException e)
         {
             getLogger().log(Level.SEVERE, "Failed to load spell file, struct " + e.getStructPath() + " does not cotain "
-                        + e.getVarName());
+                    + e.getVarName());
             e.printStackTrace();
         }
 
@@ -111,54 +171,4 @@ public class RPGMain extends JavaPlugin implements Listener
             getServer().getPluginManager().disablePlugin(this);
         }
     }
-
-    public void updateSpells(long timePassed)
-    {
-        spellManager.updateAll(timePassed);
-    }
-
-    public void updateBoons(long timePassed)
-    {
-        boonManager.updateAll(timePassed);
-    }
-
-    @EventHandler
-    public void onPlayerInteractEvent(PlayerInteractEvent event)
-    {
-        Player plr = event.getPlayer();
-        plr.sendMessage("Event");
-        //Run all the interract events on boons for the player
-        for(Boon boon : boonManager.getBoonList())
-        {
-            if (boon.getAffectedEntity() == plr)
-            {
-                if(!boon.onPlayerInterractEvent())
-                {
-                    event.setCancelled(true);
-                    return;
-                }
-            }
-        }
-
-        Vector direction = plr.getLocation().getDirection();
-
-        boolean useFire = true; //Demo only, change to true if you want to test the fire spell
-        if(useFire)
-        {
-            try
-            {
-                Spell spell = spellFactory.createSpell("fireball", plr);
-
-                spell.onCreate(boonManager);
-
-                spellManager.addSpell(spell);
-            } catch (FactoryCreationFailedException e)
-            {
-                e.printStackTrace();
-            }
-        }
-        else
-        {
-        }
-   }
 }

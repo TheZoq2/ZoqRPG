@@ -21,8 +21,8 @@ public class VolumeFactory extends StructBasedFactory<Volume>
 
     public Volume createVolume(String name) throws FactoryCreationFailedException
     {
-        StructValue sv = super.getStructByName(name);
-        String baseName = super.getBaseValueFromStruct(sv);
+        StructValue sv = getStructByName(name);
+        String baseName = getBaseValueFromStruct(sv);
 
         switch(baseName)
         {

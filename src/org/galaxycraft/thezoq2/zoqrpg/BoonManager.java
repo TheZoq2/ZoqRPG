@@ -2,15 +2,12 @@ package org.galaxycraft.thezoq2.zoqrpg;
 
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by frans on 3/4/15.
  */
-public class BoonManager extends UpdatableManager
+public class BoonManager extends UpdatableManager<Boon>
 {
-    public void addBoon(Boon boon)
+    /*public void addBoon(Boon boon)
     {
         activeUpdatables.add(boon);
     }
@@ -26,4 +23,5 @@ public class BoonManager extends UpdatableManager
 
         return result;
     }
+    */
 }

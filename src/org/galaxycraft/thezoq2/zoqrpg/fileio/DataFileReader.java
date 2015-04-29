@@ -246,7 +246,7 @@ public class DataFileReader
         {
             String singleChar = finalString.substring(i,i+1);
 
-            if(singleChar.matches("^.*[^a-zA-Z0-9 .].*$"))
+            if(singleChar.matches("^.*[^a-zA-Z0-9 ._].*$"))
             {
                 firstChar = i;
                 break;

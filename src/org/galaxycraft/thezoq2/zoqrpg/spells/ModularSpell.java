@@ -9,7 +9,6 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.ModuleCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup;
-import org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
@@ -39,14 +38,6 @@ public class ModularSpell extends BaseSpell
     public ModularSpell(Location startPos, Entity caster, SpellFactoryGroup sfg, StructValue spellStruct) throws ModuleCreationFailedException, WrongDatatypeException, NoSuchVariableException
     {
         super(startPos, caster);
-
-        //Finding the data from the struct
-        //This will throw no such variable exceptions that can be caught by the factory later and terminate the
-        //creation of the spell
-        DataValue boonVar = spellStruct.getVariableByName("boon");
-        DataValue visualVar = spellStruct.getVariableByName("visualiser");
-        DataValue moverVar = spellStruct.getVariableByName("mover");
-        DataValue volumeVar = spellStruct.getVariableByName("volume");
 
         //TODO: Possibly remove duplicate code
         //Get the data from the variables
@@ -94,7 +85,7 @@ public class ModularSpell extends BaseSpell
         visualiser.update();
 
         //Recalculating the center position
-        Vector newCenter = super.startPos.toVector();
+        Vector newCenter = startPos.toVector();
         newCenter.add(mover.getPosition());
         Vector currentPos = startPos.add(mover.getPosition()).toVector();
         //volume.setCenter(newCenter);
@@ -106,13 +97,13 @@ public class ModularSpell extends BaseSpell
         for(Entity entity : affectedEntities)
         {
             //TODO check if caster is entity in a better way
-            if(entity != super.caster)
+            if(entity != caster)
             {
                 Boon newBoon = appliedBoon.cloneBoon();
 
                 newBoon.onApply(entity, appliedBoon.getStrength());
 
-                super.boonManager.addBoon(newBoon);
+                boonManager.add(newBoon);
 
                 System.out.println("Added boon");
             }

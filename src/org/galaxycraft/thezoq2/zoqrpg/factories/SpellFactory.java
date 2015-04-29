@@ -6,6 +6,7 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.ModuleCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
+import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSelfSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 
@@ -31,33 +32,39 @@ public class SpellFactory extends StructBasedFactory
 
     public Spell createSpell(String name, Entity caster) throws FactoryCreationFailedException
     {
-        StructValue sv = super.getStructByName(name);
-        String baseName = super.getBaseValueFromStruct(sv);
+        assert(caster != null);
 
-        switch(baseName)
+        StructValue sv = getStructByName(name);
+        String baseName = getBaseValueFromStruct(sv);
+
+        try
         {
-            case "modular":
+            switch(baseName)
             {
-                try
+                case "modular":
                 {
                     return new ModularSpell(caster.getLocation(), caster, sfg, sv);
-                } catch (NoSuchVariableException e)
+                }
+                case "modularSelf":
                 {
-                    throw new FactoryCreationFailedException("Module: " + e.getVarName() + " did not exist in "
-                            + e.getStructPath());
-                } catch (WrongDatatypeException e)
+                    return new ModularSelfSpell(sv, caster, sfg);
+                }
+                default:
                 {
-                    throw new FactoryCreationFailedException("Module name " + e.getVarPath() + " needs to be a string");
-                } catch (ModuleCreationFailedException e)
-                {
-                    //TODO: More precise error
-                    throw new FactoryCreationFailedException("Modular spell creation failed: " + e.getFactoryFailReason());
+                    throw new FactoryCreationFailedException("Base: " + baseName + " is not a valid spell base");
                 }
             }
-            default:
-            {
-                throw new FactoryCreationFailedException("Base: " + baseName + " is not a valid spell base");
-            }
+        }catch (NoSuchVariableException e)
+        {
+            throw new FactoryCreationFailedException("Module: " + e.getVarName() + " did not exist in "
+                    + e.getStructPath() + " when creating basename");
+        } catch (WrongDatatypeException e)
+        {
+            throw new FactoryCreationFailedException("Module name " + e.getVarPath() + " needs to be a string when creating " + baseName);
+        } catch (ModuleCreationFailedException e)
+        {
+            //TODO: More precise error
+            throw new FactoryCreationFailedException("Modular spell creation failed: " + e.getFactoryFailReason() + " when creating " + baseName);
         }
     }
 }

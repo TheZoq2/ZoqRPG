@@ -1,5 +1,6 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
+import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
@@ -20,8 +21,10 @@ public final class BoonFactory extends StructBasedFactory<Boon>
 
     public Boon createBoon(String name) throws FactoryCreationFailedException
     {
-        StructValue sv = super.getStructByName(name);
-        String baseName = super.getBaseValueFromStruct(sv);
+        assert(name != null);
+
+        StructValue sv = getStructByName(name);
+        String baseName = getBaseValueFromStruct(sv);
 
         switch(baseName)
         {
@@ -29,8 +32,11 @@ public final class BoonFactory extends StructBasedFactory<Boon>
             {
                 return new BurningBoon(sv);
             }
+            case "blink":
+            {
+                return new BlinkBoon(sv);
+            }
             default:
-                //TODO: Make more specific?
                 throw new FactoryCreationFailedException("Base name: " + baseName + " is not a valid base boon");
         }
     }

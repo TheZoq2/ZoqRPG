@@ -30,9 +30,9 @@ public class SphereVolume extends BaseVolume
     {
         super(DEFAULT_RADIUS);
 
-        this.radius = (float) super.readValueWithFallback(sv, "radius", new NumberValue(DEFAULT_RADIUS), NumberValue.class).getValue();
+        this.radius = (float) readValueWithFallback(sv, "radius", new NumberValue(DEFAULT_RADIUS), NumberValue.class).getValue();
 
-        super.setSize(radius);
+        setSize(radius);
     }
 
     @Override

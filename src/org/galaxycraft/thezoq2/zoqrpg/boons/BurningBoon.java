@@ -33,8 +33,8 @@ public class BurningBoon extends BaseBoon
     public BurningBoon(StructValue sv)
     {
         //Attempt to read specific values from the struct
-        minBurnTime = (long) super.readValueWithFallback(sv, "minBurnTime", new NumberValue(DEFAULT_MIN_BURN_TIME), NumberValue.class).getValue();
-        maxBurnTime = (long) super.readValueWithFallback(sv, "maxBurnTime", new NumberValue(DEFAULT_MAX_BURN_TIME), NumberValue.class).getValue();
+        minBurnTime = (long) readValueWithFallback(sv, "minBurnTime", new NumberValue(DEFAULT_MIN_BURN_TIME), NumberValue.class).getValue();
+        maxBurnTime = (long) readValueWithFallback(sv, "maxBurnTime", new NumberValue(DEFAULT_MAX_BURN_TIME), NumberValue.class).getValue();
     }
 
     @Override

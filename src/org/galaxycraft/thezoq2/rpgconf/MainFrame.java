@@ -1,5 +1,6 @@
 package org.galaxycraft.thezoq2.rpgconf;
 
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.*;
 import java.awt.*;
@@ -20,30 +21,32 @@ public class MainFrame
 
     private ConfigCodeArea codeArea;
 
-    /*private AbstractAction addStructAction = new AbstractAction("Add struct")
+    private AbstractAction saveButton = new AbstractAction()
     {
         {
-            putValue(SHORT_DESCRIPTION, "Add a struct at the cursor");
+            putValue(SHORT_DESCRIPTION, "Save the current file");
             putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_S));
         }
+
         @Override
-        public void actionPerformed(ActionEvent event)
+        public void actionPerformed(ActionEvent actionEvent)
         {
-            addStruct();
+            System.out.println("Saving is not implemented");
         }
     };
-    private AbstractAction addVarAction = new AbstractAction("Add variable")
+    private AbstractAction loadButton = new AbstractAction()
     {
         {
-            putValue(SHORT_DESCRIPTION, "Add a variable at the cursor");
-            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_V));
+            putValue(SHORT_DESCRIPTION, "Load a new file");
+            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_O));
         }
+
         @Override
-        public void actionPerformed(ActionEvent event)
+        public void actionPerformed(ActionEvent actionEvent)
         {
-            addVariable();
+            System.out.println("Saving is not implemented");
         }
-    };*/
+    };
 
     public MainFrame(final ConfigCode code, StructXMLReader xmlReader)
     {
@@ -129,6 +132,7 @@ public class MainFrame
 
         final JMenuBar menuBar = new JMenuBar();
         menuBar.add(file);
+        menuBar.add(Box.createHorizontalGlue());
         frame.setJMenuBar(menuBar);
     }
 

@@ -3,7 +3,6 @@ package org.galaxycraft.thezoq2.zoqrpg.visualisers;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.galaxycraft.thezoq2.zoqrpg.FlyingBlock;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
@@ -28,7 +27,7 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser
         currentBlocks = new ArrayList<>();
         lastBlocks = new ArrayList<>();
 
-        String blockName = super.readValueWithFallback(sv, "block", new StringValue(DEFAULT_MATERIAL), StringValue.class).getValue();
+        String blockName = readValueWithFallback(sv, "block", new StringValue(DEFAULT_MATERIAL), StringValue.class).getValue();
 
         material = Material.getMaterial(blockName);
 

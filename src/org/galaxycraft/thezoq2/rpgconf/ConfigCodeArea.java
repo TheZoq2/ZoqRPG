@@ -15,12 +15,12 @@ public class ConfigCodeArea extends JTextArea implements CodeUpdateListener
 
         this.code = code;
 
-        super.setText(code.toString());
+        setText(code.toString());
     }
 
     @Override
     public void onCodeUpdate()
     {
-        super.setText(code.toString());
+        setText(code.toString());
     }
 }
