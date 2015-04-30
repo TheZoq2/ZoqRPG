@@ -3,6 +3,7 @@ package org.galaxycraft.thezoq2.zoqrpg.visualisers;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.galaxycraft.thezoq2.Clonable;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
@@ -14,7 +15,7 @@ import java.util.logging.Level;
 /**
  * Created by frans on 25/04/15.
  */
-public class BlockVisualiser extends StructBasedObject implements Visualiser
+public class BlockVisualiser extends StructBasedObject implements Visualiser<BlockVisualiser>
 {
     private static final String DEFAULT_MATERIAL = "SAND";
 
@@ -24,11 +25,9 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser
     private Material material;
     public BlockVisualiser(StructValue sv)
     {
-        currentBlocks = new ArrayList<>();
-        lastBlocks = new ArrayList<>();
+        init();
 
         String blockName = readValueWithFallback(sv, "block", new StringValue(DEFAULT_MATERIAL), StringValue.class).getValue();
-
         material = Material.getMaterial(blockName);
 
         if(material == null)
@@ -37,6 +36,19 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser
 
             Bukkit.getLogger().log(Level.WARNING, "Unknown material for block visualiser, falling back to default: " + DEFAULT_MATERIAL);
         }
+    }
+
+    public BlockVisualiser(Material material)
+    {
+        init();
+
+        this.material = material;
+    }
+
+    public void init()
+    {
+        currentBlocks = new ArrayList<>();
+        lastBlocks = new ArrayList<>();
     }
 
     @Override
@@ -58,5 +70,12 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser
 
         //Allocate a new array list for storing current blocks
         currentBlocks = new ArrayList<>();
+    }
+
+    //TODO: Implement
+    @Override
+    public BlockVisualiser clone()
+    {
+        return new BlockVisualiser(this.material);
     }
 }

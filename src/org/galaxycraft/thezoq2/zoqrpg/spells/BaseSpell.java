@@ -2,6 +2,7 @@ package org.galaxycraft.thezoq2.zoqrpg.spells;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.UpdatableManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 
@@ -20,10 +21,10 @@ public abstract class BaseSpell implements Spell
     protected UpdatableManager<Boon> boonManager = null;
 
 
-    BaseSpell(Location startPos, Entity caster)
+    BaseSpell()
     {
-        this.startPos = startPos;
-        this.caster = caster;
+        this.startPos = null;
+        this.caster = null;
     }
 
     @Override
@@ -32,6 +33,16 @@ public abstract class BaseSpell implements Spell
         this.boonManager = boonManager;
     }
 
+    @Override
+    public void setCaster(Entity caster)
+    {
+        this.caster = caster;
+    }
+    @Override
+    public void setStartPos(Location startPos)
+    {
+        this.startPos = startPos;
+    }
 
     @Override
     public boolean isDone()
@@ -44,4 +55,7 @@ public abstract class BaseSpell implements Spell
     {
         return caster;
     }
+
+    @Override
+    public abstract BaseSpell clone();
 }

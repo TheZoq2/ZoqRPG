@@ -28,17 +28,29 @@ public class ModularSpell extends BaseSpell
     private Boon appliedBoon;
 
 
-    public ModularSpell(Location startPos, Entity caster, Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
+    public ModularSpell(Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
     {
-        super(startPos, caster);
+        super.setCaster(caster);
+        super.setStartPos(startPos);
 
         createSpell(mover, volume, appliedBoon, visualiser);
     }
 
     public ModularSpell(Location startPos, Entity caster, SpellFactoryGroup sfg, StructValue spellStruct) throws ModuleCreationFailedException, WrongDatatypeException, NoSuchVariableException
     {
-        super(startPos, caster);
+        super.setCaster(caster);
+        super.setStartPos(startPos);
 
+        createFromStructValue(spellStruct, sfg);
+    }
+
+    public ModularSpell(StructValue sv, SpellFactoryGroup sfg) throws NoSuchVariableException, ModuleCreationFailedException, WrongDatatypeException
+    {
+        createFromStructValue(sv, sfg);
+    }
+
+    private void createFromStructValue(StructValue spellStruct, SpellFactoryGroup sfg) throws WrongDatatypeException, NoSuchVariableException, ModuleCreationFailedException
+    {
         //TODO: Possibly remove duplicate code
         //Get the data from the variables
         //Throws wrong datatype exceptions which do the same thing as the variable lookup
@@ -56,13 +68,21 @@ public class ModularSpell extends BaseSpell
         try
         {
             this.appliedBoon = sfg.getBoonFactory().createBoon(boonName);
-            this.mover = sfg.getMoverFactory().create(moverName, caster.getLocation().toVector(), caster.getLocation().getDirection());
+            this.mover = sfg.getMoverFactory().create(moverName);
             this.visualiser = sfg.getVisualiserFactory().createVisualiser(visualName);
             this.volume = sfg.getVolumeFactory().createVolume(volumeName);
         } catch (FactoryCreationFailedException e)
         {
             throw new ModuleCreationFailedException(e);
         }
+    }
+
+    @Override
+    public void setCaster(Entity caster)
+    {
+        super.setCaster(caster);
+
+        this.mover.setDirection(caster.getLocation().getDirection());
     }
 
     private void createSpell(Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
@@ -99,9 +119,9 @@ public class ModularSpell extends BaseSpell
             //TODO check if caster is entity in a better way
             if(entity != caster)
             {
-                Boon newBoon = appliedBoon.cloneBoon();
+                Boon newBoon = appliedBoon.clone();
 
-                newBoon.onApply(entity, appliedBoon.getStrength());
+                newBoon.onApply(entity, 1); //1 is strength. TODO: Implement
 
                 boonManager.add(newBoon);
 
@@ -124,5 +144,12 @@ public class ModularSpell extends BaseSpell
     public void onEnd()
     {
 
+    }
+
+    //TODO: Implement
+    @Override
+    public ModularSpell clone()
+    {
+        return new ModularSpell(this.mover.clone(), this.volume.clone(), this.appliedBoon.clone(), this.visualiser.clone());
     }
 }

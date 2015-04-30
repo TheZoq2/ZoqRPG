@@ -17,6 +17,7 @@ public class VisualiserFactory extends StructBasedFactory<Visualiser>
         super(baseStruct);
     }
 
+
     public Visualiser createVisualiser(String name) throws FactoryCreationFailedException
     {
         StructValue sv = getStructByName(name);
@@ -35,5 +36,12 @@ public class VisualiserFactory extends StructBasedFactory<Visualiser>
             default:
                 throw new FactoryCreationFailedException(baseName + " is not a valid base for a visualiser");
         }
+    }
+
+    //TODO: Implement
+    @Override
+    protected Visualiser createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
+    {
+        return null;
     }
 }

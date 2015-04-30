@@ -85,8 +85,8 @@ public class BurningBoon extends BaseBoon
     }
 
     @Override
-    public Boon cloneBoon()
+    public BurningBoon clone()
     {
-        return new BurningBoon(this.maxBurnTime, this.minBurnTime);
+        return new BurningBoon(this.minBurnTime, this.maxBurnTime);
     }
 }

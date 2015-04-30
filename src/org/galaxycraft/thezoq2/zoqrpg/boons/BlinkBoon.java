@@ -175,11 +175,12 @@ public class BlinkBoon extends BaseBoon
             //Getting the target block
             Location targetLoc = getTeleportTargetPos();
 
-            targetLoc.setDirection(affectedEntity.getLocation().getDirection());
 
             //If the player can be teleported
             if (targetLoc != null)
             {
+                targetLoc.setDirection(affectedEntity.getLocation().getDirection());
+
                 affectedEntity.teleport(targetLoc);
 
                 done = true;
@@ -189,11 +190,12 @@ public class BlinkBoon extends BaseBoon
             }
         }
 
-        return true;
+        //While the blink boon is active, the player shouldn't be able to cast new spells.
+        return false;
     }
 
     @Override
-    public Boon cloneBoon()
+    public BlinkBoon clone()
     {
         return new BlinkBoon(baseDistance, maxDistance);
     }

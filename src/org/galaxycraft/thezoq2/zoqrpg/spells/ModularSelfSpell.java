@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.spells;
 
 import org.bukkit.entity.Entity;
+import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.UpdatableManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
@@ -18,17 +19,20 @@ public class ModularSelfSpell extends BaseSpell
 {
     private Boon appliedBoon;
 
-    public ModularSelfSpell(Entity caster, Boon appliedBoon)
+    //Create a spell from a struct value
+    public ModularSelfSpell(StructValue sv, SpellFactoryGroup sfg) throws NoSuchVariableException, ModuleCreationFailedException, WrongDatatypeException
     {
-        super(caster.getLocation(), caster);
+        createFromStructValue(sv, sfg);
+    }
 
+    //Used by the clone method to create a copy of this spell
+    private ModularSelfSpell(Boon appliedBoon)
+    {
         this.appliedBoon = appliedBoon;
     }
 
-    public ModularSelfSpell(StructValue sv, Entity caster, SpellFactoryGroup sfg) throws WrongDatatypeException, NoSuchVariableException, ModuleCreationFailedException
+    private void createFromStructValue(StructValue sv, SpellFactoryGroup sfg) throws WrongDatatypeException, NoSuchVariableException, ModuleCreationFailedException
     {
-        super(caster.getLocation(), caster);
-
         String boonName = sv.getVariableOfTypeByName("boon", StringValue.class).getValue();
 
         try
@@ -46,9 +50,9 @@ public class ModularSelfSpell extends BaseSpell
         super.onCreate(boonManager);
 
         //Cloning the boon and applying it to the caster
-        Boon boon = appliedBoon.cloneBoon();
+        Boon boon = appliedBoon.clone();
 
-        boon.onApply(caster, boon.getStrength());
+        boon.onApply(caster, 1); //1 is strength //TODO: change
 
         boonManager.add(boon);
 
@@ -64,5 +68,12 @@ public class ModularSelfSpell extends BaseSpell
     @Override
     public void onEnd()
     {
+    }
+
+    //TODO: implement
+    @Override
+    public ModularSelfSpell clone()
+    {
+        return new ModularSelfSpell(this.appliedBoon);
     }
 }

@@ -26,6 +26,7 @@ public class SphereVolume extends BaseVolume
         this.radius = size;
     }
 
+
     public SphereVolume(StructValue sv)
     {
         super(DEFAULT_RADIUS);
@@ -103,5 +104,12 @@ public class SphereVolume extends BaseVolume
     public List<Vector> getRandomPositionsInVolume(Vector center, float density)
     {
         return new ArrayList<>();
+    }
+
+    //TODO: Implement
+    @Override
+    public SphereVolume clone()
+    {
+        return new SphereVolume(this.size);
     }
 }

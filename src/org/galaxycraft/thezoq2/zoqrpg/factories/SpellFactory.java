@@ -1,10 +1,8 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.bukkit.entity.Entity;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.ModuleCreationFailedException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
-import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
+import org.galaxycraft.thezoq2.Clonable;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.*;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSelfSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
@@ -19,7 +17,7 @@ ThrowInsideCatchBlock...:
     Where this happens, I can still get the information I would need from the exception from the rest of the code.
     The factory class thows a more general exception.
 */
-public class SpellFactory extends StructBasedFactory
+public class SpellFactory extends StructBasedFactory<Spell>
 {
 
     private SpellFactoryGroup sfg;
@@ -28,13 +26,34 @@ public class SpellFactory extends StructBasedFactory
     {
         super(baseStruct);
         this.sfg = sfg;
+
+        createTemplateObjects();
     }
 
     public Spell createSpell(String name, Entity caster) throws FactoryCreationFailedException
     {
         assert(caster != null);
 
-        StructValue sv = getStructByName(name);
+        Spell spell;
+        try
+        {
+            spell = super.createObject(name);
+
+            spell.setCaster(caster);
+            spell.setStartPos(caster.getLocation());
+        } catch (NoSuchTemplateObjectException e)
+        {
+            throw new FactoryCreationFailedException("No spell named " + e.getName() + " exists");
+        }
+
+        spell.setCaster(caster);
+
+        return spell;
+    }
+
+    @Override
+    protected Spell createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
+    {
         String baseName = getBaseValueFromStruct(sv);
 
         try
@@ -43,11 +62,11 @@ public class SpellFactory extends StructBasedFactory
             {
                 case "modular":
                 {
-                    return new ModularSpell(caster.getLocation(), caster, sfg, sv);
+                    return new ModularSpell(sv, sfg);
                 }
                 case "modularSelf":
                 {
-                    return new ModularSelfSpell(sv, caster, sfg);
+                    return new ModularSelfSpell(sv, sfg);
                 }
                 default:
                 {

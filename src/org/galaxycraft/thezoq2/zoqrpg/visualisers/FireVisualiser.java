@@ -36,9 +36,26 @@ public class FireVisualiser extends ParticleVisualiser
         this.particleRange = (int) readValueWithFallback(sv, "range", new NumberValue(PARTICLE_RANGE), NumberValue.class).getValue();
     }
 
+    private FireVisualiser(float offsetX, float offsetY, float offsetZ, float speed, int particleAmount, int particleRange)
+    {
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
+        this.offsetZ = offsetZ;
+        this.speed = speed;
+        this.particleAmount = particleAmount;
+        this.particleRange = particleRange;
+    }
+
     @Override
     public void showLocation(Location loc)
     {
         ParticleEffect.FLAME.display(offsetX, offsetY, offsetZ, speed, particleAmount, loc, particleRange);
+    }
+
+    //TODO: Implement
+    @Override
+    public FireVisualiser clone()
+    {
+        return new FireVisualiser(offsetX, offsetY, offsetZ, speed, particleAmount, particleRange);
     }
 }

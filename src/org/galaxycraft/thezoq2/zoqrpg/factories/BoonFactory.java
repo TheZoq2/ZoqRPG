@@ -40,4 +40,11 @@ public final class BoonFactory extends StructBasedFactory<Boon>
                 throw new FactoryCreationFailedException("Base name: " + baseName + " is not a valid base boon");
         }
     }
+
+    //TODO: Implement
+    @Override
+    protected Boon createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
+    {
+        return null;
+    }
 }

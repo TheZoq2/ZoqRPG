@@ -19,6 +19,7 @@ public class VolumeFactory extends StructBasedFactory<Volume>
         super(baseStruct);
     }
 
+
     public Volume createVolume(String name) throws FactoryCreationFailedException
     {
         StructValue sv = getStructByName(name);
@@ -33,5 +34,12 @@ public class VolumeFactory extends StructBasedFactory<Volume>
             default:
                 throw new FactoryCreationFailedException(baseName + " is not a valid volume base");
         }
+    }
+
+    //TODO: Implement
+    @Override
+    protected Volume createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
+    {
+        return null;
     }
 }

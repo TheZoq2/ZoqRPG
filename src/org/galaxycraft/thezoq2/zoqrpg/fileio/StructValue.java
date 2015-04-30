@@ -5,6 +5,7 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.StructContainsVariableException
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class StructValue extends BaseDataValue
@@ -52,5 +53,24 @@ public class StructValue extends BaseDataValue
         //This warning is wrong, the statement above does check if the cast will work
         //noinspection unchecked
         return (T)val;
+    }
+
+    public <T extends DataValue> Map<String, T> getAllVariablesOfType(Class<T> type)
+    {
+        Map<String, T> result = new HashMap<>();
+
+        for(String key : values.keySet())
+        {
+            DataValue value = values.get(key);
+
+            //Checking if the variable is what we are looking for
+            if(value.getClass().equals(type))
+            {
+                //Adding it to the list of variables
+                result.put(key, (T) value);
+            }
+        }
+
+        return result;
     }
 }

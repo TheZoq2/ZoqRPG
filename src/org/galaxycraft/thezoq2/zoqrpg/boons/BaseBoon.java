@@ -23,11 +23,6 @@ public abstract class BaseBoon extends StructBasedObject implements Boon
     }
 
     @Override
-    public float getStrength()
-    {
-        return this.strength;
-    }
-    @Override
     public Entity getAffectedEntity()
     {
         return affectedEntity;
@@ -57,4 +52,6 @@ public abstract class BaseBoon extends StructBasedObject implements Boon
         }
     }
 
+    @Override
+    public abstract BaseBoon clone();
 }

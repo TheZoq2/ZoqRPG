@@ -1,10 +1,18 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
+import org.bukkit.Bukkit;
+import org.galaxycraft.thezoq2.Clonable;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
+import org.galaxycraft.thezoq2.zoqrpg.utils.GlobalConfig;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * Created by frans on 4/10/15.
@@ -12,20 +20,23 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 
 //TODO: Make factories load their content on reload instead of every time it is used. This will prevent the current console spam
-public abstract class StructBasedFactory<T>
+public abstract class StructBasedFactory<T extends Clonable>
 {
     private static final String BASE_VAR_NAME = "base";
 
     protected StructValue baseStruct;
 
+    protected Map<String, T> objectTemplates;
+
     protected StructBasedFactory(StructValue baseStruct)
     {
         this.baseStruct = baseStruct;
+
+        this.objectTemplates = new HashMap<>();
     }
 
     protected StructValue getStructByName(String name) throws FactoryCreationFailedException
     {
-        //TODO: Possibly foce lowercase. More user friendlynesssss
         //Get the struct with the specified name
         try
         {
@@ -58,5 +69,38 @@ public abstract class StructBasedFactory<T>
         }
     }
 
+    protected void createTemplateObjects()
+    {
+        Map<String, StructValue> objectStructs = baseStruct.getAllVariablesOfType(StructValue.class);
 
+        for(String key : objectStructs.keySet())
+        {
+            T createdObject = null;
+            try
+            {
+                createdObject = createObjectFromStruct(objectStructs.get(key));
+
+                objectTemplates.put(key, createdObject);
+            } catch (FactoryCreationFailedException e)
+            {
+                Bukkit.getLogger().log(Level.WARNING, "Failed to create object template. " + e.getReason());
+            }
+
+        }
+    }
+
+    //Creates a cloned version of the object in the list if such an object exists, if not, an exception is thrown
+    protected T createObject(String name) throws NoSuchTemplateObjectException
+    {
+        if(objectTemplates.containsKey(name))
+        {
+            return (T) objectTemplates.get(name).clone();
+        }
+        else
+        {
+            throw new NoSuchTemplateObjectException(name);
+        }
+    }
+
+    protected abstract T createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException;
 }

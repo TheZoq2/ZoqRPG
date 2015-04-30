@@ -9,6 +9,7 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 public abstract class BaseMover extends StructBasedObject implements Mover
 {
     protected Vector position;
+    protected Vector direction;
 
     protected float speed;
 
@@ -30,8 +31,17 @@ public abstract class BaseMover extends StructBasedObject implements Mover
     }
 
     @Override
+    public void setDirection(Vector direction)
+    {
+        this.direction = direction;
+    }
+
+    @Override
     public Vector getPosition()
     {
         return position;
     }
+
+    @Override
+    public abstract BaseMover clone();
 }

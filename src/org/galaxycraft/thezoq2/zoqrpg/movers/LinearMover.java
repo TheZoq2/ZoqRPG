@@ -10,31 +10,38 @@ public class LinearMover extends BaseMover
 {
     private final static float DEFAULT_SPEED = 1;
 
-    private Vector direction;
-
-    public LinearMover(float speed, Vector direction)
+    public LinearMover(float speed)
     {
         super(speed);
 
-        direction.normalize();
-        this.direction = direction;
+        super.direction = new Vector(0,0,0);
     }
 
-    public LinearMover(StructValue sv, Vector startPos, Vector direction)
+    public LinearMover(StructValue sv)
     {
         super(DEFAULT_SPEED);
 
         setSpeed((float) readValueWithFallback(sv, "speed", new NumberValue(DEFAULT_SPEED), NumberValue.class).getValue());
 
-        direction.normalize();
-        this.direction = direction;
+        super.direction = new Vector(0,0,0);
     }
+
+
 
     @Override
     public void update(long timePassed)
     {
+        assert(direction != null); //If this assertion is triggered, it means that the mover did not recieve a direction
+        //before being updated. This needs to be handled by the factory creating it
+
         Vector addVector = SpeedUtils.getCurrentMovementVector(this.direction, speed, timePassed);
         //Vector addVector = this.direction;
         position.add(addVector);
+    }
+
+    @Override
+    public LinearMover clone()
+    {
+        return new LinearMover(speed);
     }
 }
