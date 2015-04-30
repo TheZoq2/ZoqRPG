@@ -53,5 +53,5 @@ public abstract class BaseBoon extends StructBasedObject implements Boon
     }
 
     @Override
-    public abstract BaseBoon clone();
+    public abstract BaseBoon cloneObject();
 }

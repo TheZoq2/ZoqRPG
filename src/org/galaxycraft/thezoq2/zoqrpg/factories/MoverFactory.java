@@ -6,8 +6,6 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
 
-import java.util.Map;
-
 /**
  * Created by frans on 14/04/15.
  */
@@ -30,7 +28,7 @@ public class MoverFactory extends StructBasedFactory<Mover>
 
         if(objectTemplates.containsKey(name))
         {
-            Mover mover = objectTemplates.get(name).clone();
+            Mover mover = objectTemplates.get(name).cloneObject();
 
             mover.setDirection(direction);
             return mover;
@@ -44,7 +42,7 @@ public class MoverFactory extends StructBasedFactory<Mover>
     {
         if(objectTemplates.containsKey(name))
         {
-            Mover mover = objectTemplates.get(name).clone();
+            Mover mover = objectTemplates.get(name).cloneObject();
 
             return mover;
         }

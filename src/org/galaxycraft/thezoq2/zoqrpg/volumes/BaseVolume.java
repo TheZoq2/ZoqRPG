@@ -32,5 +32,5 @@ public abstract class BaseVolume extends StructBasedObject implements Volume
         return this.center;
     }*/
 
-    public abstract BaseVolume clone();
+    public abstract BaseVolume cloneObject();
 }

@@ -40,7 +40,7 @@ public class LinearMover extends BaseMover
     }
 
     @Override
-    public LinearMover clone()
+    public LinearMover cloneObject()
     {
         return new LinearMover(speed);
     }

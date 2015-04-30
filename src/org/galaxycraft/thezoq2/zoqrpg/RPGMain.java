@@ -74,7 +74,6 @@ public class RPGMain extends JavaPlugin implements Listener
     public void onPlayerInteractEvent(PlayerInteractEvent event)
     {
         Player plr = event.getPlayer();
-        plr.sendMessage("Event");
         //Run all the interract events on boons for the player
         for(Boon boon : boonManager.getUpdatableList())
         {

@@ -1,10 +1,10 @@
 package org.galaxycraft.thezoq2.zoqrpg.boons;
 
 import org.bukkit.entity.Entity;
-import org.galaxycraft.thezoq2.Clonable;
+import org.galaxycraft.thezoq2.zoqrpg.CloneableObject;
 import org.galaxycraft.thezoq2.zoqrpg.Updatable;
 
-public interface Boon <T extends Boon> extends Clonable<T>, Updatable
+public interface Boon extends CloneableObject, Updatable
 {
     boolean onApply(Entity affectedEntity, float strength);
 
@@ -25,5 +25,5 @@ public interface Boon <T extends Boon> extends Clonable<T>, Updatable
     boolean onPlayerInterractEvent();
 
     @Override
-    T clone();
+    Boon cloneObject();
 }

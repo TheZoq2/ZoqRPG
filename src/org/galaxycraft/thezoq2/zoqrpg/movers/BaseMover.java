@@ -43,5 +43,5 @@ public abstract class BaseMover extends StructBasedObject implements Mover
     }
 
     @Override
-    public abstract BaseMover clone();
+    public abstract BaseMover cloneObject();
 }

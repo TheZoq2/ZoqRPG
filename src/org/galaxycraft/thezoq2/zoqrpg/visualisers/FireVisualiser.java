@@ -54,7 +54,7 @@ public class FireVisualiser extends ParticleVisualiser
 
     //TODO: Implement
     @Override
-    public FireVisualiser clone()
+    public FireVisualiser cloneObject()
     {
         return new FireVisualiser(offsetX, offsetY, offsetZ, speed, particleAmount, particleRange);
     }

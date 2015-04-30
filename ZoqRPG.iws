@@ -35,103 +35,97 @@
         <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/RPGMain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModularSelfSpell.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/spells/ModularSelfSpell.java">
+      <file leaf-file-name="NoSuchTemplateObjectException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/exceptions/NoSuchTemplateObjectException.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding>
-                <element signature="e#2362#2363#0" expanded="true" />
-                <element signature="e#2423#2424#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BoonFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/BoonFactory.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="65" selection-start-line="45" selection-start-column="65" selection-end-line="45" selection-end-column="65" />
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BlinkBoon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BlinkBoon.java">
+      <file leaf-file-name="StructBasedFactory.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/StructBasedFactory.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="199" column="19" selection-start-line="199" selection-start-column="19" selection-end-line="199" selection-end-column="19" />
-              <folding>
-                <element signature="e#5920#5921#0" expanded="true" />
-                <element signature="e#5983#5984#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Spell.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/spells/Spell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4293578">
-              <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Boon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/Boon.java">
+      <file leaf-file-name="UpdatableManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/UpdatableManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+              <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Updatable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/Updatable.java">
+      <file leaf-file-name="StructValue.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/fileio/StructValue.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+              <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseBoon.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BaseBoon.java">
+      <file leaf-file-name="ConfigCode.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/rpgconf/ConfigCode.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.033027522">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LivingEntity.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/spigot-1.8.jar!/org/bukkit/entity/LivingEntity.class">
+      <file leaf-file-name="Volume.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/Volume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.88">
-              <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpellFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/SpellFactory.java">
+      <file leaf-file-name="Visualiser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/Visualiser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlockVisualiser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/BlockVisualiser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mover.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/movers/Mover.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -155,8 +149,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/rpgconf/Main.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/rpgconf/ConfigCode.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/rpgconf/ConfigCodeArea.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BleedingBoon.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/utils/GlobalConfig.java" />
@@ -178,21 +170,16 @@
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/exceptions/WrongDatatypeException.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/fileio/DataFileReader.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/Clonable.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/Boon.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/movers/Mover.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/fileio/StructValue.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/RPGMain.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/VolumeFactory.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/VisualiserFactory.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/BoonFactory.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/FlyingBlock.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/Volume.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/BaseVolume.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BaseBoon.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BurningBoon.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/ParticleVisualiser.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/movers/BaseMover.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/exceptions/NoSuchTemplateObjectException.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/MoverFactory.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/movers/LinearMover.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/spells/BaseSpell.java" />
@@ -200,12 +187,19 @@
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/spells/ModularSelfSpell.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/SpellFactory.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/spells/ModularSpell.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/Visualiser.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/SphereVolume.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/BlockVisualiser.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/FireVisualiser.java" />
-        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/StructBasedFactory.java" />
         <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BlinkBoon.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/Clonable.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/CloneableObject.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/Boon.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/movers/Mover.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/Volume.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/Visualiser.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/BlockVisualiser.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/RPGMain.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/exceptions/NoSuchTemplateObjectException.java" />
+        <option value="$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/StructBasedFactory.java" />
       </list>
     </option>
   </component>
@@ -265,8 +259,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -296,24 +288,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZoqRPG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ZoqRPG" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="thezoq2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -572,6 +546,8 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -606,11 +582,11 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.galaxycraft.thezoq2.zoqrpg" />
       <recent name="org.galaxycraft.thezoq2.visualisers" />
       <recent name="org.galaxycraft.thezoq2.volumes" />
       <recent name="org.galaxycraft.thezoq2.movers" />
       <recent name="org.galaxycraft.thezoq2.boons" />
-      <recent name="org.galaxycraft.thezoq2.spells" />
     </key>
   </component>
   <component name="RunManager" selected="Remote.Unnamed">
@@ -847,7 +823,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="2924" y="42" width="900" height="1022" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -856,24 +832,24 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295688" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3970588" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3970588" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983193" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4211111" sideWeight="0.48432055" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32906765" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983193" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20031713" sideWeight="0.5156794" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.394958" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.394958" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32983193" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -906,14 +882,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/rpgconf/ConfigCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/rpgconf/StructXMLReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1018,14 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/UpdatableManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/exceptions/WrongDatatypeException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1046,14 +1006,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.52">
           <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/fileio/StructValue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -1096,14 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/Clonable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/BaseVolume.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1125,25 +1069,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/movers/Mover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/exceptions/NoSuchTemplateObjectException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
-          <folding>
-            <element signature="e#397#398#0" expanded="true" />
-            <element signature="e#424#425#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1184,33 +1109,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/Visualiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/Volume.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/SphereVolume.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="42" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
-          <folding>
-            <element signature="e#2561#2562#0" expanded="true" />
-            <element signature="e#2611#2612#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/movers/LinearMover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1235,25 +1133,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/BlockVisualiser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="49" selection-start-line="78" selection-start-column="49" selection-end-line="78" selection-end-column="49" />
-          <folding>
-            <element signature="e#2020#2021#0" expanded="true" />
-            <element signature="e#2077#2078#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/StructBasedFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="0" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/SpellFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1267,15 +1146,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding>
-            <element signature="e#2362#2363#0" expanded="true" />
-            <element signature="e#2423#2424#0" expanded="true" />
+            <element signature="e#2310#2311#0" expanded="true" />
+            <element signature="e#2371#2372#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/spigot-1.8.jar!/org/bukkit/entity/LivingEntity.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.88">
+        <state vertical-scroll-proportion="0.0">
           <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
           <folding />
         </state>
@@ -1285,22 +1164,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.28">
           <caret line="122" column="20" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/RPGMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/Boon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1321,29 +1184,136 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BaseBoon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BlinkBoon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="199" column="19" selection-start-line="199" selection-start-column="19" selection-end-line="199" selection-end-column="19" />
           <folding>
-            <element signature="e#5920#5921#0" expanded="true" />
-            <element signature="e#5983#5984#0" expanded="true" />
+            <element signature="e#5926#5927#0" expanded="true" />
+            <element signature="e#5989#5990#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/spells/Spell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4293578">
-          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="42" selection-start-line="12" selection-start-column="42" selection-end-line="12" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/SphereVolume.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="112" column="42" selection-start-line="112" selection-start-column="42" selection-end-line="112" selection-end-column="42" />
+          <folding>
+            <element signature="e#2567#2568#0" expanded="true" />
+            <element signature="e#2617#2618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/BaseBoon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="68" selection-start-line="6" selection-start-column="68" selection-end-line="6" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/CloneableObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/boons/Boon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/movers/Mover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/volumes/Volume.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/Visualiser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/visualisers/BlockVisualiser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="62" column="41" selection-start-line="62" selection-start-column="41" selection-end-line="62" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/RPGMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/exceptions/NoSuchTemplateObjectException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/factories/StructBasedFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/UpdatableManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/zoqrpg/fileio/StructValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/galaxycraft/thezoq2/rpgconf/ConfigCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.033027522">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
           <folding />
         </state>
       </provider>

@@ -19,5 +19,5 @@ public abstract class ParticleVisualiser extends StructBasedObject implements Vi
     }
 
     @Override
-    public abstract ParticleVisualiser clone();
+    public abstract ParticleVisualiser cloneObject();
 }

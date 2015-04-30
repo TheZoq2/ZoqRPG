@@ -119,7 +119,7 @@ public class ModularSpell extends BaseSpell
             //TODO check if caster is entity in a better way
             if(entity != caster)
             {
-                Boon newBoon = appliedBoon.clone();
+                Boon newBoon = appliedBoon.cloneObject();
 
                 newBoon.onApply(entity, 1); //1 is strength. TODO: Implement
 
@@ -148,8 +148,8 @@ public class ModularSpell extends BaseSpell
 
     //TODO: Implement
     @Override
-    public ModularSpell clone()
+    public ModularSpell cloneObject()
     {
-        return new ModularSpell(this.mover.clone(), this.volume.clone(), this.appliedBoon.clone(), this.visualiser.clone());
+        return new ModularSpell(this.mover.cloneObject(), this.volume.cloneObject(), this.appliedBoon.cloneObject(), this.visualiser.cloneObject());
     }
 }

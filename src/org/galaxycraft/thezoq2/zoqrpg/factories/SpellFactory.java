@@ -1,7 +1,6 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.bukkit.entity.Entity;
-import org.galaxycraft.thezoq2.Clonable;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.*;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSelfSpell;

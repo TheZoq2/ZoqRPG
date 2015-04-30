@@ -3,7 +3,6 @@ package org.galaxycraft.thezoq2.zoqrpg.visualisers;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.galaxycraft.thezoq2.Clonable;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
@@ -15,7 +14,7 @@ import java.util.logging.Level;
 /**
  * Created by frans on 25/04/15.
  */
-public class BlockVisualiser extends StructBasedObject implements Visualiser<BlockVisualiser>
+public class BlockVisualiser extends StructBasedObject implements Visualiser
 {
     private static final String DEFAULT_MATERIAL = "SAND";
 
@@ -61,7 +60,7 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser<Blo
     public void update()
     {
         //Remove the last blocks
-        for(FlyingBlock block : currentBlocks)
+        for(FlyingBlock block : lastBlocks)
         {
             block.remove();
         }
@@ -74,7 +73,7 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser<Blo
 
     //TODO: Implement
     @Override
-    public BlockVisualiser clone()
+    public BlockVisualiser cloneObject()
     {
         return new BlockVisualiser(this.material);
     }

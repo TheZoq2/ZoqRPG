@@ -5,7 +5,7 @@ package org.galaxycraft.thezoq2.zoqrpg.exceptions;
  */
 public class NoSuchTemplateObjectException extends Exception
 {
-    private String name;
+    private final String name;
 
     public NoSuchTemplateObjectException(String name)
     {

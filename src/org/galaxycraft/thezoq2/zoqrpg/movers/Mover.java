@@ -1,12 +1,12 @@
 package org.galaxycraft.thezoq2.zoqrpg.movers;
 
 import org.bukkit.util.Vector;
-import org.galaxycraft.thezoq2.Clonable;
+import org.galaxycraft.thezoq2.zoqrpg.CloneableObject;
 
 /**
  * Created by frans on 02/03/15.
  */
-public interface Mover <T extends Mover> extends Clonable<T>
+public interface Mover extends CloneableObject
 {
     void setSpeed(float speed);
     float getSpeed();
@@ -18,5 +18,5 @@ public interface Mover <T extends Mover> extends Clonable<T>
     Vector getPosition(); //Returns the position relative to the starting position (0,0,0)
 
     @Override
-    T clone();
+    Mover cloneObject();
 }

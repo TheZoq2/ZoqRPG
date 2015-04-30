@@ -195,7 +195,7 @@ public class BlinkBoon extends BaseBoon
     }
 
     @Override
-    public BlinkBoon clone()
+    public BlinkBoon cloneObject()
     {
         return new BlinkBoon(baseDistance, maxDistance);
     }

@@ -57,5 +57,5 @@ public abstract class BaseSpell implements Spell
     }
 
     @Override
-    public abstract BaseSpell clone();
+    public abstract BaseSpell cloneObject();
 }

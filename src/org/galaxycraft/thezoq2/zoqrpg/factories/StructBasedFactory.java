@@ -1,14 +1,13 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.bukkit.Bukkit;
-import org.galaxycraft.thezoq2.Clonable;
+import org.galaxycraft.thezoq2.zoqrpg.CloneableObject;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
-import org.galaxycraft.thezoq2.zoqrpg.utils.GlobalConfig;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,7 @@ import java.util.logging.Level;
 
 
 //TODO: Make factories load their content on reload instead of every time it is used. This will prevent the current console spam
-public abstract class StructBasedFactory<T extends Clonable>
+public abstract class StructBasedFactory<T extends CloneableObject>
 {
     private static final String BASE_VAR_NAME = "base";
 
@@ -75,10 +74,9 @@ public abstract class StructBasedFactory<T extends Clonable>
 
         for(String key : objectStructs.keySet())
         {
-            T createdObject = null;
             try
             {
-                createdObject = createObjectFromStruct(objectStructs.get(key));
+                T createdObject = createObjectFromStruct(objectStructs.get(key));
 
                 objectTemplates.put(key, createdObject);
             } catch (FactoryCreationFailedException e)
@@ -94,7 +92,7 @@ public abstract class StructBasedFactory<T extends Clonable>
     {
         if(objectTemplates.containsKey(name))
         {
-            return (T) objectTemplates.get(name).clone();
+            return (T) objectTemplates.get(name).cloneObject();
         }
         else
         {

@@ -1,7 +1,5 @@
 package org.galaxycraft.thezoq2.zoqrpg.spells;
 
-import org.bukkit.entity.Entity;
-import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.UpdatableManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
@@ -50,7 +48,7 @@ public class ModularSelfSpell extends BaseSpell
         super.onCreate(boonManager);
 
         //Cloning the boon and applying it to the caster
-        Boon boon = appliedBoon.clone();
+        Boon boon = appliedBoon.cloneObject();
 
         boon.onApply(caster, 1); //1 is strength //TODO: change
 
@@ -72,7 +70,7 @@ public class ModularSelfSpell extends BaseSpell
 
     //TODO: implement
     @Override
-    public ModularSelfSpell clone()
+    public ModularSelfSpell cloneObject()
     {
         return new ModularSelfSpell(this.appliedBoon);
     }
