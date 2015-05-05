@@ -24,8 +24,8 @@ public class SpellFactory extends StructBasedFactory<Spell>
     public SpellFactory(StructValue baseStruct, SpellFactoryGroup sfg)
     {
         super(baseStruct);
-        this.sfg = sfg;
 
+        this.sfg = sfg;
         createTemplateObjects();
     }
 

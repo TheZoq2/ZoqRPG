@@ -67,6 +67,7 @@ public class MainFrame
     public MainFrame(final ConfigCode code, StructXMLReader xmlReader)
     {
         this.frame = new JFrame();
+        this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //codeArea = new JTextArea(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT);
         codeArea = new ConfigCodeArea(TEXT_AREA_WIDTH, TEXT_AREA_HEIGHT, code);
 
@@ -159,6 +160,33 @@ public class MainFrame
         menuBar.add(Box.createHorizontalGlue());
         frame.setJMenuBar(menuBar);
     }
+
+    private AbstractAction saveButton = new AbstractAction()
+    {
+        {
+            putValue(SHORT_DESCRIPTION, "Save the current file");
+            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_S));
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent)
+        {
+            System.out.println("Saving is not implemented");
+        }
+    };
+    private AbstractAction loadButton = new AbstractAction()
+    {
+        {
+            putValue(SHORT_DESCRIPTION, "Load a new file");
+            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_O));
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent actionEvent)
+        {
+            System.out.println("Saving is not implemented");
+        }
+    };
 
     private void addTextAtCursor(String text)
     {

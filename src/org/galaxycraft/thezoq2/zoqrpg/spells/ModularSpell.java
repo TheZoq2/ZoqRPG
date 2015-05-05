@@ -68,7 +68,7 @@ public class ModularSpell extends BaseSpell
         try
         {
             this.appliedBoon = sfg.getBoonFactory().createBoon(boonName);
-            this.mover = sfg.getMoverFactory().create(moverName);
+            this.mover = sfg.getMoverFactory().createMover(moverName);
             this.visualiser = sfg.getVisualiserFactory().createVisualiser(visualName);
             this.volume = sfg.getVolumeFactory().createVolume(volumeName);
         } catch (FactoryCreationFailedException e)

@@ -87,7 +87,7 @@ public class RPGMain extends JavaPlugin implements Listener
             }
         }
 
-        final Material FIRE_ITEM = Material.CARROT_ITEM;
+        final Material FIRE_ITEM = Material.BLAZE_ROD;
         final Material BLINK_ITEM = Material.ENDER_PEARL;
 
         Material playerItemMat = plr.getItemInHand().getData().getItemType();

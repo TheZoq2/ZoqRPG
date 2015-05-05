@@ -2,9 +2,11 @@ package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
+import org.galaxycraft.thezoq2.zoqrpg.movers.SinMover;
 
 /**
  * Creates new Mover objects from StructValues. Extends the StructBasedFactory for common methods used to create objects
@@ -22,38 +24,38 @@ public class MoverFactory extends StructBasedFactory<Mover>
     public MoverFactory(StructValue moverStruct)
     {
         super(moverStruct);
-
         createTemplateObjects();
     }
 
-
-    public Mover create(String name, Vector direction) throws FactoryCreationFailedException
+    public Mover createMover(String name, Vector direction) throws FactoryCreationFailedException
     {
         assert(direction != null);
+        assert(name != null);
 
-        if(objectTemplates.containsKey(name))
+        try
         {
-            Mover mover = objectTemplates.get(name).cloneObject();
+            Mover mover = createObject(name);
 
             mover.setDirection(direction);
-            return mover;
-        }
-        else
-        {
-            throw new FactoryCreationFailedException("Failed to create mover, no mover named " + name);
-        }
-    }
-    public Mover create(String name) throws FactoryCreationFailedException
-    {
-        if(objectTemplates.containsKey(name))
-        {
-            Mover mover = objectTemplates.get(name).cloneObject();
 
             return mover;
-        }
-        else
+        } catch (NoSuchTemplateObjectException e)
         {
-            throw new FactoryCreationFailedException("Failed to create mover, no mover named " + name);
+            throw new FactoryCreationFailedException("Failed to create mover, no mover named " + e.getName());
+        }
+    }
+    public Mover createMover(String name) throws FactoryCreationFailedException
+    {
+        assert(name != null);
+
+        try
+        {
+            Mover mover = createObject(name);
+
+            return mover;
+        } catch (NoSuchTemplateObjectException e)
+        {
+            throw new FactoryCreationFailedException("Failed to create mover, no mover named " + e.getName());
         }
     }
 
@@ -69,6 +71,12 @@ public class MoverFactory extends StructBasedFactory<Mover>
                 LinearMover lm = new LinearMover(sv);
 
                 return lm;
+            }
+            case "wobbly":
+            {
+                SinMover mover = new SinMover(sv);
+
+                return mover;
             }
             default:
             {

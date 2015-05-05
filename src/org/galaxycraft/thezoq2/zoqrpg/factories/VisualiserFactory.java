@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.BlockVisualiser;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser;
@@ -24,12 +25,27 @@ public class VisualiserFactory extends StructBasedFactory<Visualiser>
     public VisualiserFactory(StructValue baseStruct)
     {
         super(baseStruct);
+        createTemplateObjects();
     }
 
 
     public Visualiser createVisualiser(String name) throws FactoryCreationFailedException
     {
-        StructValue sv = getStructByName(name);
+        assert(name != null);
+
+        try
+        {
+            return createObject(name);
+        } catch (NoSuchTemplateObjectException e)
+        {
+            throw new FactoryCreationFailedException("Failed to create visualiser, no visualiser named " + e.getName());
+        }
+    }
+
+    //TODO: Implement
+    @Override
+    protected Visualiser createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
+    {
         String baseName = getBaseValueFromStruct(sv);
 
         switch(baseName)
@@ -45,12 +61,5 @@ public class VisualiserFactory extends StructBasedFactory<Visualiser>
             default:
                 throw new FactoryCreationFailedException(baseName + " is not a valid base for a visualiser");
         }
-    }
-
-    //TODO: Implement
-    @Override
-    protected Visualiser createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
-    {
-        return null;
     }
 }
