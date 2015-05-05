@@ -32,6 +32,7 @@ public abstract class StructBasedFactory<T extends CloneableObject>
         this.baseStruct = baseStruct;
 
         this.objectTemplates = new HashMap<>();
+
     }
 
     protected StructValue getStructByName(String name) throws FactoryCreationFailedException
@@ -90,6 +91,8 @@ public abstract class StructBasedFactory<T extends CloneableObject>
     //Creates a cloned version of the object in the list if such an object exists, if not, an exception is thrown
     protected T createObject(String name) throws NoSuchTemplateObjectException
     {
+        assert(name != null);
+
         if(objectTemplates.containsKey(name))
         {
             return (T) objectTemplates.get(name).cloneObject();

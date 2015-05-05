@@ -4,6 +4,7 @@ import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
@@ -17,13 +18,27 @@ public final class BoonFactory extends StructBasedFactory<Boon>
     public BoonFactory(StructValue baseStruct)
     {
         super(baseStruct);
+        createTemplateObjects();
     }
 
     public Boon createBoon(String name) throws FactoryCreationFailedException
     {
         assert(name != null);
 
-        StructValue sv = getStructByName(name);
+        try
+        {
+            return createObject(name);
+        } catch (NoSuchTemplateObjectException e)
+        {
+            throw new FactoryCreationFailedException("Failed to create boon, no boon named " + e.getName());
+        }
+
+    }
+
+    //TODO: Implement
+    @Override
+    protected Boon createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
+    {
         String baseName = getBaseValueFromStruct(sv);
 
         switch(baseName)
@@ -39,12 +54,5 @@ public final class BoonFactory extends StructBasedFactory<Boon>
             default:
                 throw new FactoryCreationFailedException("Base name: " + baseName + " is not a valid base boon");
         }
-    }
-
-    //TODO: Implement
-    @Override
-    protected Boon createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
-    {
-        return null;
     }
 }

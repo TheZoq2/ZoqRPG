@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.factories;
 
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
+import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume;
 import org.galaxycraft.thezoq2.zoqrpg.volumes.Volume;
@@ -17,12 +18,25 @@ public class VolumeFactory extends StructBasedFactory<Volume>
     public VolumeFactory(StructValue baseStruct)
     {
         super(baseStruct);
+        createTemplateObjects();
     }
 
 
     public Volume createVolume(String name) throws FactoryCreationFailedException
     {
-        StructValue sv = getStructByName(name);
+        try
+        {
+            return super.createObject(name);
+        } catch (NoSuchTemplateObjectException e)
+        {
+            throw new FactoryCreationFailedException("Failed to create volume, no volume named " + e.getName());
+        }
+    }
+
+    //TODO: Implement
+    @Override
+    protected Volume createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
+    {
         String baseName = getBaseValueFromStruct(sv);
 
         switch(baseName)
@@ -34,12 +48,5 @@ public class VolumeFactory extends StructBasedFactory<Volume>
             default:
                 throw new FactoryCreationFailedException(baseName + " is not a valid volume base");
         }
-    }
-
-    //TODO: Implement
-    @Override
-    protected Volume createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
-    {
-        return null;
     }
 }
