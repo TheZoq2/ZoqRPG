@@ -47,8 +47,8 @@ public class RPGMain extends JavaPlugin implements Listener
         scheduler.scheduleSyncRepeatingTask(this, new RPGUpdateTask(this), 0L, 1L);
 
         //Initialising managers
-        spellManager = new SpellManager();
-        boonManager = new BoonManager();
+        spellManager = new UpdatableManager<>();
+        boonManager = new UpdatableManager<>();
 
         getServer().getPluginManager().registerEvents(this, this);
 

@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by frans on 3/4/15.
  */
-public abstract class UpdatableManager<T extends Updatable>
+ public class UpdatableManager<T extends Updatable>
 {
     protected List<T> activeUpdatables;
 
