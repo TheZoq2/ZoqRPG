@@ -7,7 +7,15 @@ import org.galaxycraft.thezoq2.zoqrpg.CloneableObject;
 import java.util.List;
 
 /**
- * Created by frans on 02/03/15.
+ * A volume is a representation of a group of blocks in the world. Volumes are used by the modular spell to affect a
+ * specific area of the world. Contains functions for returning all the entities inside the volume and all the blocks
+ * inside the volume
+ *
+ * Implements the cloneable interface to allow the creation of new Volumes ny cloning prexisting ones.
+ * @see CloneableObject
+ *
+ * New volumes should only be constructed by the VolumeFactory, if needed elsewhere, they should be cloned from
+ * prexsisting volumes.
  */
 public interface Volume extends CloneableObject
 {
@@ -21,7 +29,6 @@ public interface Volume extends CloneableObject
 
     List<Entity> getEntitiesInVolume(Vector center, List<Entity> allEntities);
     List<Vector> getBlocksInVolume(Vector center);
-    List<Vector> getRandomPositionsInVolume(Vector center, float density);
 
     @Override
     Volume cloneObject();

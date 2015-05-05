@@ -21,6 +21,10 @@ import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 import java.io.*;
 import java.util.logging.Level;
 
+
+/**
+ * Main class of the project. Loads all config files required and sets up all base objects for later use.
+ */
 /*
 This warning is thrown for instances that are set in the try statement for loading config files. If the config
 loading fails, the plugin disables itself so this is not an issue

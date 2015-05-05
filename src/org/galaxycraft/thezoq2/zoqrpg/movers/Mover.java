@@ -4,7 +4,17 @@ import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.CloneableObject;
 
 /**
- * Created by frans on 02/03/15.
+ * Interface for a module that keeps track of a position and changes that position in some direction every time it
+ * is updated. Movers have a general movement direction that needs to be specified before use aswell as a speed
+ * value which decides how fast it should move
+ *
+ * Creation of new movers should ideally only be done by the MoverFactory class. If a new mover needs to be
+ * created outside of the factory, it should be cloned from a prexisting mover
+ *
+ * Extends the CloneableObject interface to enable creation by cloning in the MoverFactory
+ *
+ * @see CloneableObject
+ * @see org.galaxycraft.thezoq2.zoqrpg.factories.MoverFactory
  */
 public interface Mover extends CloneableObject
 {

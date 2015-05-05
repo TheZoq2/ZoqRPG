@@ -3,7 +3,10 @@ package org.galaxycraft.thezoq2.zoqrpg.volumes;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 
 /**
- * Created by frans on 02/03/15.
+ * Base class implementing methods commonly used by Base volumes.
+ *
+ * Extends the StructBasedObject class to allow the creation of new volumes based on structs
+ * @see StructBasedObject
  */
 public abstract class BaseVolume extends StructBasedObject implements Volume
 {

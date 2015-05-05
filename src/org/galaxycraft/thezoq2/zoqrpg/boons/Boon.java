@@ -8,6 +8,10 @@ import org.galaxycraft.thezoq2.zoqrpg.Updatable;
  * A Boon can be applied to an entity in order to cause a lasting effect on that entity. The boon will do something to
  * the affected entity until it is removed.
  *
+ * Creation of new Boons should ideally only be done by the MoverFactory class. If a new mover needs to be
+ * created outside of the factory, it should be cloned from a prexisting Boon
+ * @see org.galaxycraft.thezoq2.zoqrpg.factories.BoonFactory
+ *
  * Extends the CloneableObject interface in order to allow factories to create new boons by cloning templates
  * @see CloneableObject
  *

@@ -6,7 +6,9 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
+ * Visualiser that shows a position as fire particles. All the heavy work is done by the ParticleVisualiser class
  *
+ * @see ParticleVisualiser
  */
 public class FireVisualiser extends ParticleVisualiser
 {

@@ -8,7 +8,18 @@ import org.galaxycraft.thezoq2.zoqrpg.UpdatableManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 
 /**
- * Created by frans on 03/03/15.
+ * Interface for spells which can be casted by an entity.
+ *
+ * Spells should only be constructed by the SpellFactory. If they need to be created outside the Factory, this should
+ * be done by cloning a preexisting spell.
+ * @see org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactory
+ *
+ * Extends the Updatable interface in order to allow the spell to persist over many server ticks
+ * @see Updatable
+ *
+ * Extends the ClonableObject interface in order to allow the spells to be cloned from template versions inside
+ * and outside the factory.
+ * @see CloneableObject
  */
 public interface Spell extends Updatable, CloneableObject
 {

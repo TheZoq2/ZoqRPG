@@ -1,7 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg;
 
 /**
- * Created by frans on 29/04/15.
+ * Interface for a class that can be cloned in order to create copies that behave identically to the cloned object.
  */
 public interface CloneableObject
 {

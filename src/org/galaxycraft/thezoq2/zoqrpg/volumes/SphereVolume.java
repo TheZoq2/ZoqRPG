@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by frans on 02/03/15.
+ * Volume that represents a sphere of blocks with a fixed radius.
+ *
+ * @see BaseVolume
+ * @see Volume
  */
 public class SphereVolume extends BaseVolume
 {

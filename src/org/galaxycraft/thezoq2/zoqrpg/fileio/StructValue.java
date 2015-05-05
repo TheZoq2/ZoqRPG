@@ -8,6 +8,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A DataValue which contains other DataValues stored as "variables".
+ * The DataValues are stored in a map that maps their name in the struct to the datavalue. Contains a bunch
+ * of different functions for returning specific variables.
+ *
+ * Extends BaseDataValue to inherit some general functions
+ *
+ * @see BaseDataValue
+ * @see DataValue
+ */
 public class StructValue extends BaseDataValue
 {
     private static final String TYPE_NAME = "struct";

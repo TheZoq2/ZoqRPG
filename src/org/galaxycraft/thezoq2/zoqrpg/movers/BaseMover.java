@@ -4,7 +4,9 @@ import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 
 /**
- * Created by frans on 03/03/15.
+ * Contains implementations of a bunch of functions common to most Movers
+ *
+ * @see Mover
  */
 public abstract class BaseMover extends StructBasedObject implements Mover
 {

@@ -3,7 +3,8 @@ package org.galaxycraft.thezoq2.zoqrpg.utils;
 import org.bukkit.util.Vector;
 
 /**
- * Created by frans on 3/4/15.
+ * Utitlity class that contains a couple of static functions for converting speeds to diffirent formats and based
+ * on diffirent parameters.
  */
 public final class SpeedUtils
 {

@@ -8,9 +8,14 @@ import org.galaxycraft.thezoq2.zoqrpg.utils.GlobalConfig;
 import java.util.logging.Level;
 
 /**
- * Base class for objects that are created from structs. Currently only contains one method which returns the
- * name of an object
+ * Base class for objects that are created from structs. Currently only contains one method which reads a variable from
+ * a StructValue, returns the value if it exists and if not, returns a default value passed to the function.
+ *
+ * @see DataValue
+ * @see StructValue
  */
+
+//TODO: Add StructValue as field, remove from function parameters
 public abstract class StructBasedObject
 {
     protected <T extends DataValue> T readValueWithFallback(StructValue sv, String name, T defaultValue, Class<T> datatype)

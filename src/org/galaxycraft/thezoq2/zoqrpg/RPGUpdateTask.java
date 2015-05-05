@@ -3,7 +3,10 @@ package org.galaxycraft.thezoq2.zoqrpg;
 import org.bukkit.scheduler.BukkitRunnable;
 
 /**
- * Created by frans on 08/02/15.
+ * Contains an update function that is run every server tick in order to keep doing things even if bukkit has not triggered
+ * any events.
+ *
+ * The main purpose of the function is to update all the Updatable objects in the main class.
  */
 public class RPGUpdateTask extends BukkitRunnable
 {

@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by frans on 3/4/15.
+ * Keeps track of a specific kind of updatable object.
+ *
+ * Has functions for updating all the tracked objects aswell as adding new objects to be tracked.
+ *
+ * @see Updatable
  */
  public class UpdatableManager<T extends Updatable>
 {

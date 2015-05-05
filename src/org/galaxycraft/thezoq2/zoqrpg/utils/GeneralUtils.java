@@ -2,7 +2,8 @@ package org.galaxycraft.thezoq2.zoqrpg.utils;
 
 
 /**
- * Created by frans on 05/03/15.
+ * Class containing static utility methods that can be used to do simple calculations that need to be done in many
+ * places around the code
  */
 public final class GeneralUtils
 {

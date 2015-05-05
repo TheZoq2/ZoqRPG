@@ -7,11 +7,16 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.utils.GeneralUtils;
 
 /**
+ * Boon which burns the entity that it is applied to for the specified amount of time. If the entity is extinguished
+ * before that by other means, such as water, the isDone function will return true and the manager should remove it.
  *
+ * Extends baseboon to inherit some useful functions from it.
+ *
+ * @see BaseBoon
+ * @see Boon
  */
 public class BurningBoon extends BaseBoon
 {
-    //TODO; make sure items don't burn. Done?
     //Constants that determine the way the boon behaves
     private static final long
             DEFAULT_MAX_BURN_TIME = 5000,

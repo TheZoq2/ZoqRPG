@@ -18,6 +18,16 @@ import org.galaxycraft.thezoq2.zoqrpg.volumes.Volume;
 import java.util.List;
 
 /**
+ * A spell which behaviour is determined by 4 diffirent modules. Each modular spell contains one of each of Boon, Mover,
+ * Visualiser and Volume which describes what it does.
+ *
+ * When the spell is cloned, so is the modules which means that the module factories are only required during the
+ * creation of the template.
+ *
+ * @see Boon
+ * @see Mover
+ * @see Visualiser
+ * @see Volume
  *
  */
 public class ModularSpell extends BaseSpell

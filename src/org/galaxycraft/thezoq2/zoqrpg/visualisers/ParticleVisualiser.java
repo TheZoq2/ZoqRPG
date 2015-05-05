@@ -5,7 +5,10 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
- * Created by frans on 25/04/15.
+ * Abstract class that contains a bunch of variables aswell as functions for setting those variables for displaying
+ * particle effects using darkblade12s particle effect library.
+ *
+ * @see com.darkblade12.particleeffect
  */
 public abstract class ParticleVisualiser extends StructBasedObject implements Visualiser
 {

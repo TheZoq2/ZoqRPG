@@ -11,7 +11,11 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
- * Created by frans on 3/9/15.
+ * Similar to ModularSpell except that it only has a Boon module which is immedietly applied to the caster
+ * of the spell
+ *
+ * @see Boon
+ * @see ModularSpell
  */
 public class ModularSelfSpell extends BaseSpell
 {

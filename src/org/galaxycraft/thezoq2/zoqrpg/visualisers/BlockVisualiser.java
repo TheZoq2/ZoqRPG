@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.logging.Level;
 
 /**
- * Created by frans on 25/04/15.
+ * Visualiser used to show a position as a floating block. Currently rendered in a bad way which shows
+ *  the witherskulls that it is sitting on.
  */
 public class BlockVisualiser extends StructBasedObject implements Visualiser
 {

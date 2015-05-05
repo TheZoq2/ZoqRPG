@@ -1,7 +1,9 @@
 package org.galaxycraft.thezoq2.zoqrpg.utils;
 
 /**
- * Created by frans on 23/04/15.
+ * Singleton that contains data that should be loaded from config files in the future and that is used in many places.
+ *
+ * Also contains a bunch of functions that do common tasks based on the config values.
  */
 public final class GlobalConfig
 {

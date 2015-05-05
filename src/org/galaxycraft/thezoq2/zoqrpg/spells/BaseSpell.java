@@ -7,7 +7,8 @@ import org.galaxycraft.thezoq2.zoqrpg.UpdatableManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 
 /**
- * Created by frans on 03/03/15.
+ * Basic implementation of the spell interface that contains some functions that are used by a lot of
+ * spells
  */
 public abstract class BaseSpell implements Spell
 {

@@ -5,7 +5,11 @@ import org.bukkit.Location;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
- * Created by frans on 5/5/15.
+ * Currently unused visualiser that looks like a cloud. All the heavy lifiting is done by the
+ * ParticleVisualiser class
+ *
+ * @see ParticleVisualiser
+ *
  */
 public class AirVisualiser extends ParticleVisualiser
 {

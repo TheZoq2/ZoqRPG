@@ -6,7 +6,10 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.utils.SpeedUtils;
 
 /**
- * Created by frans on 5/5/15.
+ * A mover that moves in a straight line with an added sine wave on the y Axis to achieve a wave effect.
+ *
+ * @see Mover
+ * @see BaseMover
  */
 public class SinMover extends BaseMover
 {

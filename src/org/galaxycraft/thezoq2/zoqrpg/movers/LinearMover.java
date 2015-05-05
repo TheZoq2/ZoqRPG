@@ -5,6 +5,13 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.utils.SpeedUtils;
 
+/**
+ * A mover which moves along in a single direction at a fixed speed. The speed is read from a StructValue.
+ *
+ * Extends BaseMover to inherit a basic implementation of some methods
+ *
+ * @see LinearMover
+ */
 
 public class LinearMover extends BaseMover
 {
