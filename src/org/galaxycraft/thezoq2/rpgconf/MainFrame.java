@@ -7,7 +7,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 
 /**
- * Created by frans on 25/04/15.
+ * Class that handles the GUI of the config editor. Contains a couple of buttons for updating a ConfigCode object
+ * aswell as a ConfigCodeArea for editing the code manually
+ *
+ * @see ConfigCode
+ * @See ConfigCodeArea
  */
 public class MainFrame
 {
@@ -21,7 +25,7 @@ public class MainFrame
 
     private ConfigCodeArea codeArea;
 
-    private AbstractAction saveButton = new AbstractAction()
+    private AbstractAction saveAction = new AbstractAction()
     {
         {
             putValue(SHORT_DESCRIPTION, "Save the current file");
@@ -34,7 +38,7 @@ public class MainFrame
             System.out.println("Saving is not implemented");
         }
     };
-    private AbstractAction loadButton = new AbstractAction()
+    private AbstractAction openAction = new AbstractAction()
     {
         {
             putValue(SHORT_DESCRIPTION, "Load a new file");
@@ -45,6 +49,18 @@ public class MainFrame
         public void actionPerformed(ActionEvent actionEvent)
         {
             System.out.println("Saving is not implemented");
+        }
+    };
+    private AbstractAction exitAction = new AbstractAction()
+    {
+        {
+            putValue(SHORT_DESCRIPTION, "Exit the program");
+            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_E));
+        }
+        @Override
+        public void actionPerformed(ActionEvent actionEvent)
+        {
+            System.exit(0); //Ugly
         }
     };
 
@@ -124,11 +140,19 @@ public class MainFrame
 
     private void createMenus()
     {
+        JMenuItem saveMenuItem = new JMenuItem("Save", KeyEvent.VK_S);
+        saveMenuItem.addActionListener(saveAction);
+        JMenuItem openMenuItem = new JMenuItem("Open", KeyEvent.VK_O);
+        openMenuItem.addActionListener(openAction);
+        JMenuItem exitMenuItem = new JMenuItem("Exit", KeyEvent.VK_E);
+        exitMenuItem.addActionListener(exitAction);
+
         final JMenu file = new JMenu("File");
-        file.add(new JMenuItem("Open", 'O'));
-        file.add(new JMenuItem("Save", 'S'));
+        file.add(openMenuItem);
+        file.add(saveMenuItem);
         file.addSeparator();
-        file.add(new JMenuItem("Exit"));
+        file.add(exitMenuItem);
+        file.setMnemonic(KeyEvent.VK_F);
 
         final JMenuBar menuBar = new JMenuBar();
         menuBar.add(file);

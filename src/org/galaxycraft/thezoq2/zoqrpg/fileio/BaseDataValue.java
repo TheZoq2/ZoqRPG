@@ -1,7 +1,9 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
 /**
- * Created by frans on 14/04/15.
+ * Contains functions commonly used by DataValue objects.
+ *
+ * @see DataValue
  */
 public abstract class BaseDataValue implements DataValue
 {

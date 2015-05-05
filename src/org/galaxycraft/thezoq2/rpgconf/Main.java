@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- * Created by frans on 25/04/15.
+ * Main class for the Configuration editor
  */
 public final class Main
 {

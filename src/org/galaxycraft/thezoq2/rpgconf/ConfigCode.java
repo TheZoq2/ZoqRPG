@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by frans on 26/04/15.
+ * Class that keeps track of and changes config file code.
+ *
+ * Implements DocumentListener to allow the code to be updated in a text area or similar
  */
 public class ConfigCode implements DocumentListener
 {
@@ -42,10 +44,10 @@ public class ConfigCode implements DocumentListener
         StringBuilder addedCode = new StringBuilder("");
         addedCode.append("name = \n");
         addedCode.append("{\n");
-        addedCode.append(struct);
+        addedCode.append(struct.getCode());
         addedCode.append("\n}\n");
 
-        code.insert(addIndex, addedCode.toString());
+        code.insert(addIndex, addedCode);
 
         notifyListeners();
     }

@@ -7,8 +7,13 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
- * Created by frans on 01/03/15.
+ * Creates new Boon objects from StructValues. Extends the StructBasedFactory for common methods used to create objects
+ * from structs.
+ *
+ * @see StructBasedFactory
+ * @see StructValue
  */
+
 @SuppressWarnings("UnnecessaryCodeBlock")
 //This warning comes from switch case statements.
 //I prefer to keep code blocks in the code because they make it easier to tell where a new case begins and ends.

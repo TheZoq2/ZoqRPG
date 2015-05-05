@@ -13,7 +13,11 @@ import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * Created by frans on 25/04/15.
+ * Class for reading an XML file that contains information about what module structs can be created and
+ * what variables those structs have. Parses an XML file and creates maps that contain lists of valid modules as
+ * struct prototypes.
+ *
+ * @see StructPrototype
  */
 public class StructXMLReader
 {

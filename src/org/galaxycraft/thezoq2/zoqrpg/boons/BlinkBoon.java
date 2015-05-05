@@ -14,7 +14,14 @@ import java.util.HashSet;
 import java.util.List;
 
 /**
- * Created by frans on 01/03/15.
+ * A boon that when applied to a player, allows that player to aim at a block and teleport to that block by
+ * right clicking. Also cancels any playerInterractEvents while the boon is active.
+ *
+ * The boon gets removed when the player switches the item they are holding.
+ *
+ * Extends the BaseBoon abstract class in order to inherit some useful functions
+ *
+ * @see BaseBoon
  */
 public class BlinkBoon extends BaseBoon
 {
@@ -79,6 +86,8 @@ public class BlinkBoon extends BaseBoon
     @Override
     public void update(long timePassed)
     {
+        assert(affectedEntity instanceof Player);
+
         if(affectedEntity instanceof Player)
         {
             Player plr = (Player) affectedEntity;
@@ -120,6 +129,8 @@ public class BlinkBoon extends BaseBoon
 
     private Location getTeleportTargetPos()
     {
+        assert(affectedEntity instanceof Player);
+
         if(affectedEntity instanceof Player)
         {
             Player plr = (Player) affectedEntity;

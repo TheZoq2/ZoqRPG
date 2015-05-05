@@ -3,7 +3,10 @@ package org.galaxycraft.thezoq2.zoqrpg.exceptions;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**
- * Created by frans on 4/9/15.
+ * Exception thrown by StructValue when a requested variable is not found within  the struct. The full "path" to
+ * the variable aswell as the name of the requested variable can be read using getStructPath and getVarName.
+ *
+ * @see StructValue
  */
 public class NoSuchVariableException extends Exception
 {

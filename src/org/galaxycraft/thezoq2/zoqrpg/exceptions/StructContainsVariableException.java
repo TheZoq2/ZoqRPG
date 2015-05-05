@@ -1,7 +1,10 @@
 package org.galaxycraft.thezoq2.zoqrpg.exceptions;
 
 /**
- * Created by frans on 4/9/15.
+ * Exception thrown by a StructValue when a variable with the same name that is being created already exists
+ * in the struct
+ *
+ * @see org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue
  */
 public class StructContainsVariableException extends Exception
 {

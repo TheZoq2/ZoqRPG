@@ -1,7 +1,8 @@
 package org.galaxycraft.thezoq2.zoqrpg.exceptions;
 
 /**
- * Created by frans on 4/20/15.
+ * Exception thrown when the factory fails to create an object. The reason for the creatuib failing is saved and
+ * can be read by calling getReason.
  */
 public class FactoryCreationFailedException extends Exception
 {

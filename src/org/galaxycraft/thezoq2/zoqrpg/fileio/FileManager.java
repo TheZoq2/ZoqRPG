@@ -3,7 +3,7 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
 import java.io.*;
 
 /**
- * Created by frans on 3/24/15.
+ * Utility class for loading and storing files in the correct location on the server
  */
 public final class FileManager
 {

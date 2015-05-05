@@ -3,9 +3,9 @@ package org.galaxycraft.thezoq2.zoqrpg.exceptions;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue;
 
 /**
- * Created by frans on 4/10/15.
+ * Exception thrown when a variable of a specific type was requested from a StructValue but the type of the found
+ * variable was not the expected type.
  */
-//TODO: Report struct path instead of just varname
 public class WrongDatatypeException extends Exception
 {
     private final DataValue variable;

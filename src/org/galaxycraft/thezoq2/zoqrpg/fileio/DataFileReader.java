@@ -10,7 +10,44 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * Created by frans on 3/24/15.
+ * Class that parses config files in my own format into a StructValue that contains all the variables in the file
+ *
+ * @see StructValue
+ *
+ * The file format is as follows:
+ *
+ * Any variable is defined by it's name, then an equals sign.
+    varName =
+ * It is case sensitive and because I was dumb when I wrote the parser, spaces are not read which means that
+    "var Name     = "
+ * is parsed as
+    "varName="
+ * A variable is a struct if the next character is a { and followed by a }. This means that in order to create a new struct, you would do this:
+ *
+    structName = {
+ 	    //Member variables
+    }
+ *
+ *
+ * A variable is treated as a number if the value can be parsed to a float and as a string if it can not. The end of the variable is marked by a semicolon.
+ *
+    aString=hello world; //Valid string, will be treated as helloworld because of whitespace removal
+
+    anotherString=123.215sticks; //can't be parsed to float
+
+    aNumber=123;
+    anotherNumber=123.215;
+ *
+    blink={ //struct containing following variables
+ 	    base=blink; //String
+ 	    distance=10; //Number
+
+ 	    memberStruct= //New struct inside struct
+ 	    {
+ 		    memberMemberVar = something;
+ 	    }
+    }
+ *
  */
 
 //TODO: Check for duplicate names

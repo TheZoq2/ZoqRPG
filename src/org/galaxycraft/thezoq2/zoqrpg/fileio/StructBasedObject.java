@@ -8,7 +8,8 @@ import org.galaxycraft.thezoq2.zoqrpg.utils.GlobalConfig;
 import java.util.logging.Level;
 
 /**
- * Created by frans on 23/04/15.
+ * Base class for objects that are created from structs. Currently only contains one method which returns the
+ * name of an object
  */
 public abstract class StructBasedObject
 {

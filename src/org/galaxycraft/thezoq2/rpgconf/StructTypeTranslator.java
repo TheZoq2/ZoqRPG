@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by frans on 26/04/15.
+ * Translates between the StructType enum and strings
+ *
+ * @see StructType
  */
 public final class StructTypeTranslator
 {

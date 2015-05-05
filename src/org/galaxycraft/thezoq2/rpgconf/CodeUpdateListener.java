@@ -1,7 +1,9 @@
 package org.galaxycraft.thezoq2.rpgconf;
 
 /**
- * Created by frans on 26/04/15.
+ * Interface for objects that need to know when a ConfigCode has been updated
+ *
+ * @see ConfigCode
  */
 public interface CodeUpdateListener
 {

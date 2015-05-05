@@ -4,6 +4,13 @@ import org.bukkit.entity.Entity;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
+/**
+ * Contains basic functions that are used by most boons. Also extends StructBased object in order to allow the
+ * creation of boons based on StructValues. Implements the Boon interface.
+ *
+ * @see StructBasedObject
+ * @see Boon
+ */
 public abstract class BaseBoon extends StructBasedObject implements Boon
 {
     protected Entity affectedEntity = null;

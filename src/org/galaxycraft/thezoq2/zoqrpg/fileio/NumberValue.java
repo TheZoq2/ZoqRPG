@@ -1,7 +1,12 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
 /**
- * Created by frans on 23/04/15.
+ * A DataValue that contains a double.
+ *
+ * Extends BaseDataValue to inherit basic implementation of methods commonly used by DataValues
+ *
+ * @see BaseDataValue
+ * @see DataValue
  */
 public class NumberValue extends BaseDataValue
 {
@@ -22,8 +27,6 @@ public class NumberValue extends BaseDataValue
         this.value = value;
     }
 
-    //Returns the double version of the value. Possibly make general function?
-    //TODO -""--?
     public double getValue()
     {
         return this.value;

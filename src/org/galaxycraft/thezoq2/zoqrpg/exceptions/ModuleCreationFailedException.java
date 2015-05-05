@@ -1,7 +1,10 @@
 package org.galaxycraft.thezoq2.zoqrpg.exceptions;
 
 /**
- * Created by frans on 23/04/15.
+ * Exception thrown by modular spells when one of the modules failed to create. The reason for failing is
+ * aquired from a FactoryCreationFailedException and can be read using getFactoryFailReason.
+ *
+ * @see FactoryCreationFailedException
  */
 public class ModuleCreationFailedException extends Exception
 {

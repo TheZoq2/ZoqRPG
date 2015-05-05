@@ -1,12 +1,13 @@
 package org.galaxycraft.thezoq2.zoqrpg.fileio;
 
 /**
- * Created by frans on 3/31/15.
+ * A DataValue containing a single string. Extends BaseDataValue to inherit some methods needed by DataValue
+ *
+ * @see DataValue
+ * @see BaseDataValue
  */
 public class StringValue extends BaseDataValue
 {
-    private final static String TYPE_NAME = "string";
-
     private String value = null;
 
     //TODO: Possibly make package protected

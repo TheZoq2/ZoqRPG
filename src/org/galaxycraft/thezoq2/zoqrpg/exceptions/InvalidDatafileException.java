@@ -1,7 +1,8 @@
 package org.galaxycraft.thezoq2.zoqrpg.exceptions;
 
 /**
- * Created by frans on 28/03/15.
+ * Base exception class that gets thrown when a datafile is missread. The exception message contains some
+ * info about what happned aswell as what file and line it happned on.
  */
 public class InvalidDatafileException extends Exception
 {

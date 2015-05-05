@@ -1,7 +1,7 @@
 package org.galaxycraft.thezoq2.rpgconf;
 
 /**
- * Created by frans on 26/04/15.
+ * Enum containing the diffirent possible types of module structs that can be created by the editor
  */
 public enum StructType
 {

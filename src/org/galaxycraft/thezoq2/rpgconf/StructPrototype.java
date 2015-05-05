@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by frans on 25/04/15.
+ * A prototype for a base spell module struct in a config file. Keeps track of all variables within the struct asweell
+ * as the base name. Also has a method for represeting the object as a string and as code.
  */
 public class StructPrototype
 {
@@ -26,8 +27,7 @@ public class StructPrototype
         this.additionalParameters.add(param);
     }
 
-    @Override
-    public String toString()
+    public String getCode()
     {
         StringBuilder sb = new StringBuilder();
 
@@ -42,5 +42,11 @@ public class StructPrototype
         }
 
         return sb.toString();
+    }
+
+    @Override
+    public String toString()
+    {
+        return baseName;
     }
 }

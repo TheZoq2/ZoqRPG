@@ -14,11 +14,13 @@ import java.util.Map;
 import java.util.logging.Level;
 
 /**
- * Created by frans on 4/10/15.
+ * Abstract class containing methods needed to propperly parse structs by factories aswell as functions for creating and
+ * cloning template objects that are created by factories.
+ *
+ * @see CloneableObject
  */
 
 
-//TODO: Make factories load their content on reload instead of every time it is used. This will prevent the current console spam
 public abstract class StructBasedFactory<T extends CloneableObject>
 {
     private static final String BASE_VAR_NAME = "base";

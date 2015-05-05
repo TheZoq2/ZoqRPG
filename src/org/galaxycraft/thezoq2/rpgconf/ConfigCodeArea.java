@@ -3,7 +3,10 @@ package org.galaxycraft.thezoq2.rpgconf;
 import javax.swing.*;
 
 /**
- * Created by frans on 26/04/15.
+ * Extension of JTextArea that implements the CodeUpldateListener interface to automatically update
+ * the content of the textarea whenever the code is changed
+ *
+ * @see CodeUpdateListener
  */
 public class ConfigCodeArea extends JTextArea implements CodeUpdateListener
 {
