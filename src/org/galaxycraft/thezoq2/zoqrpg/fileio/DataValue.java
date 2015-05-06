@@ -16,5 +16,9 @@ public interface DataValue
 
     void setParentStruct(StructValue parentStruct);
 
+    /**
+     * Returns the path to the variable within all structs
+     * @return
+     */
     String getFullPath();
 }

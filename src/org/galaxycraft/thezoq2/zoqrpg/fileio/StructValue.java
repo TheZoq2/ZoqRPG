@@ -27,6 +27,12 @@ public class StructValue extends BaseDataValue
         this.values = new HashMap<>();
     }
 
+    /**
+     * Add a new variable to the struct
+     * @param name name of the variable
+     * @param val value of the variable
+     * @throws StructContainsVariableException if there is a variable in the struct with the same name already.
+     */
     public void addVariable(String name, DataValue val) throws StructContainsVariableException
     {
         if(this.values.containsKey(name))
@@ -47,6 +53,15 @@ public class StructValue extends BaseDataValue
     }
 
 
+    /**
+     * Returns the variable with the specified name if it is the specified datatype
+     * @param name The name of the variable
+     * @param type class of variable to datatype, should be a subclass of DataValue
+     * @param <T>  the datatype of the variable
+     * @return The variable if it exists and is the right type
+     * @throws NoSuchVariableException if the variable doesn't exist
+     * @throws WrongDatatypeException if the variable is the wrong datatype
+     */
     public <T extends DataValue> T getVariableOfTypeByName(String name, Class<T> type) throws NoSuchVariableException, WrongDatatypeException
     {
         DataValue val = getVariableByName(name);
@@ -61,6 +76,12 @@ public class StructValue extends BaseDataValue
         return (T)val;
     }
 
+    /**
+     * Returns all the variables in the struct of a specific datatype along with their name
+     * @param type the class of the datatype to return
+     * @param <T> the datatype
+     * @return the map of variables
+     */
     public <T extends DataValue> Map<String, T> getAllVariablesOfType(Class<T> type)
     {
         Map<String, T> result = new HashMap<>();

@@ -22,11 +22,19 @@ public class StructPrototype
         this.baseName = baseName;
     }
 
+    /**
+     * Add an new variable to the struct
+     * @param param the name of the variable
+     */
     public void addParameter(String param)
     {
         this.additionalParameters.add(param);
     }
 
+    /**
+     * Return the code of the struct prototype
+     * @return
+     */
     public String getCode()
     {
         StringBuilder sb = new StringBuilder();

@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
@@ -178,9 +179,9 @@ public class BlinkBoon extends BaseBoon
     }
 
     @Override
-    public boolean onPlayerInterractEvent()
+    public boolean onPlayerInterractEvent(PlayerInteractEvent event)
     {
-        super.onPlayerInterractEvent();
+        super.onPlayerInterractEvent(event);
 
         if(affectedEntity instanceof Player)
         {

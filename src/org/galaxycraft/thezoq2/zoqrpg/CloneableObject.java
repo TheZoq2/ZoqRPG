@@ -5,5 +5,9 @@ package org.galaxycraft.thezoq2.zoqrpg;
  */
 public interface CloneableObject
 {
+    /**
+     * Creates a new copy of the object that behaves identically
+     * @return a new instance of the spcific object being cloned
+     */
     CloneableObject cloneObject();
 }

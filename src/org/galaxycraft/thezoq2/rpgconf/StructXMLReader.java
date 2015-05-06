@@ -56,6 +56,12 @@ public class StructXMLReader
         return structLists.get(type);
     }
 
+    /**
+     * Parse an xml file and add the structs found to the list of struct prototypes
+     * @param xmlInputStream the XML inputstream to read
+     * @throws XMLStreamException If the xml stream is bad
+     * @throws IOException if the file can't be read
+     */
     //The method is probably to long but I don't know of a good way to split it up unless I rewrite the whole thing.
     //I leave it as is for now
     private void readXMLFile(InputStream xmlInputStream) throws XMLStreamException, IOException

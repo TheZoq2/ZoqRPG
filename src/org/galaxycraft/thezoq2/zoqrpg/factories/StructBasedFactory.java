@@ -7,6 +7,7 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchVariableException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue;
+import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 import java.util.HashMap;
@@ -27,6 +28,12 @@ public abstract class StructBasedFactory<T extends CloneableObject>
 
     protected Map<String, T> objectTemplates;
 
+    boolean setup = false; //Debug variable used to check if the structs have been read when creating objects. Used by assertions
+
+    /**
+     * Intialise the factory
+     * @param baseStruct the struct to base the object creation on
+     */
     protected StructBasedFactory(StructValue baseStruct)
     {
         this.baseStruct = baseStruct;
@@ -35,6 +42,12 @@ public abstract class StructBasedFactory<T extends CloneableObject>
 
     }
 
+    /**
+     * Returns the value of the 'base' variable in the passed struct value
+     * @param sv The struct value to look for a base variable in
+     * @return the value of the variable
+     * @throws FactoryCreationFailedException if the base value doesn't exist or isn't a string
+     */
     protected String getBaseValueFromStruct(StructValue sv) throws FactoryCreationFailedException
     {
         try
@@ -51,8 +64,12 @@ public abstract class StructBasedFactory<T extends CloneableObject>
         }
     }
 
+    /**
+     * Creates template Cloneables from the struct that can later be cloned in order to create new objects
+     */
     protected void createTemplateObjects()
     {
+
         Map<String, StructValue> objectStructs = baseStruct.getAllVariablesOfType(StructValue.class);
 
         //Im not sure why the Map. is needed, probably because there is another class called Entry that gets imported
@@ -70,12 +87,22 @@ public abstract class StructBasedFactory<T extends CloneableObject>
             }
 
         }
+
+        setup = true;
     }
 
+    /**
+     * Clones a prexisting template object
+     * @param name the name of the object in the struct and internal structure
+     * @return the newly created object
+     * @throws NoSuchTemplateObjectException if the object doesn't exist in the internal structure. Either because it was
+     * malformed in the struct or didn't exist at all
+     */
     //Creates a cloned version of the object in the list if such an object exists, if not, an exception is thrown
     protected T createObject(String name) throws NoSuchTemplateObjectException
     {
         assert(name != null);
+        assert(setup = true);
 
         if(objectTemplates.containsKey(name))
         {
@@ -89,5 +116,11 @@ public abstract class StructBasedFactory<T extends CloneableObject>
         }
     }
 
+    /**
+     * Function for subclasses to implements that defines how to create objects from the StructValue
+     * @param sv The struct value to create an object based on
+     * @return the newly created template object
+     * @throws FactoryCreationFailedException if the creation of the object fails
+     */
     protected abstract T createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException;
 }

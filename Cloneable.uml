@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.galaxycraft.thezoq2.zoqrpg.movers.Mover</OriginalElement>
+  <nodes>
+    <node x="414.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.volumes.Volume</node>
+    <node x="643.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.boons.Boon</node>
+    <node x="394.0" y="240.0">org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume</node>
+    <node x="522.0" y="160.0">org.galaxycraft.thezoq2.zoqrpg.spells.BaseSpell</node>
+    <node x="536.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.spells.Spell</node>
+    <node x="597.6897058823529" y="0.0">org.galaxycraft.thezoq2.zoqrpg.Updatable</node>
+    <node x="116.0" y="160.0">org.galaxycraft.thezoq2.zoqrpg.visualisers.ParticleVisualiser</node>
+    <node x="389.0" y="0.0">org.galaxycraft.thezoq2.zoqrpg.CloneableObject</node>
+    <node x="5.5" y="240.0">org.galaxycraft.thezoq2.zoqrpg.movers.SinMover</node>
+    <node x="216.18970588235288" y="80.0">org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser</node>
+    <node x="14.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.movers.Mover</node>
+    <node x="400.0" y="160.0">org.galaxycraft.thezoq2.zoqrpg.volumes.BaseVolume</node>
+    <node x="621.0" y="240.0">org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon</node>
+    <node x="0.0" y="160.0">org.galaxycraft.thezoq2.zoqrpg.movers.BaseMover</node>
+    <node x="264.0" y="160.0">org.galaxycraft.thezoq2.zoqrpg.visualisers.BlockVisualiser</node>
+    <node x="629.0" y="160.0">org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon</node>
+    <node x="126.5" y="240.0">org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.ParticleVisualiser" target="org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser">
+      <point x="0.0" y="-15.0" />
+      <point x="180.0" y="135.0" />
+      <point x="237.68970588235288" y="135.0" />
+      <point x="-21.5" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.spells.BaseSpell" target="org.galaxycraft.thezoq2.zoqrpg.spells.Spell">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser" target="org.galaxycraft.thezoq2.zoqrpg.CloneableObject">
+      <point x="0.0" y="-15.0" />
+      <point x="259.1897058823529" y="60.0" />
+      <point x="426.19999999999993" y="60.0" />
+      <point x="-24.80000000000001" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon" target="org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.volumes.Volume" target="org.galaxycraft.thezoq2.zoqrpg.CloneableObject">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.movers.BaseMover" target="org.galaxycraft.thezoq2.zoqrpg.movers.Mover">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.Boon" target="org.galaxycraft.thezoq2.zoqrpg.CloneableObject">
+      <point x="-15.25" y="-15.0" />
+      <point x="658.25" y="50.0" />
+      <point x="500.5999999999999" y="50.0" />
+      <point x="49.599999999999966" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.movers.Mover" target="org.galaxycraft.thezoq2.zoqrpg.CloneableObject">
+      <point x="0.0" y="-15.0" />
+      <point x="48.0" y="50.0" />
+      <point x="401.4" y="50.0" />
+      <point x="-49.599999999999994" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.spells.Spell" target="org.galaxycraft.thezoq2.zoqrpg.CloneableObject">
+      <point x="-14.75" y="-15.0" />
+      <point x="550.75" y="60.0" />
+      <point x="475.79999999999995" y="60.0" />
+      <point x="24.799999999999955" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.volumes.SphereVolume" target="org.galaxycraft.thezoq2.zoqrpg.volumes.BaseVolume">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.movers.SinMover" target="org.galaxycraft.thezoq2.zoqrpg.movers.BaseMover">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.volumes.BaseVolume" target="org.galaxycraft.thezoq2.zoqrpg.volumes.Volume">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.Boon" target="org.galaxycraft.thezoq2.zoqrpg.Updatable">
+      <point x="15.25" y="-15.0" />
+      <point x="688.75" y="60.0" />
+      <point x="665.1897058823529" y="60.0" />
+      <point x="22.5" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.spells.Spell" target="org.galaxycraft.thezoq2.zoqrpg.Updatable">
+      <point x="14.75" y="-15.0" />
+      <point x="580.25" y="60.0" />
+      <point x="620.1897058823529" y="60.0" />
+      <point x="-22.5" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.FireVisualiser" target="org.galaxycraft.thezoq2.zoqrpg.visualisers.ParticleVisualiser">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.boons.BaseBoon" target="org.galaxycraft.thezoq2.zoqrpg.boons.Boon">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.visualisers.BlockVisualiser" target="org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser">
+      <point x="0.0" y="-15.0" />
+      <point x="322.0" y="135.0" />
+      <point x="280.6897058823529" y="135.0" />
+      <point x="21.5" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="363.0" y="135.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

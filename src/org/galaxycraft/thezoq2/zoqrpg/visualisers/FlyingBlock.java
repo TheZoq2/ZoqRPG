@@ -8,7 +8,8 @@ import org.bukkit.entity.WitherSkull;
 import org.bukkit.util.Vector;
 
 /**
- * Created by frans on 25/04/15.
+ * A floating "falling sand" block that will look like a specific material. Uses witherskulls to without velocity
+ * to make the sand appear floating.
  */
 public class FlyingBlock
 {

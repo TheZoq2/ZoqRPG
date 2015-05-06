@@ -27,6 +27,11 @@ public class SpellFactory extends StructBasedFactory<Spell>
 
     private SpellFactoryGroup sfg;
 
+    /**
+     * Initialise the factory
+     * @param baseStruct The struct to create spells from
+     * @param sfg a group of factories needed to produce modules for the modular spells
+     */
     public SpellFactory(StructValue baseStruct, SpellFactoryGroup sfg)
     {
         super(baseStruct);

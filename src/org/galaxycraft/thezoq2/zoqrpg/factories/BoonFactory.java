@@ -3,6 +3,7 @@ package org.galaxycraft.thezoq2.zoqrpg.factories;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BlinkBoon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 import org.galaxycraft.thezoq2.zoqrpg.boons.BurningBoon;
+import org.galaxycraft.thezoq2.zoqrpg.boons.PunchBoon;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.FactoryCreationFailedException;
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
@@ -25,6 +26,12 @@ public final class BoonFactory extends StructBasedFactory<Boon>
         createTemplateObjects();
     }
 
+    /**
+     * Create a new boon
+     * @param name The name of the boon in the config files
+     * @return The new boon.
+     * @throws FactoryCreationFailedException If the factory failed to create a boon
+     */
     public Boon createBoon(String name) throws FactoryCreationFailedException
     {
         assert(name != null);
@@ -57,6 +64,10 @@ public final class BoonFactory extends StructBasedFactory<Boon>
             case "blink":
             {
                 return new BlinkBoon(sv);
+            }
+            case "punch":
+            {
+                return new PunchBoon();
             }
             default:
                 throw new FactoryCreationFailedException("Base name: " + baseName + " is not a valid base boon");

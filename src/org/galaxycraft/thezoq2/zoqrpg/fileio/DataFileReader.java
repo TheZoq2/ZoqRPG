@@ -256,6 +256,11 @@ public class DataFileReader
     }
 
 
+    /**
+     * Removes all the whitespace from a string. used for later parsing
+     * @param line the string to modify
+     * @return the string that was modified
+     */
     private String stripWhitespace(String line)
     {
         line = line.replaceAll("\n", "");
@@ -264,19 +269,28 @@ public class DataFileReader
 
         return line;
     }
+
+    /**
+     * Removes anyting on a line that comes after two forward slashes
+     * @param line the line to strip
+     * @return the newly modified line
+     */
     private String stripComments(String line)
     {
         int commentStart = line.indexOf("//");
 
         if(commentStart != -1)
         {
-            System.out.println("Line has comment");
             line = line.substring(0, commentStart);
-            System.out.println(line);
         }
         return line;
     }
 
+    /**
+     * Returns the next non alpha-numeric character after a cirtain point in a string
+     * @param start the index to start the search at
+     * @return the index of the next non-aplha numeric character. -1 if none exist
+     */
     //Find the index of the next special char in the finalString
     private int findNextSpecialChar(int start)
     {
@@ -295,7 +309,11 @@ public class DataFileReader
         return firstChar;
     }
 
-    //TODO:Handle errors
+    /**
+     * Returns the line at which a cirtain character was on before the lines were stripped down to a single file
+     * @param charPos the index of the character to look for
+     * @return the position of the character. 0 if it wasn't in the original string
+     */
     private int getLineFromFinal(int charPos)
     {
         for(int i = 0; i < lineStarts.size(); i++)
@@ -309,6 +327,19 @@ public class DataFileReader
         return 0;
     }
 
+    /**
+     * Returns the bracket that matches an opened bracket before the start character. The matching bracket needs to
+     * be on the same level as the starting bracket which means that any brackets opened before finding a closing bracket
+     * need to be closed before the matching bracket is found.
+     *
+     * The function looks through the finalString variable
+     *
+     * @param start the character to start the search at.
+     * @param openBracket the character to count as an open bracket
+     * @param closeBracket the character to count as a closing bracket
+     * @return the position of the matching bracket
+     * @throws MissmatchedBracketException if no matching bracket is found before the end of the line
+     */
     private int findMatchingBracket(int start, char openBracket, char closeBracket) throws MissmatchedBracketException
     {
         int depth = 1;
@@ -339,6 +370,11 @@ public class DataFileReader
 
     //Code 'stolen' from stackoverflow here: http://stackoverflow.com/questions/8564896/fastest-way-to-check-if-a-string-can-be-parsed-to-double-in-java
 
+    /**
+     * Returns true if a CharSequence can be parsed into a float
+     * @param str the string to check
+     * @return true if the string can be read as a number
+     */
     //No warnings in this function apply to my project since it is not my code
     private boolean isNumber(CharSequence str)
     {

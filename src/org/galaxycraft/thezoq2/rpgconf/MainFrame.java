@@ -26,12 +26,11 @@ public class MainFrame
 
     private ConfigCodeArea codeArea;
 
+    /**
+     * Action that saves the current config file
+     */
     private ActionListener saveAction = new AbstractAction()
     {
-        {
-            putValue(SHORT_DESCRIPTION, "Save the current file");
-            putValue(MNEMONIC_KEY, KeyEvent.VK_S);
-        }
 
         @Override
         public void actionPerformed(ActionEvent actionEvent)
@@ -39,25 +38,22 @@ public class MainFrame
             System.out.println("Saving is not implemented");
         }
     };
+    /**
+     * Action that opens a new config file
+     */
     private ActionListener openAction = new AbstractAction()
     {
-        {
-            putValue(SHORT_DESCRIPTION, "Load a new file");
-            putValue(MNEMONIC_KEY, KeyEvent.VK_O);
-        }
-
         @Override
         public void actionPerformed(ActionEvent actionEvent)
         {
-            System.out.println("Saving is not implemented");
+            System.out.println("Loading is not implemented");
         }
     };
+    /**
+     * Action that exits the program
+     */
     private ActionListener exitAction = new AbstractAction()
     {
-        {
-            putValue(SHORT_DESCRIPTION, "Exit the program");
-            putValue(MNEMONIC_KEY, KeyEvent.VK_E);
-        }
         @Override
         public void actionPerformed(ActionEvent actionEvent)
         {
@@ -118,11 +114,6 @@ public class MainFrame
 
             buttonPanel.add(addButton);
         }
-        /*
-        addStructButton = new JButton(addStructAction);
-        addStructButton.setSize(addStructButton.getPreferredSize());
-        addValueButton = new JButton(addVarAction);
-        addValueButton.setSize(addValueButton.getPreferredSize());*/
 
         varNameText = new JTextField(TEXT_FIELD_SIZE);
         varValueText = new JTextField(TEXT_FIELD_SIZE);
@@ -140,14 +131,20 @@ public class MainFrame
         frame.setVisible(visible);
     }
 
+    /**
+     * Create the menubar of the frame
+     */
     private void createMenus()
     {
         JMenuItem saveMenuItem = new JMenuItem("Save", KeyEvent.VK_S);
+        saveMenuItem.setAccelerator(KeyStroke.getKeyStroke("control S"));
         saveMenuItem.addActionListener(saveAction);
         JMenuItem openMenuItem = new JMenuItem("Open", KeyEvent.VK_O);
+        openMenuItem.setAccelerator(KeyStroke.getKeyStroke("control O"));
         openMenuItem.addActionListener(openAction);
         JMenuItem exitMenuItem = new JMenuItem("Exit", KeyEvent.VK_E);
         exitMenuItem.addActionListener(exitAction);
+        exitMenuItem.setAccelerator(KeyStroke.getKeyStroke("control E"));
 
         final JMenu file = new JMenu("File");
         file.add(openMenuItem);

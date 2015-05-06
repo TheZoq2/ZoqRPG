@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.galaxycraft.thezoq2.zoqrpg.factories.BoonFactory</OriginalElement>
+  <nodes>
+    <node x="175.95833333333337" y="160.0">org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup</node>
+    <node x="241.00000000000003" y="0.0">org.galaxycraft.thezoq2.zoqrpg.factories.StructBasedFactory</node>
+    <node x="307.89583333333337" y="240.0">org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactory</node>
+    <node x="257.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.factories.MoverFactory</node>
+    <node x="386.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.factories.VisualiserFactory</node>
+    <node x="0.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.factories.BoonFactory</node>
+    <node x="122.00000000000003" y="80.0">org.galaxycraft.thezoq2.zoqrpg.factories.VolumeFactory</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup" target="org.galaxycraft.thezoq2.zoqrpg.factories.VisualiserFactory">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.VolumeFactory" target="org.galaxycraft.thezoq2.zoqrpg.factories.StructBasedFactory">
+      <point x="0.0" y="-15.0" />
+      <point x="179.50000000000003" y="60.0" />
+      <point x="283.30000000000007" y="60.0" />
+      <point x="-28.19999999999999" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactory" target="org.galaxycraft.thezoq2.zoqrpg.factories.StructBasedFactory">
+      <point x="25.0" y="-15.0" />
+      <point x="382.89583333333337" y="215.0" />
+      <point x="523.5" y="215.0" />
+      <point x="523.5" y="50.0" />
+      <point x="367.9" y="50.0" />
+      <point x="56.39999999999998" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.BoonFactory" target="org.galaxycraft.thezoq2.zoqrpg.factories.StructBasedFactory">
+      <point x="0.0" y="-15.0" />
+      <point x="51.0" y="50.0" />
+      <point x="255.10000000000002" y="50.0" />
+      <point x="-56.400000000000006" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.VisualiserFactory" target="org.galaxycraft.thezoq2.zoqrpg.factories.StructBasedFactory">
+      <point x="0.0" y="-15.0" />
+      <point x="449.5" y="60.0" />
+      <point x="339.70000000000005" y="60.0" />
+      <point x="28.19999999999999" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup" target="org.galaxycraft.thezoq2.zoqrpg.factories.MoverFactory">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup" target="org.galaxycraft.thezoq2.zoqrpg.factories.VolumeFactory">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.MoverFactory" target="org.galaxycraft.thezoq2.zoqrpg.factories.StructBasedFactory">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup" target="org.galaxycraft.thezoq2.zoqrpg.factories.BoonFactory">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactory" target="org.galaxycraft.thezoq2.zoqrpg.factories.SpellFactoryGroup">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="262.0" y="135.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

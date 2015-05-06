@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue</OriginalElement>
+  <nodes>
+    <node x="261.25" y="80.0">org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue</node>
+    <node x="270.75" y="160.0">org.galaxycraft.thezoq2.zoqrpg.factories.StructBasedFactory</node>
+    <node x="0.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue</node>
+    <node x="132.75" y="160.0">org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader</node>
+    <node x="181.85416666666669" y="0.0">org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue</node>
+    <node x="129.0" y="80.0">org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader" target="org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue">
+      <point x="-44.25" y="-15.0" />
+      <point x="147.5" y="140.0" />
+      <point x="54.5" y="140.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue" target="org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue">
+      <point x="-24.0" y="-15.0" />
+      <point x="285.25" y="60.0" />
+      <point x="238.10416666666669" y="60.0" />
+      <point x="11.25" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.factories.StructBasedFactory" target="org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue">
+      <point x="0.0" y="-15.0" />
+      <point x="32.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue" target="org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue">
+      <point x="0.0" y="-15.0" />
+      <point x="54.5" y="50.0" />
+      <point x="193.10416666666669" y="50.0" />
+      <point x="-33.75" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue" target="org.galaxycraft.thezoq2.zoqrpg.fileio.DataValue">
+      <point x="0.0" y="-15.0" />
+      <point x="177.0" y="60.0" />
+      <point x="215.60416666666669" y="60.0" />
+      <point x="-11.25" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader" target="org.galaxycraft.thezoq2.zoqrpg.fileio.StringValue">
+      <point x="-14.75" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="org.galaxycraft.thezoq2.zoqrpg.fileio.DataFileReader" target="org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue">
+      <point x="44.25" y="-15.0" />
+      <point x="236.0" y="140.0" />
+      <point x="309.25" y="140.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="35.5" y="201.5" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

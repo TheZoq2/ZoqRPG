@@ -5,11 +5,23 @@
             <base>burning</base>
             <additional>speed</additional>
         </instance>
+        <instance>
+            <base>blink</base>
+        </instance>
+        <instance>
+            <base>punch</base>
+        </instance>
     </boons>
     <movers>
         <instance>
             <base>linear</base>
             <additional>speed</additional>
+        </instance>
+        <instance>
+            <base>radial</base>
+            <additional>startingRadius</additional>
+            <additional>speed</additional>
+            <additional>heightSpeed</additional>
         </instance>
     </movers>
     <volumes>
@@ -32,6 +44,12 @@
             <base>block</base>
             <additional>block</additional>
         </instance>
+        <instance>
+            <base>air</base>
+        </instance>
+        <instance>
+            <base>fire</base>
+        </instance>
     </visualisers>
     <spells>
         <instance>
@@ -40,6 +58,10 @@
             <additional>boon</additional>
             <additional>volume</additional>
             <additional>visualiser</additional>
+        </instance>
+        <instance>
+            <base>modularSelf</base>
+            <additional>boon</additional>
         </instance>
     </spells>
 

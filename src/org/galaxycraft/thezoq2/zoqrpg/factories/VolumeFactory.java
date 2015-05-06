@@ -26,6 +26,12 @@ public class VolumeFactory extends StructBasedFactory<Volume>
     }
 
 
+    /**
+     * Attempts to create a new volume object
+     * @param name the name of the volume
+     * @return the new object
+     * @throws FactoryCreationFailedException if the creation fails
+     */
     public Volume createVolume(String name) throws FactoryCreationFailedException
     {
         try

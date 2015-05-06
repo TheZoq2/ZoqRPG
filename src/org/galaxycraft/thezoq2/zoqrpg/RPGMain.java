@@ -74,6 +74,10 @@ public class RPGMain extends JavaPlugin implements Listener
         boonManager.updateAll(timePassed);
     }
 
+    /**
+     * Function executed when a player interracts with the world by right or left clicking.
+     * @param event The Bukkit interract event that was triggered
+     */
     //Idea is wrong this not being used, this is invoked by bukkit
     @EventHandler
     public void onPlayerInteractEvent(PlayerInteractEvent event)
@@ -84,7 +88,7 @@ public class RPGMain extends JavaPlugin implements Listener
         {
             if (boon.getAffectedEntity() == plr) //Comparison using == instead of .equals: This is what I want to do
             {
-                if(!boon.onPlayerInterractEvent())
+                if(!boon.onPlayerInterractEvent(event))
                 {
                     event.setCancelled(true);
                     return;
@@ -119,6 +123,9 @@ public class RPGMain extends JavaPlugin implements Listener
         }
    }
 
+    /**
+     * Load the spell configuration file
+     */
     //Overly coupled method: This might be true but would require more rewriting than I have time for to fix.
     private void loadSpellConfig()
     {

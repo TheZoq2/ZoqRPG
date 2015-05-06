@@ -8,10 +8,21 @@ package org.galaxycraft.thezoq2.zoqrpg;
  */
 public interface Updatable
 {
+    /**
+     * Function executed by an updatable manager to perform activities that should be performed periodically
+     * @param timePassed the time passed since the last update function was called
+     */
     void update(long timePassed);
 
+    /**
+     * Returns true if the object is done updating and should be removed from the manager
+     * @return true if the object should be removed from the manager
+     */
     boolean isDone();
 
+    /**
+     * Function executed before the object is removed that should be used to cleanup any leftovers created by the object
+     */
     //This method isn't used by any current updatables but will be used for more advanced boons that create things
     //which need to be destroyed when the boon is removed.
     void onEnd();

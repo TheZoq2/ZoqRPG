@@ -19,6 +19,10 @@ import java.util.List;
         activeUpdatables = new ArrayList<>();
     }
 
+    /**
+     * Iterate over the list of updatables and execute their update function. Remove them if they should be removed
+     * @param timePassed the time passed since the last update
+     */
     public void updateAll(long timePassed)
     {
         List<T> doneUpdatables = new ArrayList<>();

@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.boons;
 
 import org.bukkit.entity.Entity;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
 
@@ -42,11 +43,15 @@ public abstract class BaseBoon extends StructBasedObject implements Boon
     }
 
     @Override
-    public boolean onPlayerInterractEvent()
+    public boolean onPlayerInterractEvent(PlayerInteractEvent event)
     {
         return true;
     }
 
+    /**
+     * Play a visualiser effect at the position of the boon. if this should be done. if this is desired, the visualiser
+     * variable should be set by a subclass.
+     */
     //Currently unused method which I plan to use at some point.
     protected void visualise()
     {

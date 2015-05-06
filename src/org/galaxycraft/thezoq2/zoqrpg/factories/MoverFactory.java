@@ -6,6 +6,7 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.NoSuchTemplateObjectException;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 import org.galaxycraft.thezoq2.zoqrpg.movers.LinearMover;
 import org.galaxycraft.thezoq2.zoqrpg.movers.Mover;
+import org.galaxycraft.thezoq2.zoqrpg.movers.RadialMover;
 import org.galaxycraft.thezoq2.zoqrpg.movers.SinMover;
 
 /**
@@ -20,12 +21,23 @@ import org.galaxycraft.thezoq2.zoqrpg.movers.SinMover;
 //I prefer to keep code blocks in the code because they make it easier to tell where a new case begins and ends.
 public class MoverFactory extends StructBasedFactory<Mover>
 {
+    /**
+     * Initialise the factory
+     * @param moverStruct The struct to base the movers of
+     */
     public MoverFactory(StructValue moverStruct)
     {
         super(moverStruct);
         createTemplateObjects();
     }
 
+    /**
+     * Creates a new Mover with the name specified that will move in a specific direction
+     * @param name The name of the mover in the config file
+     * @param direction The direction that the mover should move in
+     * @return the newly created mover
+     * @throws FactoryCreationFailedException if the creation fails for some reason
+     */
     //This method is used in MoverFactory but idea doesn't know how bukkit is structure
     public Mover createMover(String name, Vector direction) throws FactoryCreationFailedException
     {
@@ -75,6 +87,12 @@ public class MoverFactory extends StructBasedFactory<Mover>
             case "wobbly":
             {
                 Mover mover = new SinMover(sv);
+
+                return mover;
+            }
+            case "radial":
+            {
+                Mover mover = new RadialMover(sv);
 
                 return mover;
             }

@@ -22,7 +22,10 @@ public interface Mover extends CloneableObject
     float getSpeed(); //MIght be used in the future
     void setDirection(Vector direction);
 
-    //public Location getNewLocation(long timePassed);
+    /**
+     * Change the position of the mover based on the time passed
+     * @param timePassed the time passed since the last update
+     */
     void update(long timePassed);
 
     Vector getPosition(); //Returns the position relative to the starting position (0,0,0)

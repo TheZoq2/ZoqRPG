@@ -19,6 +19,18 @@ import java.util.logging.Level;
 //TODO: Add StructValue as field, remove from function parameters
 public abstract class StructBasedObject
 {
+    /**
+     * Reads a DataValue from a struct. If the value doesn't exist or is the wrong datatype, the default value is returned
+     *
+     * Also prints an error if the variable isn't found
+     *
+     * @param sv the struct to look for the variable in.
+     * @param name the name of the variable
+     * @param defaultValue value to fall back to if the variable isn't in the struct or doesn't have the right datatype
+     * @param datatype the datatype of the DataValue
+     * @param <T> the type of DataValue to return
+     * @return the final value
+     */
     protected <T extends DataValue> T readValueWithFallback(StructValue sv, String name, T defaultValue, Class<T> datatype)
     {
         //TODO: Check why warnings arn't being printed

@@ -28,7 +28,19 @@ public interface Volume extends CloneableObject
     boolean posIsInVolume(Vector center, Vector pos); //This method is used internally by some volumes. Might also be used
     //in  the future
 
+    /**
+     * Returns all the entities out of a list that are inside the volume
+     * @param center the position of the volume in the world
+     * @param allEntities a list of entities to check for inside the volume
+     * @return a list of entities that are inside the volume
+     */
     List<Entity> getEntitiesInVolume(Vector center, List<Entity> allEntities);
+
+    /**
+     * Returns all blocks that are inside the volume
+     * @param center The position of the volume in the world
+     * @return the list of block locations
+     */
     List<Vector> getBlocksInVolume(Vector center);
 
     @Override

@@ -13,8 +13,15 @@ import org.galaxycraft.thezoq2.zoqrpg.CloneableObject;
  */
 public interface Visualiser extends CloneableObject
 {
+    /**
+     * Update variables that should update periodically within the visualiser
+     */
     void update();
 
+    /**
+     * Visualise a specific location
+     * @param loc the location to be visualised
+     */
     void showLocation(Location loc);
 
     @Override

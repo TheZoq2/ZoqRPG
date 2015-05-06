@@ -25,6 +25,13 @@ public interface Spell extends Updatable, CloneableObject
 {
     //Ideally boonManager would be passed every update tick but in order to allow spells to inherit
     //updatable and allow updatable managers to handle spells, it is kept track of by the spell itself
+
+    /**
+     * Run the function that should get executed when the spell is created. Also set the boonManager to let
+     * the spell add new boons as it wishes
+     *
+     * @param boonManager
+     */
     void onCreate(UpdatableManager<Boon> boonManager);
     void setStartPos(Location pos);
 
