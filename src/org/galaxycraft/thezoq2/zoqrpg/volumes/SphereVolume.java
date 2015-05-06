@@ -102,13 +102,6 @@ public class SphereVolume extends BaseVolume
         return result;
     }
 
-    @Override
-    //TODO: Implement
-    public List<Vector> getRandomPositionsInVolume(Vector center, float density)
-    {
-        return new ArrayList<>();
-    }
-
     //TODO: Implement
     @Override
     public SphereVolume cloneObject()

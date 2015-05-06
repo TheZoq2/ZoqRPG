@@ -1,5 +1,6 @@
 package org.galaxycraft.thezoq2.rpgconf;
 
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.*;
@@ -25,7 +26,7 @@ public class MainFrame
 
     private ConfigCodeArea codeArea;
 
-    private AbstractAction saveAction = new AbstractAction()
+    private ActionListener saveAction = new AbstractAction()
     {
         {
             putValue(SHORT_DESCRIPTION, "Save the current file");
@@ -38,7 +39,7 @@ public class MainFrame
             System.out.println("Saving is not implemented");
         }
     };
-    private AbstractAction openAction = new AbstractAction()
+    private ActionListener openAction = new AbstractAction()
     {
         {
             putValue(SHORT_DESCRIPTION, "Load a new file");
@@ -51,7 +52,7 @@ public class MainFrame
             System.out.println("Saving is not implemented");
         }
     };
-    private AbstractAction exitAction = new AbstractAction()
+    private ActionListener exitAction = new AbstractAction()
     {
         {
             putValue(SHORT_DESCRIPTION, "Exit the program");

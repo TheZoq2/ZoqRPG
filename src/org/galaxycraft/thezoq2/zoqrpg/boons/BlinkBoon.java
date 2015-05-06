@@ -71,6 +71,8 @@ public class BlinkBoon extends BaseBoon
         if(affectedEntity instanceof Player)
         {
             //Cast the entity to player
+            //noinspection TypeMayBeWeakened
+            //This boon will only work on a player because it relies on interraction.
             Player plr = (Player) affectedEntity;
 
             itemInHand = plr.getItemInHand();
@@ -133,6 +135,8 @@ public class BlinkBoon extends BaseBoon
 
         if(affectedEntity instanceof Player)
         {
+            //noinspection TypeMayBeWeakened
+            //This boon will only work on a player because it relies on interraction.
             Player plr = (Player) affectedEntity;
 
             //Block targetBlock = plr.getTargetBlock((HashSet<Material>) null, TELEPORT_DISTANCE);

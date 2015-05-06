@@ -68,13 +68,13 @@ public class MoverFactory extends StructBasedFactory<Mover>
         {
             case "linear":
             {
-                LinearMover lm = new LinearMover(sv);
+                Mover mover = new LinearMover(sv);
 
-                return lm;
+                return mover;
             }
             case "wobbly":
             {
-                SinMover mover = new SinMover(sv);
+                Mover mover = new SinMover(sv);
 
                 return mover;
             }
