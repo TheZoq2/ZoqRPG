@@ -16,7 +16,6 @@ public class SinMover extends BaseMover
     private static final float DEFAULT_SPEED = 1;
     private static final float DEFAULT_PERIOD = 1; //The length of a single wave in seconds
     private static final float DEFAULT_AMPLITUDE = 2;
-    private static final float DEFAULT_WAVE_ANGLE = 0;
 
     private float period = DEFAULT_PERIOD;
     private float amplitude = DEFAULT_AMPLITUDE;
@@ -32,7 +31,7 @@ public class SinMover extends BaseMover
         this.period = ((float) readValueWithFallback(sv, "waveLength", new NumberValue(DEFAULT_PERIOD), NumberValue.class).getValue());
         this.amplitude = ((float) readValueWithFallback(sv, "waveHeight", new NumberValue(DEFAULT_AMPLITUDE), NumberValue.class).getValue());
 
-        direction = new Vector(0,0,0);
+        setDirection(new Vector(0,0,0));
     }
     private SinMover(float speed, float period, float amplitude)
     {

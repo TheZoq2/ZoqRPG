@@ -21,9 +21,9 @@ import java.util.List;
 
     public void updateAll(long timePassed)
     {
-        List<Updatable> doneUpdatables = new ArrayList<>();
+        List<T> doneUpdatables = new ArrayList<>();
 
-        for(Updatable updatable : activeUpdatables)
+        for(T updatable : activeUpdatables)
         {
             updatable.update(timePassed);
 
@@ -34,7 +34,7 @@ import java.util.List;
         }
 
         //Removing done updatables
-        for(Updatable updatable : doneUpdatables)
+        for(T updatable : doneUpdatables)
         {
             updatable.onEnd();
 
@@ -47,6 +47,8 @@ import java.util.List;
         activeUpdatables.add(updatable);
     }
 
+    //I won't fix this issue because the function name is clearer about what the function does to the outside
+    //while the variable name is clearer inside the class
     public List<T> getUpdatableList()
     {
         return activeUpdatables;

@@ -35,9 +35,9 @@ public class StructPrototype
         sb.append(baseName);
         sb.append(";\n");
 
-        for(String var : additionalParameters)
+        for(String variable : additionalParameters)
         {
-            sb.append(var);
+            sb.append(variable);
             sb.append(" = ;\n");
         }
 

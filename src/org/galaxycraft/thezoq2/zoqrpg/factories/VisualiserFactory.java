@@ -16,7 +16,6 @@ import org.galaxycraft.thezoq2.zoqrpg.visualisers.Visualiser;
  * @see StructValue
  */
 
-@SuppressWarnings("UnnecessaryCodeBlock")
 //This warning comes from switch case statements where I have added {}.
 //I prefer to keep code blocks in the code because they make it easier to tell where a new case begins and ends.
 public class VisualiserFactory extends StructBasedFactory<Visualiser>

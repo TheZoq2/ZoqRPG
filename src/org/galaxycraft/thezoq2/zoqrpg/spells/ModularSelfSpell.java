@@ -72,7 +72,6 @@ public class ModularSelfSpell extends BaseSpell
     {
     }
 
-    //TODO: implement
     @Override
     public ModularSelfSpell cloneObject()
     {

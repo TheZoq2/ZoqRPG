@@ -17,7 +17,7 @@ public final class SpeedUtils
     {
         assert(timePassed >= 0);
 
-        float speed = baseSpeed * (timePassed / 1000.0f);
+        float speed = baseSpeed * (timePassed / 1000.0f); //Magic number reason should be self explanatory
         return speed;
     }
     public static Vector getCurrentMovementVector(Vector direction, float baseSpeed, long timePassed)

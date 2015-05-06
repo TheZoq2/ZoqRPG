@@ -38,22 +38,16 @@ public class ModularSpell extends BaseSpell
     private Boon appliedBoon;
 
 
-    public ModularSpell(Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
+    private ModularSpell(Mover mover, Volume volume, Boon appliedBoon, Visualiser visualiser)
     {
         super.setCaster(caster);
-        super.setStartPos(startPos);
+        setStartPos(startPos);
 
         createSpell(mover, volume, appliedBoon, visualiser);
     }
 
-    public ModularSpell(Location startPos, Entity caster, SpellFactoryGroup sfg, StructValue spellStruct) throws ModuleCreationFailedException, WrongDatatypeException, NoSuchVariableException
-    {
-        super.setCaster(caster);
-        super.setStartPos(startPos);
-
-        createFromStructValue(spellStruct, sfg);
-    }
-
+    //This method is used in the spell factory. However, idea might not know that because it thinks that the functions
+    //in RPG main won't be invoked since it doesn't know about bukkit
     public ModularSpell(StructValue sv, SpellFactoryGroup sfg) throws NoSuchVariableException, ModuleCreationFailedException, WrongDatatypeException
     {
         createFromStructValue(sv, sfg);
@@ -126,8 +120,7 @@ public class ModularSpell extends BaseSpell
         //Apply that effect to all the entities
         for(Entity entity : affectedEntities)
         {
-            //TODO check if caster is entity in a better way
-            if(entity != caster)
+            if(entity != caster) //Object compared using != instead of .equals: This is what I want to do
             {
                 Boon newBoon = appliedBoon.cloneObject();
 
@@ -156,7 +149,6 @@ public class ModularSpell extends BaseSpell
 
     }
 
-    //TODO: Implement
     @Override
     public ModularSpell cloneObject()
     {

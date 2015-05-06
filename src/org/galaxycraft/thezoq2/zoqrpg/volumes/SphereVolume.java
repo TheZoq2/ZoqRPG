@@ -102,7 +102,6 @@ public class SphereVolume extends BaseVolume
         return result;
     }
 
-    //TODO: Implement
     @Override
     public SphereVolume cloneObject()
     {

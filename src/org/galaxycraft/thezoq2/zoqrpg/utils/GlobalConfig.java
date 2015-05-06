@@ -25,11 +25,6 @@ public final class GlobalConfig
         return instance;
     }
 
-    public boolean shouldPrintStackForDefault()
-    {
-        return printStacktraceForDefault;
-    }
-
     public void printStackTraceForDefault(Exception e)
     {
         if(printStacktraceForDefault)

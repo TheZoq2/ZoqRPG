@@ -15,7 +15,6 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
  * @see StructValue
  */
 
-@SuppressWarnings("UnnecessaryCodeBlock")
 //This warning comes from switch case statements.
 //I prefer to keep code blocks in the code because they make it easier to tell where a new case begins and ends.
 public final class BoonFactory extends StructBasedFactory<Boon>
@@ -35,17 +34,20 @@ public final class BoonFactory extends StructBasedFactory<Boon>
             return createObject(name);
         } catch (NoSuchTemplateObjectException e)
         {
+            //Warning about ignoring caught exception is wrong, e.getName is used. The FactoryCreationFailedException
+            //is a more broad exception which means less split up try-catch statements.
+            //This applies to all errors reporting "'throw' inside 'catch' block ignores the caught exception
             throw new FactoryCreationFailedException("Failed to create boon, no boon named " + e.getName());
         }
 
     }
 
-    //TODO: Implement
     @Override
     protected Boon createObjectFromStruct(StructValue sv) throws FactoryCreationFailedException
     {
         String baseName = getBaseValueFromStruct(sv);
 
+        //I prefer to leave braces around my case statements for increased readability.
         switch(baseName)
         {
             case "burning":

@@ -29,5 +29,5 @@ public interface Spell extends Updatable, CloneableObject
     void setStartPos(Location pos);
 
     void setCaster(Entity caster);
-    Entity getCaster();
+    Entity getCaster(); //Not used at the moment but will be in the futrue when more of the plugin is implemented
 }

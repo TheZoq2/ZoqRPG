@@ -16,7 +16,8 @@ public final class GeneralUtils
      */
     public static long getTicksFromMilliseconds(long milliseconds)
     {
-        float seconds = milliseconds / 1000.0f;
-        return Math.round(seconds * 20.0f);
+        final float ticksPerSecond = 20.0f;
+        float seconds = milliseconds / 1000.0f; //Magig number reason should be self explanatory
+        return Math.round(seconds * ticksPerSecond);
     }
 }

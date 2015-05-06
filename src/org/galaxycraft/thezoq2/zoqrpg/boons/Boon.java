@@ -25,6 +25,8 @@ public interface Boon extends CloneableObject, Updatable
 
     //If the player already has the same boon, this is called
 
+    //This method is only needed for boons that shouldn't be applied twice. However, at the moment there are no such
+    //boons and this method is unused.
     void onReapply(float strength);
 
     Entity getAffectedEntity();

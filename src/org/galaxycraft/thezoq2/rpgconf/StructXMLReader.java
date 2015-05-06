@@ -21,15 +21,7 @@ import javax.xml.stream.events.XMLEvent;
  */
 public class StructXMLReader
 {
-    /*private List<StructPrototype> boonList;
-    private List<StructPrototype> spellList;
-    private List<StructPrototype> moverList;
-    private List<StructPrototype> volList;
-    private List<StructPrototype> visList;*/
-
-
-    //Not static because the map will contain lists that are non static
-
+    //Again, not sure why IDEA expects an enum to have an entry point
     private enum ParsingState{
         IN_ROOT,
         READING_INSTANCES,
@@ -42,7 +34,7 @@ public class StructXMLReader
 
     public StructXMLReader(InputStream xmlInputStream) throws XMLStreamException, IOException
     {
-        structLists = new HashMap<>();
+        structLists = new EnumMap<>(StructType.class);
         //Creating the list
         for(int i = 0; i < StructType.values().length; i++)
         {
@@ -64,13 +56,13 @@ public class StructXMLReader
         return structLists.get(type);
     }
 
+    //The method is probably to long but I don't know of a good way to split it up unless I rewrite the whole thing.
+    //I leave it as is for now
     private void readXMLFile(InputStream xmlInputStream) throws XMLStreamException, IOException
     {
 
 
         XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
-
-        int extraDepth = 0;
 
         try(BufferedReader br = new BufferedReader(new InputStreamReader(xmlInputStream)))
         {
@@ -81,6 +73,7 @@ public class StructXMLReader
             StructPrototype targetStructPrototype = null;
 
             //Start parsing the file
+            int extraDepth = 0;
             while(eventReader.hasNext())
             {
                 XMLEvent event = eventReader.nextEvent();
@@ -119,9 +112,6 @@ public class StructXMLReader
                     }
                     else if(pState == ParsingState.READING_PARAMETERS)
                     {
-                        //Same reasoning as above
-                        assert(targetStructPrototype != null);
-
                         if(element.getName().getLocalPart().equals("base"))
                         {
                             //Get the next event and check if it is a value

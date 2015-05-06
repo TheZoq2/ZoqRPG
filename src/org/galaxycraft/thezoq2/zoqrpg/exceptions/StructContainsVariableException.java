@@ -15,4 +15,9 @@ public class StructContainsVariableException extends Exception
         super("Struct contains key already");
         this.varName = varName;
     }
+
+    public String getVarName()
+    {
+        return varName;
+    }
 }

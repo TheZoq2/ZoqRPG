@@ -19,7 +19,7 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser
 {
     private static final String DEFAULT_MATERIAL = "SAND";
 
-    private List<FlyingBlock> lastBlocks;
+    private List<FlyingBlock> lastBlocks; //Warning about field not being initalised is wrong. See init()
     private List<FlyingBlock>  currentBlocks;
 
     private Material material;
@@ -43,6 +43,9 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser
         init();
 
         this.material = material;
+
+        lastBlocks = new ArrayList<>();
+        currentBlocks = new ArrayList<>();
     }
 
     public void init()
@@ -72,7 +75,6 @@ public class BlockVisualiser extends StructBasedObject implements Visualiser
         currentBlocks = new ArrayList<>();
     }
 
-    //TODO: Implement
     @Override
     public BlockVisualiser cloneObject()
     {

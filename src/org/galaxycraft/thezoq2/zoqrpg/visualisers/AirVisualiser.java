@@ -11,6 +11,8 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
  * @see ParticleVisualiser
  *
  */
+
+//This visualiser hasn't been fully implemented yet and as such, is not used
 public class AirVisualiser extends ParticleVisualiser
 {
     AirVisualiser(float offsetX, float offsetY, float offsetZ, float speed, int particleAmount, int particleRange)
@@ -18,6 +20,7 @@ public class AirVisualiser extends ParticleVisualiser
         super(offsetX, offsetY, offsetZ, speed, particleAmount, particleRange);
     }
 
+    //This visualiser hasn't been fully implemented yet and as such, is not used
     AirVisualiser(StructValue sv)
     {
         super(sv);

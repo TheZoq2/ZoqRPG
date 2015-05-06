@@ -7,7 +7,13 @@ import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSelfSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.ModularSpell;
 import org.galaxycraft.thezoq2.zoqrpg.spells.Spell;
 
-@SuppressWarnings({"UnnecessaryCodeBlock", "ThrowInsideCatchBlockWhichIgnoresCaughtException"})
+/**
+ * Creates new spells objects from StructValues. Extends the StructBasedFactory for common methods used to create objects
+ * from structs.
+ *
+ * @see StructBasedFactory
+ * @see StructValue
+ */
 /*
 UnnessesaryCodeBlock:
     This warning comes from switch case statements where I have added {}.
@@ -36,7 +42,7 @@ public class SpellFactory extends StructBasedFactory<Spell>
         Spell spell;
         try
         {
-            spell = super.createObject(name);
+            spell = createObject(name);
 
             spell.setCaster(caster);
             spell.setStartPos(caster.getLocation());
@@ -81,7 +87,6 @@ public class SpellFactory extends StructBasedFactory<Spell>
             throw new FactoryCreationFailedException("Module name " + e.getVarPath() + " needs to be a string when creating " + baseName);
         } catch (ModuleCreationFailedException e)
         {
-            //TODO: More precise error
             throw new FactoryCreationFailedException("Modular spell creation failed: " + e.getFactoryFailReason() + " when creating " + baseName);
         }
     }

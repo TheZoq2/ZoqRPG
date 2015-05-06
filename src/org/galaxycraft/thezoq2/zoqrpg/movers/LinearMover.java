@@ -21,7 +21,7 @@ public class LinearMover extends BaseMover
     {
         super(speed);
 
-        super.direction = new Vector(0,0,0);
+        setDirection(new Vector(0,0,0));
     }
 
     public LinearMover(StructValue sv)
@@ -30,7 +30,7 @@ public class LinearMover extends BaseMover
 
         setSpeed((float) readValueWithFallback(sv, "speed", new NumberValue(DEFAULT_SPEED), NumberValue.class).getValue());
 
-        super.direction = new Vector(0,0,0);
+        setDirection(new Vector(0,0,0));
     }
 
 

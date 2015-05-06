@@ -11,7 +11,9 @@ import org.galaxycraft.thezoq2.zoqrpg.fileio.StructBasedObject;
 public abstract class BaseMover extends StructBasedObject implements Mover
 {
     protected Vector position;
-    protected Vector direction;
+    protected Vector direction; //This warning is true and it is something I don't have a good way to fix. See my project
+    //report for more in depth explanation. Anywhere an instance of this class is created, the setDirection method
+    //should be called right afterwards
 
     protected float speed;
 

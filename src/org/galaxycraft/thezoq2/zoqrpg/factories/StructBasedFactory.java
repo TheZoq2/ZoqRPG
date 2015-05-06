@@ -23,8 +23,6 @@ import java.util.logging.Level;
 
 public abstract class StructBasedFactory<T extends CloneableObject>
 {
-    private static final String BASE_VAR_NAME = "base";
-
     protected StructValue baseStruct;
 
     protected Map<String, T> objectTemplates;
@@ -35,24 +33,6 @@ public abstract class StructBasedFactory<T extends CloneableObject>
 
         this.objectTemplates = new HashMap<>();
 
-    }
-
-    protected StructValue getStructByName(String name) throws FactoryCreationFailedException
-    {
-        //Get the struct with the specified name
-        try
-        {
-            return baseStruct.getVariableOfTypeByName(name, StructValue.class);
-        }
-        catch (WrongDatatypeException e)
-        {
-            throw new FactoryCreationFailedException("Variable " + e.getVarPath() + " needs to be a " + e.getExpectedDatatype());
-        }
-        catch (NoSuchVariableException e)
-        {
-            throw new FactoryCreationFailedException("Expected variable " + e.getVarName() + " in " +
-                    e.getStructPath() + " to create " + name);
-        }
     }
 
     protected String getBaseValueFromStruct(StructValue sv) throws FactoryCreationFailedException
@@ -75,13 +55,15 @@ public abstract class StructBasedFactory<T extends CloneableObject>
     {
         Map<String, StructValue> objectStructs = baseStruct.getAllVariablesOfType(StructValue.class);
 
-        for(String key : objectStructs.keySet())
+        //Im not sure why the Map. is needed, probably because there is another class called Entry that gets imported
+        //using the * import statement in this file. See comment there for explanation
+        for(Map.Entry<String, StructValue> entry : objectStructs.entrySet())
         {
             try
             {
-                T createdObject = createObjectFromStruct(objectStructs.get(key));
+                T createdObject = createObjectFromStruct(entry.getValue());
 
-                objectTemplates.put(key, createdObject);
+                objectTemplates.put(entry.getKey(), createdObject);
             } catch (FactoryCreationFailedException e)
             {
                 Bukkit.getLogger().log(Level.WARNING, "Failed to create object template. " + e.getReason());
@@ -97,6 +79,8 @@ public abstract class StructBasedFactory<T extends CloneableObject>
 
         if(objectTemplates.containsKey(name))
         {
+            //I might need to make it clear that cloneObject should always clones the same object type. For now, this
+            //will not fail because cloneObject does return an object of  the same type even if it's not guaranteed by the code
             return (T) objectTemplates.get(name).cloneObject();
         }
         else

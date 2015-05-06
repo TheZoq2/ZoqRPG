@@ -15,7 +15,7 @@ public abstract class BaseBoon extends StructBasedObject implements Boon
 {
     protected Entity affectedEntity = null;
     protected boolean done = false;
-    protected float strength;
+    protected float strength; //This value is used in subclasses
 
     protected Visualiser visualiser = null;
 
@@ -47,13 +47,14 @@ public abstract class BaseBoon extends StructBasedObject implements Boon
         return true;
     }
 
+    //Currently unused method which I plan to use at some point.
     protected void visualise()
     {
         if(visualiser != null)
         {
             visualiser.showLocation(affectedEntity.getLocation());
         }
-        else
+        else //This method isn't done yet, warning can be ignored
         {
             //TODO: Implement custom exception
         }

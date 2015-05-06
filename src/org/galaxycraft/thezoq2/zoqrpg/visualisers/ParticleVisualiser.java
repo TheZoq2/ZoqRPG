@@ -49,9 +49,8 @@ public abstract class ParticleVisualiser extends StructBasedObject implements Vi
     }
     /*
     This is the intended behaviour, particle effects don't need anything cleaned up every tick but they still need an
-    update function to follow the visualiser contract
+    update function to follow the visualiser contract. Also, the update function is already declared in the interface
      */
-    @SuppressWarnings("NoopMethodInAbstractClass")
     @Override
     public void update()
     {

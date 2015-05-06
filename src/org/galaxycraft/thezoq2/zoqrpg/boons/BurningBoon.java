@@ -26,7 +26,7 @@ public class BurningBoon extends BaseBoon
     private long maxBurnTime = DEFAULT_MAX_BURN_TIME;
     private long minBurnTime = DEFAULT_MIN_BURN_TIME;
 
-    private long burnTime;
+    private long burnTime; //These might be used in the future which is why I leave them as fields
     private int burnTicks;
 
     private BurningBoon(long minBurnTime, long maxBurnTime)

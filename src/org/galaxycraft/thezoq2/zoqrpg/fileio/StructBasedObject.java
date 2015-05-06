@@ -15,6 +15,7 @@ import java.util.logging.Level;
  * @see StructValue
  */
 
+//Abstract class without abstract methods: See BaseDataValue
 //TODO: Add StructValue as field, remove from function parameters
 public abstract class StructBasedObject
 {

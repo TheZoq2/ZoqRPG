@@ -13,7 +13,8 @@ import java.util.List;
  */
 public class ConfigCode implements DocumentListener
 {
-
+    //I read somewhere a while back that if you want to manipulate strings you should use a StringBuilder. This may
+    //have changed but I don't have enough time to fix it
     private StringBuilder code;
     private List<CodeUpdateListener> listeners;
 

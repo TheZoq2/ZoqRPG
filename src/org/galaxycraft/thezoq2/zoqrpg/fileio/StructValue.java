@@ -5,7 +5,6 @@ import org.galaxycraft.thezoq2.zoqrpg.exceptions.StructContainsVariableException
 import org.galaxycraft.thezoq2.zoqrpg.exceptions.WrongDatatypeException;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,8 +19,6 @@ import java.util.Map;
  */
 public class StructValue extends BaseDataValue
 {
-    private static final String TYPE_NAME = "struct";
-
     private Map<String, DataValue> values;
 
     public StructValue(String varName, StructValue parentStruct)
@@ -57,11 +54,10 @@ public class StructValue extends BaseDataValue
         //Checking if the variable has the right type
         if(!val.getClass().equals(type))
         {
-            throw new WrongDatatypeException(val, T.TYPE_NAME);
+            throw new WrongDatatypeException(val, "unknown");
         }
 
         //This warning is wrong, the statement above does check if the cast will work
-        //noinspection unchecked
         return (T)val;
     }
 
@@ -69,15 +65,15 @@ public class StructValue extends BaseDataValue
     {
         Map<String, T> result = new HashMap<>();
 
-        for(String key : values.keySet())
+        for(Map.Entry<String, DataValue> entry : values.entrySet())
         {
-            DataValue value = values.get(key);
+            DataValue value = values.get(entry.getKey());
 
             //Checking if the variable is what we are looking for
             if(value.getClass().equals(type))
             {
                 //Adding it to the list of variables
-                result.put(key, (T) value);
+                result.put(entry.getKey(), (T) value); //The cast is safe because the if statement above does the cast check
             }
         }
 

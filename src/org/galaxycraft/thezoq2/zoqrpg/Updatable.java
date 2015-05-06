@@ -12,5 +12,8 @@ public interface Updatable
 
     boolean isDone();
 
+    //This method isn't used by any current updatables but will be used for more advanced boons that create things
+    //which need to be destroyed when the boon is removed.
     void onEnd();
 }
+

@@ -10,7 +10,7 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
  */
 public interface DataValue
 {
-    String TYPE_NAME = "generic";
+    /**A string containing the name of the struct, used by exceptions to throw a detailed error*/
 
     void setVariableName(String structName);
 

@@ -2,7 +2,6 @@ package org.galaxycraft.thezoq2.zoqrpg.visualisers;
 
 import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Location;
-import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
 /**

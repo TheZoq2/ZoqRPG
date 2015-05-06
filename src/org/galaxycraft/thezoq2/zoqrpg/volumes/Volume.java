@@ -21,11 +21,12 @@ public interface Volume extends CloneableObject
 {
 
     //This method is not used by current volumes but in the future, I plan to add things like expanding bubbles
-    //which would implement this method
-    @SuppressWarnings("EmptyMethod")
+    //which would implement this method.
+    //The time passed variable is the same thing, it will be used in more dynamic volumes.
     void update(float timePassed);
 
-    boolean posIsInVolume(Vector center, Vector pos);
+    boolean posIsInVolume(Vector center, Vector pos); //This method is used internally by some volumes. Might also be used
+    //in  the future
 
     List<Entity> getEntitiesInVolume(Vector center, List<Entity> allEntities);
     List<Vector> getBlocksInVolume(Vector center);

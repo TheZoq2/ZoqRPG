@@ -17,10 +17,8 @@ public final class FileManager
 
     private static String getFullFilename(String filename)
     {
-        StringBuilder finalFile = new StringBuilder(PLUGIN_FOLDER);
-        finalFile.append(filename);
 
-        return finalFile.toString();
+        return PLUGIN_FOLDER + filename;
     }
 
     public static void createPluginFoler()

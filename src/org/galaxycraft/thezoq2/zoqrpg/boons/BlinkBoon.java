@@ -71,7 +71,6 @@ public class BlinkBoon extends BaseBoon
         if(affectedEntity instanceof Player)
         {
             //Cast the entity to player
-            //noinspection TypeMayBeWeakened
             //This boon will only work on a player because it relies on interraction.
             Player plr = (Player) affectedEntity;
 
@@ -90,7 +89,7 @@ public class BlinkBoon extends BaseBoon
     {
         assert(affectedEntity instanceof Player);
 
-        if(affectedEntity instanceof Player)
+        if(affectedEntity instanceof Player) //This is only true now, in the future this check will be nessesairy
         {
             Player plr = (Player) affectedEntity;
 
@@ -133,9 +132,8 @@ public class BlinkBoon extends BaseBoon
     {
         assert(affectedEntity instanceof Player);
 
-        if(affectedEntity instanceof Player)
+        if(affectedEntity instanceof Player)//THis is only true with the way the code works right now, in the future, this check will be nessesairy
         {
-            //noinspection TypeMayBeWeakened
             //This boon will only work on a player because it relies on interraction.
             Player plr = (Player) affectedEntity;
 
@@ -145,7 +143,6 @@ public class BlinkBoon extends BaseBoon
 
             //For some reason, the bukkit api does not contain a working replacement for this function
             //which is why it is deprecated
-            @SuppressWarnings("deprecation")
             List<Block> plrLineOfSight = plr.getLineOfSight((HashSet<Byte>) null, teleportDistance);
 
             Block targetBlock = null;

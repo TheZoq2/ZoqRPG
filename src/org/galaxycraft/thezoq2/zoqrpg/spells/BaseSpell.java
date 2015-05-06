@@ -2,7 +2,6 @@ package org.galaxycraft.thezoq2.zoqrpg.spells;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
-import org.bukkit.util.Vector;
 import org.galaxycraft.thezoq2.zoqrpg.UpdatableManager;
 import org.galaxycraft.thezoq2.zoqrpg.boons.Boon;
 
@@ -40,9 +39,9 @@ public abstract class BaseSpell implements Spell
         this.caster = caster;
     }
     @Override
-    public void setStartPos(Location startPos)
+    public void setStartPos(Location pos)
     {
-        this.startPos = startPos;
+        this.startPos = pos;
     }
 
     @Override

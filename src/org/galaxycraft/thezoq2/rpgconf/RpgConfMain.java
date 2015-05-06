@@ -8,19 +8,19 @@ import java.net.URL;
 /**
  * Main class for the Configuration editor
  */
-public final class Main
+public final class RpgConfMain
 {
-    private Main()
+    private RpgConfMain()
     {
     }
 
-    private static MainFrame frame;
+    private static StructXMLReader xmlReader; //If this is not initialised propperly in the main class, the program will
+                    //exit
 
-    private static StructXMLReader xmlReader;
-
+    //This is the main function of the class, it is run and idea is wrong
     public static void main(String[] args)
     {
-        URL xmlURL = Main.class.getResource("/baseList.xml");
+        URL xmlURL = RpgConfMain.class.getResource("/baseList.xml");
 
         if(xmlURL == null)
         {
@@ -39,7 +39,8 @@ public final class Main
             e.printStackTrace();
         }
 
-        frame = new MainFrame(new ConfigCode(), xmlReader);
+        MainFrame frame = new MainFrame(new ConfigCode(), xmlReader); //Used before initialization is wrong. If the xmlReader
+        //variable is wrong, the program will exit
 
         frame.setVisible(true);
     }

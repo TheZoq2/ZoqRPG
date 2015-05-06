@@ -18,8 +18,8 @@ import org.galaxycraft.thezoq2.zoqrpg.CloneableObject;
  */
 public interface Mover extends CloneableObject
 {
-    void setSpeed(float speed);
-    float getSpeed();
+    void setSpeed(float speed); //Might be used in the future.
+    float getSpeed(); //MIght be used in the future
     void setDirection(Vector direction);
 
     //public Location getNewLocation(long timePassed);

@@ -67,11 +67,11 @@ import java.util.regex.Pattern;
 
         will be parsed fine even though it should end due to hello world not being a propper statement
      */
-@SuppressWarnings("UnnecessaryCodeBlock")
 //This warning comes from switch case statements.
 //I prefer to keep code blocks in the code because they make it easier to tell where a new case begins and ends.
 public class DataFileReader
 {
+    //An enum is obviously not going to be executed
     private enum ParseStatus
     {
         LOOKING_FOR_VARIABLE,
@@ -87,6 +87,7 @@ public class DataFileReader
 
     private StructValue fileStruct;
 
+    //Throws to broad exception because all InvalidDatafileExceptions are treated equally when caught.
     public DataFileReader(FileReader fileReader, String filename) throws IOException, InvalidDatafileException
     {
         lineStarts = new ArrayList<>();
@@ -176,6 +177,9 @@ public class DataFileReader
                 //There is a special char, parse it
                 char specialChar = finalString.charAt(nextSpecial);
 
+                //The low branch density warning does have a point and I should probably look into fixing it at some point.
+                //Unfortunley I don't have time to do so at the moment because the function would probably need a rewrite
+                //to make it cleaner.
                 switch(parseStatus)
                 {
                     case LOOKING_FOR_VARIABLE:
@@ -238,8 +242,7 @@ public class DataFileReader
                             parseStatus = ParseStatus.LOOKING_FOR_VARIABLE;
                         } catch (StructContainsVariableException e)
                         {
-                            //TODO: Throw a more detailed error
-                            throw new DuplicateVariableNameException(cVariableName, filename, currentChar);
+                            throw new DuplicateVariableNameException(e.getVarName(), filename, currentChar);
                         }
                         break;
                     }
@@ -334,9 +337,9 @@ public class DataFileReader
         throw new MissmatchedBracketException(filename, getLineFromFinal(start - 1), openBracket);
     }
 
-    //Code stolen from stackoverflow here: http://stackoverflow.com/questions/8564896/fastest-way-to-check-if-a-string-can-be-parsed-to-double-in-java
+    //Code 'stolen' from stackoverflow here: http://stackoverflow.com/questions/8564896/fastest-way-to-check-if-a-string-can-be-parsed-to-double-in-java
 
-    @SuppressWarnings("ALL") //Supressing warnings because I didn't write code
+    //No warnings in this function apply to my project since it is not my code
     private boolean isNumber(CharSequence str)
     {
          final String Digits     = "(\\p{Digit}+)";

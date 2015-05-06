@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
  * aswell as a ConfigCodeArea for editing the code manually
  *
  * @see ConfigCode
- * @See ConfigCodeArea
+ * @see ConfigCodeArea
  */
 public class MainFrame
 {
@@ -30,7 +30,7 @@ public class MainFrame
     {
         {
             putValue(SHORT_DESCRIPTION, "Save the current file");
-            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_S));
+            putValue(MNEMONIC_KEY, KeyEvent.VK_S);
         }
 
         @Override
@@ -43,7 +43,7 @@ public class MainFrame
     {
         {
             putValue(SHORT_DESCRIPTION, "Load a new file");
-            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_O));
+            putValue(MNEMONIC_KEY, KeyEvent.VK_O);
         }
 
         @Override
@@ -56,7 +56,7 @@ public class MainFrame
     {
         {
             putValue(SHORT_DESCRIPTION, "Exit the program");
-            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_E));
+            putValue(MNEMONIC_KEY, KeyEvent.VK_E);
         }
         @Override
         public void actionPerformed(ActionEvent actionEvent)
@@ -160,46 +160,5 @@ public class MainFrame
         menuBar.add(file);
         menuBar.add(Box.createHorizontalGlue());
         frame.setJMenuBar(menuBar);
-    }
-
-    private AbstractAction saveButton = new AbstractAction()
-    {
-        {
-            putValue(SHORT_DESCRIPTION, "Save the current file");
-            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_S));
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent actionEvent)
-        {
-            System.out.println("Saving is not implemented");
-        }
-    };
-    private AbstractAction loadButton = new AbstractAction()
-    {
-        {
-            putValue(SHORT_DESCRIPTION, "Load a new file");
-            putValue(MNEMONIC_KEY, new Integer(KeyEvent.VK_O));
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent actionEvent)
-        {
-            System.out.println("Saving is not implemented");
-        }
-    };
-
-    private void addTextAtCursor(String text)
-    {
-        this.codeArea.insert(text, codeArea.getCaretPosition());
-    }
-
-    private String getVarName()
-    {
-        return this.varNameText.getText();
-    }
-    private String getVarValue()
-    {
-        return this.varValueText.getText();
     }
 }

@@ -10,16 +10,10 @@ public class InvalidDatafileException extends Exception
     //the superclass constructor
     private static String createMessage(String errorMessage, String file, int line)
     {
-        StringBuilder msgBuilder = new StringBuilder();
-        msgBuilder.append("Error when reading datafile: ");
-        msgBuilder.append(file);
-        msgBuilder.append(". ");
-        msgBuilder.append(errorMessage);
-        msgBuilder.append(" at line: ");
-        msgBuilder.append(line);
-        return msgBuilder.toString();
+        return "Error when reading datafile: " + file + ". " + errorMessage + " at line: " + line;
     }
 
+    //These methods are used by subclasses
     public InvalidDatafileException(String errorMessage, String file, int line)
     {
         super(createMessage(errorMessage, file, line));

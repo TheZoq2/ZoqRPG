@@ -1,5 +1,6 @@
 package org.galaxycraft.thezoq2.rpgconf;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,8 +15,8 @@ public final class StructTypeTranslator
     private static final Map<StructType, String> STRUCT_NAMES;
     static
     {
-        STRUCT_CONFIG_NAMES = new HashMap<>();
-        STRUCT_NAMES = new HashMap<>();
+        STRUCT_CONFIG_NAMES = new EnumMap<>(StructType.class);
+        STRUCT_NAMES = new EnumMap<>(StructType.class);
 
         STRUCT_CONFIG_NAMES.put(StructType.BOON, "boons");
         STRUCT_CONFIG_NAMES.put(StructType.MOVER, "movers");
