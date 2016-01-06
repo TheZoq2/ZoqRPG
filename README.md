@@ -31,6 +31,32 @@ the end of the value.
 In order to store a struct of data, the = sign should be followed by a `{` and a `}` at the end of the struct.
 Inside the struct you can put any number of variables of any type you like.
 
+    struct=
+    {
+        data1=1
+        data2={
+            data3=yolo
+        }
+    }
 
+The *spells* file is divided into 5 structs: `spells, boons, visualisers, volumes and movers`. These structs are where
+you will add your own configurations for spells.
+
+### Defining new spells
+
+Now that we know how a spell is structured and stored in in the configuration we can define a new spell. In this 
+example we will create a simple fireball. Let's start with creating the boon that will affect entities that are 
+affected by the spell.
+
+    awesomeBurningBoon
+    {
+        base=burning;
+        minBurnTime=6000;
+        maxBurnTime=12000;
+    }
+
+As you can see, this boon contains three variables which describe what it does. The first being `base` which tells
+the plugin what internal boon type it should use. In this case burning which makes entities burn for a semi random
+amount of time. 
 
 
