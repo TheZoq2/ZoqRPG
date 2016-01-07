@@ -59,4 +59,72 @@ As you can see, this boon contains three variables which describe what it does. 
 the plugin what internal boon type it should use. In this case burning which makes entities burn for a semi random
 amount of time. 
 
+Then there are two variables which are specific to the burning boon, minBurnTime and maxBurnTime. As you might expect
+they define the time an entity will burn for when affected by the boon. Each boon base has its own variables like this
+and you can set the ones you care about, they all have default values.
 
+Let's create our first spell. 
+
+    superAwesomeSpell=
+    {
+        base=modularSelf;
+        boon=awesomeBurningBoon;
+    }
+
+As you can see, spells also have a base variable which in this case tells the plugin that you want to create a self 
+cast spell. The modular part means that the spell behaviour depends on the modules assigned to it. Self spells only
+have one attribute and that is the boon. When the spell is cast, the boon is applied to the entity that casted it.
+In this case it will set the caster on fire which is probably a bad idea.
+
+Let's make a more usefull spell. We start by defining a visualiser, a volume and a mover to go along with the boon
+we created earlier.
+
+visualisers = 
+{
+    fire=
+    {
+        base=fire;
+        speed=0.1;
+        range=150;
+        particleAmount = 50;
+    }
+}
+
+volumes = 
+{
+    sphere=
+    {
+        base=sphere;
+
+        radius=3;
+    }
+}
+
+movers = 
+{
+    linear= //MOves in a straight line
+    {
+        base=linear;
+        
+        speed=5;
+    }
+}
+
+As you can see, all attributes in the plugin have a base variable along with a set of behaviour variables which you
+can set. You can probably figure out what all of these do by yourself.
+
+Now it's time to combine our attributes into a working spell. This time we want the spell to use our new attributes
+so instead of chosing a `modularSelf` as base, we chose a `modular` base. The modular base takes one of each of the
+attributes we have created and makes a spell from it.
+
+
+    fireball= 
+    {
+        base=modular;
+        mover=linear; //Change to a new mover to test something else
+        boon=awesomeBurningBoon; 
+        visualiser=fire;
+        volume=sphere;
+    }
+
+And that's it, you have created a working fireball spell.
