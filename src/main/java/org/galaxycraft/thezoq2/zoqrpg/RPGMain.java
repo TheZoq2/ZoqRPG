@@ -26,14 +26,11 @@ import java.util.logging.Level;
  * Main class of the project. Loads all config files required and sets up all base objects for later use.
  */
 
-//Unused declaration: Entry Points.
-//Intellij doesn't know that bukkit will call this function
 public class RPGMain extends JavaPlugin implements Listener
 {
     //private SpellManager spellManager;
     //private BoonManager boonManager;
-    private UpdatableManager<Spell> spellManager; //Warning about field not being initialised is wrong. If the initialisation fails
-                    //the plugin gets unloaded
+    private UpdatableManager<Spell> spellManager;
     private UpdatableManager<Boon> boonManager;
 
     private SpellFactory spellFactory;
@@ -46,8 +43,6 @@ public class RPGMain extends JavaPlugin implements Listener
         getLogger().info("Loading ZoqRPG");
 
         BukkitScheduler scheduler = this.getServer().getScheduler();
-        //will look into undepricated version later //TODO
-        //I don't have time to look into non deprecated version...
         scheduler.scheduleSyncRepeatingTask(this, new RPGUpdateTask(this), 0L, 1L);
 
         //Initialising managers
@@ -78,7 +73,6 @@ public class RPGMain extends JavaPlugin implements Listener
      * Function executed when a player interracts with the world by right or left clicking.
      * @param event The Bukkit interract event that was triggered
      */
-    //Idea is wrong this not being used, this is invoked by bukkit
     @EventHandler
     public void onPlayerInteractEvent(PlayerInteractEvent event)
     {
@@ -86,7 +80,7 @@ public class RPGMain extends JavaPlugin implements Listener
         //Run all the interract events on boons for the player
         for(Boon boon : boonManager.getUpdatableList())
         {
-            if (boon.getAffectedEntity() == plr) //Comparison using == instead of .equals: This is what I want to do
+            if (boon.getAffectedEntity() == plr)
             {
                 if(!boon.onPlayerInterractEvent(event))
                 {
@@ -126,7 +120,6 @@ public class RPGMain extends JavaPlugin implements Listener
     /**
      * Load the spell configuration file
      */
-    //Overly coupled method: This might be true but would require more rewriting than I have time for to fix.
     private void loadSpellConfig()
     {
         boolean configsLoaded = false;
