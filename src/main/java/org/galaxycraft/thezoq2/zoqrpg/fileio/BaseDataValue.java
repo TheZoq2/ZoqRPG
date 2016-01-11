@@ -5,8 +5,6 @@ package org.galaxycraft.thezoq2.zoqrpg.fileio;
  *
  * @see DataValue
  */
-//I don't know why an abstract class would need to contain abstract methods. I use them to provide an implementation
-//of some of the methods without requiring all of them
 public abstract class BaseDataValue implements DataValue
 {
     //Private because there is no reason for children to edit these

@@ -67,8 +67,6 @@ import java.util.regex.Pattern;
 
         will be parsed fine even though it should end due to hello world not being a propper statement
      */
-//This warning comes from switch case statements.
-//I prefer to keep code blocks in the code because they make it easier to tell where a new case begins and ends.
 public class DataFileReader
 {
     //An enum is obviously not going to be executed
@@ -87,7 +85,6 @@ public class DataFileReader
 
     private StructValue fileStruct;
 
-    //Throws to broad exception because all InvalidDatafileExceptions are treated equally when caught.
     public DataFileReader(FileReader fileReader, String filename) throws IOException, InvalidDatafileException
     {
         lineStarts = new ArrayList<>();
@@ -144,8 +141,6 @@ public class DataFileReader
         finalString = finalStringBuilder.toString();
     }
 
-    //Because the warnings are similar in nature and are handled in the same way by the exception hadling where
-    //the method is used, I want to keep the broad exception
     private StructValue parseDataChunk(int start, int end) throws UnexpectedSpecialCharException, UnexpectedEndOfDataChunkException, MissmatchedBracketException, DuplicateVariableNameException
     {
         //List<DataVariable> dataVariables = new ArrayList<>();
@@ -177,9 +172,6 @@ public class DataFileReader
                 //There is a special char, parse it
                 char specialChar = finalString.charAt(nextSpecial);
 
-                //The low branch density warning does have a point and I should probably look into fixing it at some point.
-                //Unfortunley I don't have time to do so at the moment because the function would probably need a rewrite
-                //to make it cleaner.
                 switch(parseStatus)
                 {
                     case LOOKING_FOR_VARIABLE:
@@ -254,7 +246,6 @@ public class DataFileReader
 
         return resultStruct;
     }
-
 
     /**
      * Removes all the whitespace from a string. used for later parsing

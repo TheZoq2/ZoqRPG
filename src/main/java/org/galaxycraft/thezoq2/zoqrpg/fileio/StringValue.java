@@ -14,6 +14,8 @@ public class StringValue extends BaseDataValue
     public StringValue(String value)
     {
         super(value, null);
+
+        this.value = value;
     }
     public StringValue(String value, String varName, StructValue parentStruct)
     {

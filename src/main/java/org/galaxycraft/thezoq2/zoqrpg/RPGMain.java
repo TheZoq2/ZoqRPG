@@ -175,4 +175,5 @@ public class RPGMain extends JavaPlugin implements Listener
             getServer().getPluginManager().disablePlugin(this);
         }
     }
+
 }
