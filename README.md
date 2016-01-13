@@ -16,17 +16,23 @@ as it is moving through the air and the volume defines what part of the world wi
 
 ### Configuration
 Spell information is stored in the 'spells' file in the plugin folder. The file uses a custom data format to group
-data together and there are two distinct data types. Values and structs. Structs contain a chunk of other data
+data together and there are three different data types. Strings, numbers and structs. Structs contain a chunk of other data
 while 'values' contain actual data. 
 
 In order to define a new variable you type the name of the variable followed by an `=` sign.
 
     variable=someValue
 
-In order to store a data value, the `=` sign should be followed by the desired value followed by a `;` to mark
+In order to store a string value, the `=` sign should be followed by the desired value followed by a `;` to mark
 the end of the value.
 
-    maxRange=1000;
+    maxRange=Hello world;
+
+A lot of things require numbers, so in order to store a number you give the variable a value which could be interpreted
+as a number, for example 10, or 3.1415
+
+    pi=3.1415;
+    two=2;
 
 In order to store a struct of data, the = sign should be followed by a `{` and a `}` at the end of the struct.
 Inside the struct you can put any number of variables of any type you like.
