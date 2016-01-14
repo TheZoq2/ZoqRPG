@@ -28,8 +28,6 @@ import java.util.logging.Level;
 
 public class RPGMain extends JavaPlugin implements Listener
 {
-    //private SpellManager spellManager;
-    //private BoonManager boonManager;
     private UpdatableManager<Spell> spellManager;
     private UpdatableManager<Boon> boonManager;
 
@@ -50,8 +48,6 @@ public class RPGMain extends JavaPlugin implements Listener
         boonManager = new UpdatableManager<>();
 
         getServer().getPluginManager().registerEvents(this, this);
-
-        //spellFactory = new SpellFactory();
 
         FileManager.createPluginFoler();
 
