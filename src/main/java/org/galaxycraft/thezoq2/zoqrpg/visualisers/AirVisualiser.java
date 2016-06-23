@@ -1,6 +1,5 @@
 package org.galaxycraft.thezoq2.zoqrpg.visualisers;
 
-import com.darkblade12.particleeffect.ParticleEffect;
 import org.bukkit.Location;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
@@ -29,7 +28,8 @@ public class AirVisualiser extends ParticleVisualiser
     @Override
     public void showLocation(Location loc)
     {
-        ParticleEffect.EXPLOSION_NORMAL.display(offsetX, offsetY, offsetZ, speed, particleAmount, loc, particleRange);
+        //ParticleEffect.EXPLOSION_NORMAL.display(offsetX, offsetY, offsetZ, speed, particleAmount, loc, particleRange);
+        //TODO: Rimplement
     }
 
     @Override

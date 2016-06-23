@@ -1,5 +1,6 @@
 package org.galaxycraft.thezoq2.zoqrpg;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -86,6 +87,8 @@ public class RPGMain extends JavaPlugin implements Listener
             }
         }
 
+        Bukkit.getLogger().info("Interract event");
+
         Material playerItemMat = plr.getItemInHand().getData().getItemType();
         try
         {
@@ -106,6 +109,8 @@ public class RPGMain extends JavaPlugin implements Listener
                 spell.onCreate(boonManager);
 
                 spellManager.add(spell);
+
+                Bukkit.getLogger().info("Casting spell");
             }
         } catch (FactoryCreationFailedException e)
         {
@@ -171,5 +176,4 @@ public class RPGMain extends JavaPlugin implements Listener
             getServer().getPluginManager().disablePlugin(this);
         }
     }
-
 }

@@ -125,7 +125,7 @@ volumes =
 ```
 movers = 
 {
-    linear= //MOves in a straight line
+    linear= //Moves in a straight line
     {
         base=linear;
         

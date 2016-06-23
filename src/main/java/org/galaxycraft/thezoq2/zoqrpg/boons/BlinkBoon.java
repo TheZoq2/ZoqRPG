@@ -1,6 +1,7 @@
 package org.galaxycraft.thezoq2.zoqrpg.boons;
 
-import com.darkblade12.particleeffect.ParticleEffect;
+import org.inventivetalent.particle.*;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -11,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.NumberValue;
 import org.galaxycraft.thezoq2.zoqrpg.fileio.StructValue;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -105,14 +107,16 @@ public class BlinkBoon extends BaseBoon
 
             //Add some fancy particles
             Location loc = plr.getLocation();
-            ParticleEffect.PORTAL.display(PARTICLE_OFFSET, PARTICLE_OFFSET, PARTICLE_OFFSET, PARTICLE_SPEED, PARTICLE_AMOUNT, loc, PARTICLE_RANGE);
+            //ParticleEffect.PORTAL.display(PARTICLE_OFFSET, PARTICLE_OFFSET, PARTICLE_OFFSET, PARTICLE_SPEED, PARTICLE_AMOUNT, loc, PARTICLE_RANGE);
 
 
             Location targetPos = getTeleportTargetPos();
             if(targetPos != null)
             {
                 //Creating an indcator particle for where the player ends up if they teleport
-                ParticleEffect.REDSTONE.display(INDICATOR_OFFSET, INDICATOR_OFFSET, INDICATOR_OFFSET, INDICATOR_SPEED, INDICATOR_AMOUNT, targetPos, plr);
+                //ParticleEffect.REDSTONE.display(INDICATOR_OFFSET, INDICATOR_OFFSET, INDICATOR_OFFSET, INDICATOR_SPEED, INDICATOR_AMOUNT, targetPos, plr);
+                //ParticleEffect.SPELL.send(plr, targetPos);
+                ParticleEffect.PORTAL.send(Bukkit.getOnlinePlayers(), targetPos, 0, 0, 0, 0, 1);
             }
         }
     }
@@ -212,5 +216,4 @@ public class BlinkBoon extends BaseBoon
     {
         return new BlinkBoon(baseDistance, maxDistance);
     }
-
 }
