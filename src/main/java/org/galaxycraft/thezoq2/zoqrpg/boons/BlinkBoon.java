@@ -34,11 +34,6 @@ public class BlinkBoon extends BaseBoon
     private static final int DEFAULT_STRENGTH_DISTANCE = 20;
 
     //Effect data
-    private static final float PARTICLE_OFFSET = 0;
-    private static final int PARTICLE_SPEED = 1;
-    private static final int PARTICLE_AMOUNT = 50;
-    private static final int PARTICLE_RANGE = 100;
-
     private static final float INDICATOR_OFFSET = 0.5f;
     private static final int INDICATOR_SPEED = 3;
     private static final int INDICATOR_AMOUNT = 25;
@@ -104,19 +99,19 @@ public class BlinkBoon extends BaseBoon
             }
 
             //The player still wants to perform the teleport
+            double offset = INDICATOR_OFFSET;
 
             //Add some fancy particles
             Location loc = plr.getLocation();
-            //ParticleEffect.PORTAL.display(PARTICLE_OFFSET, PARTICLE_OFFSET, PARTICLE_OFFSET, PARTICLE_SPEED, PARTICLE_AMOUNT, loc, PARTICLE_RANGE);
+            ParticleEffect.PORTAL.send(Bukkit.getOnlinePlayers(), loc, offset, offset, offset, INDICATOR_SPEED, INDICATOR_AMOUNT);
 
 
             Location targetPos = getTeleportTargetPos();
             if(targetPos != null)
             {
-                //Creating an indcator particle for where the player ends up if they teleport
-                //ParticleEffect.REDSTONE.display(INDICATOR_OFFSET, INDICATOR_OFFSET, INDICATOR_OFFSET, INDICATOR_SPEED, INDICATOR_AMOUNT, targetPos, plr);
-                //ParticleEffect.SPELL.send(plr, targetPos);
-                ParticleEffect.PORTAL.send(Bukkit.getOnlinePlayers(), targetPos, 0, 0, 0, 0, 1);
+                targetPos = targetPos.add(0.5, 0.5, 0.5);
+
+                ParticleEffect.SPELL.send(Bukkit.getOnlinePlayers(), targetPos, offset, offset, offset, INDICATOR_SPEED, INDICATOR_AMOUNT);
             }
         }
     }
